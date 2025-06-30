@@ -6,8 +6,21 @@
 }
 
 .create-note {
-    width: 20000px;
+    border-radius: 2vh;
+    
+    gap: 1em;
+    padding: .5em 2em;
+    
+    width: 60vw;
 }
 .create-note label {
-   gap: 1em;
+  
+}
+
+.create-note input{
+    border: none;
+    padding: 1em;
+    font-size: .9em;
+    width: 100%;
+
 }
