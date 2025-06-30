@@ -1,1 +1,5 @@
  /* mail list */
+
+ .mail-list tr {
+     border-top: 1px solid black;
+ }
