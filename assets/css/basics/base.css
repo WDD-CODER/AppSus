@@ -1,10 +1,10 @@
 html {
     font-family: 'Chewy';
+    background-color: var(--clr-bg-main);
 }
 
 body {
     margin: 0;
-    background-color: var(--clr-accent-1);
 }
 
 h1,
@@ -31,4 +31,8 @@ img {
     place-content: center;
     padding: 1em;
 
+}
+
+input{
+    background-color: var(--clr-bg-input);
 }

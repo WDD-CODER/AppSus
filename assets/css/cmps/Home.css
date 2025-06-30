@@ -2,7 +2,7 @@
 
 .home {
     grid-area: main-content;
-    background-color: var(--clr-primary-base);
+    /* background-color: var(--clr-primary-base); */
 }
 
 .home .box-container {
@@ -11,12 +11,12 @@
 
 .home .box1 {
     background-color: var(--clr-primary-base);
-    min-height: 10em;
+    /* min-height: 10em; */
 }
 
 .home .box2 {
     background-color: var(--clr-success-base);
-    min-height: 10em;
+    /* min-height: 10em; */
 }
 
  @media (min-width: 750px) {

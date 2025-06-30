@@ -6,7 +6,7 @@ export function AppHeader() {
         <img className="hamburger" src="./assets/images/hamburger.png" alt="hamburger-img" />
         <img src="./assets/images/logo.png" alt="logo-img" />
 
-        <label htmlFor="search-bar container  ">
+        <label htmlFor="search-bar container">
             <input type="text" id="search-bar" />
         </label>
         <nav className="header-nav-bar flex align-center">

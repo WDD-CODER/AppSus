@@ -1,9 +1,9 @@
 .app-header {
     grid-area: header;
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-between;
     padding: 1em;
-    background: var(--clr-accent-base);
     font-family: 'Bitcount';
 }
 
@@ -26,4 +26,7 @@
 }
 .hamburger{
     background-color: var(--clr-primary-1);
+}
+.search-bar{
+    max-width: 30vw;
 }

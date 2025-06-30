@@ -21,6 +21,7 @@
 .grid {
     display: grid;
 }
-.box{
-    border:1px var(--clr-accent--1) solid
+
+.box {
+    border: 1px var(--clr-bg-border) solid
 }
