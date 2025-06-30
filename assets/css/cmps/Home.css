@@ -1,7 +1,7 @@
  /* home */
 
 .home {
-    background-color: var(--bg2);
+    background-color: var(--clr-primary-base);
 }
 
 .home .box-container {
@@ -9,12 +9,12 @@
 }
 
 .home .box1 {
-    background-color: var(--color1);
+    background-color: var(--clr-primary-base);
     min-height: 10em;
 }
 
 .home .box2 {
-    background-color: var(--color2);
+    background-color: var(--clr-success-base);
     min-height: 10em;
 }
 

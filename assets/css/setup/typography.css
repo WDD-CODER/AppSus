@@ -1,0 +1,37 @@
+@font-face {
+  font-family: "Bitcount";
+  src: url("../fonts/BitcountGridDouble-VariableFont_CRSV\,ELSH\,ELXP\,slnt\,wght.ttf"),
+}
+
+@font-face {
+  font-family: "Chewy";
+  src: url("../fonts/Chewy-Regular.ttf"),
+}
+
+
+@font-face {
+  font-family: "fa";
+  src: url("../fonts/fa-brands-400.woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon-facebook::before {
+  content: "\f09a";
+  font-family: "fa";
+}
+
+.fa-twitter::before {
+  content: "\f099";
+  font-family: "fa";
+}
+
+.fa-instagram::before {
+  content: "\f16d";
+  font-family: "fa";
+}
+
+.fa-github::before {
+  content: "\f09b";
+  font-family: "fa";
+}

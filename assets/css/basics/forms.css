@@ -1,0 +1,55 @@
+button {
+    cursor: pointer;
+    background-color: var(--clr-primary-1);
+    margin: 0.5em;
+    border: 0;
+    padding: 0.5em 0.8em;
+    border-radius: 4px;
+    border: 1px var(--clr-secondary--1) solid;
+}
+
+button:hover {
+    background-color: var(--clr-primary-base);
+    color: white;
+    transition: .3s;
+}
+
+button:active {
+    background-color: var(--clr-primary--1);
+    color: white;
+    transition: .3s;
+}
+
+input {
+    border-radius: .5vh;
+}
+
+input:focus {
+
+    background-color: var(--clr-primary-1);
+    transition: background-color 1s;
+}
+
+form.container {
+    display: flex;
+    flex-direction: column;
+
+    padding: 3em;
+}
+
+/* Special swallow model settings */
+
+/* .custom-swal-class {
+    max-width: 90%;
+}
+
+#swal2-html-container {
+    display: grid !important;
+    place-items: center;
+
+}
+
+.custom-swal-class .swal2-input {
+    width: 80%;
+}
+ */

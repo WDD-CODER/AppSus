@@ -1,0 +1,40 @@
+/* :root {
+    --clr-primary-1: lightblue;
+    --clr-primary-base: rgb(50, 160, 204);
+    --clr-primary--1: rgb(89, 134, 206);
+    
+    --clr-primary-base: rgb(26, 115, 232);
+    --clr-success-base: rgb(24, 128, 56);
+    --clr-danger-base: rgb(197, 34, 31);
+
+    --clr-accent-1: #aaa;
+    --clr-accent-1: #888;
+    --clr-accent-1: #333;
+/* } */
+
+:root {
+  /* 📘 Primary – Brand Identity: headers, buttons, links */
+  --clr-primary--1: #174EA6;     /* darker: button hover, strong icons */
+  --clr-primary-base: #1A73E8;   /* main: buttons, links */
+  --clr-primary-1: #E8F0FE;      /* lighter: borders, highlights */
+
+  /* 🟡 Secondary – Notes & Surfaces (inspired by Google Keep yellow) */
+  --clr-secondary--1: #FDD663;   /* darker: card headers, pinned notes */
+  --clr-secondary-base: #FEEFC3; /* main: note backgrounds */
+  --clr-secondary-1: #FFF8E1;    /* lighter: subtle zones */
+
+  /* ⚪ Accent – Text & Icons (inspired by Gmail / Keep neutral gray) */
+  --clr-accent--1: #5F6368;      /* darker: text, icons */
+  --clr-accent-base: #BDC1C6;    /* main: labels, UI outlines */
+  --clr-accent-1: #F1F3F4;       /* lighter: backgrounds, dividers */
+
+  /* ✅ Success – Positive actions, approvals */
+  --clr-success--1: #1B813E;     /* darker: active status */
+  --clr-success-base: #188038;   /* main: success messages */
+  --clr-success-1: #D7F0DB;      /* lighter: success backgrounds */
+
+  /* ❌ Danger – Errors, warnings */
+  --clr-danger--1: #A61916;      /* darker: delete/alert hover */
+  --clr-danger-base: #C5221F;    /* main: error, delete */
+  --clr-danger-1: #FCE8E6;       /* lighter: soft alert */
+}

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     padding: 1em;
-    background: var(--bg1);
+    background: var(--clr-primary-1);
 }
 
 nav a {
@@ -10,7 +10,7 @@ nav a {
 }
 
 nav a.active {
-    color: var(--color1);
+    color: var(--clr-primary-base);
     font-weight: bold;
     text-decoration: overline;
 }
