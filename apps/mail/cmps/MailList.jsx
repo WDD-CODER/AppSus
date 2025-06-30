@@ -1,6 +1,4 @@
 
-const { Fragment } = React
-
 export function MailList({ mails }) {
 
     if (!mails.length) return <div>No Mails to Show...</div>
