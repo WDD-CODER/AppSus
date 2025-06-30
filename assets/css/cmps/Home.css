@@ -1,6 +1,7 @@
  /* home */
 
 .home {
+    grid-area: main-content;
     background-color: var(--clr-primary-base);
 }
 

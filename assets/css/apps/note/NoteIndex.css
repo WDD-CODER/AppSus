@@ -1,1 +1,7 @@
- /* note index */
+.note-index {
+    grid-area: main-content;
+
+    width: 100%;
+
+    background-color: var(--clr-primary-base);
+}

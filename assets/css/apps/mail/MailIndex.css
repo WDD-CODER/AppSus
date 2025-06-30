@@ -1,1 +1,4 @@
- /* mail index  */
+.mail-index{
+    grid-area: main-content;
+    background-color: aquamarine;
+}

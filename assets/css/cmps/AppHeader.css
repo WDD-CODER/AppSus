@@ -1,16 +1,17 @@
 .app-header {
+    grid-area: header;
     display: flex;
     justify-content: space-between;
     padding: 1em;
     background: var(--clr-primary-1);
 }
 
-nav a {
+.header-nav-bar a {
     margin: .5em;
 }
 
-nav a.active {
-    color: var(--clr-primary-base);
+.header-nav-bar a.active {
+    color: var(--color1);
     font-weight: bold;
     text-decoration: overline;
 }

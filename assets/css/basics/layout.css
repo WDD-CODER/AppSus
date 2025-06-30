@@ -1,3 +1,9 @@
-.container {
-    padding: 0 1em;
+.main-layout {
+    display: grid;
+    grid:
+        "header header" 10vh
+        "side-bar main-content" 90vh
+        /minmax(50px, 150px) minmax(150px, 1fr) ;
 }
+
+

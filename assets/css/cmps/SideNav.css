@@ -1,0 +1,13 @@
+.side-bar {
+    grid-area: side-bar;
+    display: grid;
+    max-width: 150px;
+    height: 100%;
+    background-color: bisque;
+}
+
+.note-nav-bar {
+    display: flex;
+    flex-direction: column;
+
+}

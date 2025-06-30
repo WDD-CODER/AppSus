@@ -1,5 +1,4 @@
-
-html{
+html {
     font-family: 'Chewy';
 }
 
@@ -25,4 +24,11 @@ img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+.container {
+    display: grid;
+    place-content: center;
+    padding: 1em;
+
 }

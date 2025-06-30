@@ -6,7 +6,7 @@ export function AppHeader() {
         <Link to="/">
             <h3>LOGO ✨</h3>
         </Link>
-        <nav>
+        <nav className="header-nav-bar">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about">About</NavLink>
             <NavLink to="/mail">Mail</NavLink>

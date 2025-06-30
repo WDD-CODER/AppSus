@@ -1,5 +1,5 @@
 
 export function MailIndex() {
-    return <section className="container">Mail app</section>
+    return <section className="container mail-index">Mail app</section>
 }
 
