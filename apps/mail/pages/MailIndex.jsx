@@ -1,3 +1,4 @@
+import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../services/mail.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
@@ -24,6 +25,7 @@ export function MailIndex() {
     return (
         <section className="container mail-index">Mail app:
             <h1>Mails:</h1>
+            <MailList />
         </section>
     )
 }
