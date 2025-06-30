@@ -4,34 +4,74 @@
 }
 
 @font-face {
-  font-family: "Chewy";
-  src: url("../fonts/Chewy-Regular.ttf"),
-}
-
-
-@font-face {
-  font-family: "fa";
+  font-family: "fa-brands";
   src: url("../fonts/fa-brands-400.woff2");
   font-weight: normal;
   font-style: normal;
 }
 
-.icon-facebook::before {
+@font-face {
+  font-family: "fa-regular";
+  src: url("../fonts/fa-regular-400.woff2");
+  /* font-weight: 400;
+  font-style: normal; */
+}
+
+@font-face {
+  font-family: "fa-solid";
+  src: url("../fonts/fa-solid-900.ttf");
+  /* font-weight: 900;
+  font-style: normal; */
+}
+.icon-facebook::after {
   content: "\f09a";
-  font-family: "fa";
+  font-family: "fa-brands";
 }
 
 .fa-twitter::before {
   content: "\f099";
-  font-family: "fa";
+  font-family:"fa-brands";
 }
 
 .fa-instagram::before {
   content: "\f16d";
-  font-family: "fa";
+  font-family: "fa-brands";
 }
 
 .fa-github::before {
   content: "\f09b";
-  font-family: "fa";
+  font-family: "fa-brands";
+}
+.icon-lightbulb::before {
+  content: "\f0eb";
+  font-family: "fa-regular";
+}
+
+.icon-bell::before {
+  content: "\f0f3";
+  font-family: "fa-regular";
+}
+
+.icon-label::before {
+  content: "\f02b ";
+  font-family: "fa-solid";
+}
+
+.icon-pen::before {
+  content: "\f304";
+  font-family: "fa-solid";
+}
+
+.icon-archive::before {
+  content: "\f187";
+  font-family: "fa-solid";
+}
+
+.icon-trash-can::before {
+  content: "\f2ed";
+  font-family: "fa-regular";
+}
+.icon-privet::before {
+  content: "\f02b";
+  font-family: "fa-solid";
 }

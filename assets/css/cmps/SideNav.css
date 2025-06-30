@@ -1,13 +1,29 @@
 .side-bar {
     grid-area: side-bar;
     display: grid;
+    
     max-width: 150px;
     height: 100%;
-    background-color: bisque;
+    
+    
+    background-color:var( --clr-accent-2);
+    transition: 1s;
 }
 
+.side-bar img{
+    max-width: 100px;
+}
+.side-bar img{
+    max-width: 100px;
+}
 .note-nav-bar {
     display: flex;
     flex-direction: column;
 
 }
+
+.small{
+    width:50px ;
+}
+
+

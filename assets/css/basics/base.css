@@ -4,6 +4,7 @@ html {
 
 body {
     margin: 0;
+    background-color: var(--clr-accent-1);
 }
 
 h1,
@@ -21,7 +22,6 @@ a {
 }
 
 img {
-    height: 100%;
     width: 100%;
     object-fit: cover;
 }

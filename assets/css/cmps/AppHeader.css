@@ -1,17 +1,28 @@
 .app-header {
     grid-area: header;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 1em;
-    background: var(--clr-primary-1);
+    background: var(--clr-accent-base);
 }
 
 .header-nav-bar a {
     margin: .5em;
 }
-
+.hide-txt{
+    justify-self: center;
+    opacity: 0;
+}
+.header-nav-bar a:hover .hide-txt {
+    opacity: 1;
+}
 .header-nav-bar a.active {
-    color: var(--color1);
+    color: var(--clr-primary-base);
     font-weight: bold;
-    text-decoration: overline;
+}
+.app-header img{
+    width: 50px;
+}
+.hamburger{
+    background-color: var(--clr-primary-1);
 }

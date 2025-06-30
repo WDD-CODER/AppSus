@@ -28,6 +28,11 @@
   --clr-accent-base: #BDC1C6;    /* main: labels, UI outlines */
   --clr-accent-1: #F1F3F4;       /* lighter: backgrounds, dividers */
 
+  /* Google Keep */
+  --clr-bg-main: rgb(255 255 255);       /* lighter: backgrounds, dividers */
+  --clr-bg-input: rgb(241 243 244);       /* lighter: backgrounds, dividers */
+
+
   /* ✅ Success – Positive actions, approvals */
   --clr-success--1: #1B813E;     /* darker: active status */
   --clr-success-base: #188038;   /* main: success messages */
