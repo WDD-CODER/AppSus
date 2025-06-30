@@ -1,0 +1,27 @@
+.side-bar {
+    grid-area: side-bar;
+    display: grid;
+    
+    max-width: 150px;
+    height: 100%;
+    
+    border-top: none;
+}
+
+.side-bar img{
+    max-width: 100px;
+}
+.side-bar img{
+    max-width: 100px;
+}
+.note-nav-bar {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.small{
+    width:50px ;
+}
+
+
