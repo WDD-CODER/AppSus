@@ -4,6 +4,7 @@
     justify-content: space-around;
     padding: 1em;
     background: var(--clr-accent-base);
+    font-family: 'Bitcount';
 }
 
 .header-nav-bar a {

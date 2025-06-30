@@ -4,10 +4,10 @@
 }
 
 @font-face {
-  font-family: "fa-brands";
+  font-family: "Chewy";
   src: url("../fonts/fa-brands-400.woff2");
-  font-weight: normal;
-  font-style: normal;
+  /* font-weight: normal;
+  font-style: normal; */
 }
 
 @font-face {
