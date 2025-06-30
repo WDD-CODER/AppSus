@@ -1,3 +1,14 @@
-export function MailList() {
-    return <div>Mail list</div>
+
+const { Fragment } = React
+
+export function MailList({ mails }) {
+
+    if (!mails.length) return <div>No Mails to Show...</div>
+    return (
+        <tbody>
+            {mails.map(mail => (
+                <tr key={mail.id}>{mail.subject}</tr>
+            ))}
+        </tbody>
+    )
 }

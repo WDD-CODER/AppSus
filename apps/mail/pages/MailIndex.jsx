@@ -25,7 +25,9 @@ export function MailIndex() {
     return (
         <section className="container mail-index">Mail app:
             <h1>Mails:</h1>
-            <MailList />
+            <table className="mails-table">
+                <MailList mails={mails} />
+            </table>
         </section>
     )
 }
