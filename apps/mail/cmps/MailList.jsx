@@ -1,3 +1,4 @@
+import { MailPreview } from "./MailPreview.jsx"
 
 export function MailList({ mails }) {
 
@@ -5,7 +6,9 @@ export function MailList({ mails }) {
     return (
         <tbody>
             {mails.map(mail => (
-                <tr key={mail.id}>{mail.subject}</tr>
+                <tr key={mail.id}>
+                    <MailPreview mail={mail} />
+                </tr>
             ))}
         </tbody>
     )
