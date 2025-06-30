@@ -2,4 +2,12 @@
     grid-area: main-content;
 
     width: 100%;
+    height: 100%;
+}
+
+.create-note {
+    width: 20000px;
+}
+.create-note label {
+   gap: 1em;
 }

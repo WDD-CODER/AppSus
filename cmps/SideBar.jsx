@@ -1,7 +1,7 @@
 const { Link, NavLink } = ReactRouterDOM
 
 export function SideBar() {
-    return <div className="side-bar">
+    return <div className="side-bar box">
         <img src="./assets/images/logo.png" alt="logo-img" />
         <section>
             <nav className="note-nav-bar">
