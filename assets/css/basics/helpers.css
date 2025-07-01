@@ -23,7 +23,7 @@
 }
 
 .box {
-    border: 1px var(--clr-bg-border) solid
+    border: 1px var(--clr-border) solid
 }
 
 .box-shadow {

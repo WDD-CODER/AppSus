@@ -1,3 +1,11 @@
+Things we should do general. lead together:
+- Find all the needed Exact elements like. :
+-fonts : whats the main font size? when bold whats the size? is there difference between some places in the appfonts?
+-icons: get all the icons needed across the howl app!
+-colors: (font colors, background, imgesm,,)
+
+
+
 ✅ 1. Header Component — Checklist (17)
 🔍 Search Bar Functionality (10)
 Build responsive search bar (flexible width ≤ 800 px; collapses to icon beyond that).

@@ -1,23 +1,23 @@
 button {
     cursor: pointer;
-    background-color: var(--clr-primary-1);
+    /* background-color: var(--clr-primary-1); */
     margin: 0.5em;
     border: 0;
     padding: 0.5em 0.8em;
     border-radius: 4px;
-    border: 1px var(--clr-secondary--1) solid;
+    border: 1px var(--clr-border) solid;
 }
 
 button:hover {
-    background-color: var(--clr-primary-base);
+    /* background-color: var(--clr-primary-base);
     color: white;
-    transition: .3s;
+    transition: .3s; */
 }
 
 button:active {
-    background-color: var(--clr-primary--1);
+    /* background-color: var(--clr-primary--1);
     color: white;
-    transition: .3s;
+    transition: .3s; */
 }
 
 input {
