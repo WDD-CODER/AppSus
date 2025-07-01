@@ -19,6 +19,7 @@
 @import './apps/note/NoteIndex.css';
 @import './apps/note/NoteList.css';
 @import './apps/note/NoteEdit.css';
+@import './apps/mail/MailPreview.css';
 
 /* Pages */
 @import './apps/note/NoteIndex.css';
@@ -27,4 +28,3 @@
 
 /* MQ */
 @import './setup/mq.css';
-

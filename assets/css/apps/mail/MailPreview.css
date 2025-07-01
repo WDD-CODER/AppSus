@@ -1,0 +1,23 @@
+.mail-prev {
+    font-size: 0.875rem;
+    color: var(--clr-gmail-primary-base);
+}
+
+.mail-prev.mail-from {
+    width: 168px;
+    padding-right: 32px;
+}
+
+.mail-prev.mail-subject {
+    width: fit-content;
+}
+
+.mail-prev.mail-body {
+    width: 1fr;
+    color: var(--clr-gmail-primary--1);
+
+}
+
+.mail-prev.mail-date {
+    width: 72px;
+}
