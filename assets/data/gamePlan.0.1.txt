@@ -1,0 +1,327 @@
+OK, so generally speaking. the main application needs
+1  Label Picker. A reusable component that could be used across the multiple different. pages it receives labels from a (fixed) list of labels 
+2 Show the labels on that email. s or note.
+
+
+3 Use event bus as needed. Show user message 
+
+שאלה למורה
+האם פה אנחנו ישכולי םלשתמש באיוונט באס בכדי לשדר בחזרה מידע לכל מקום שצריך אותו ? ככה שנוכל להשתמש בפונקציה הזו בכל מקום.
+היא הרי מקושרת ישירות למידע 
+
+
+- Question:
+ written in the. task that. it could be done for communicating with different areas of the dome, but I'm trying to understand if 
+ it's only regarding user message or we can use this for. other kind of things. I remember that the lesson they said....
+  to only use it for that in that only I remember that the lesson they said we need to only use it for that in that 
+  only I remember that the lesson they said we need to only use it for that in that only
+ 4 Use query params along the project. as needed.
+
+
+✅ Label Picker Component – Checklist
+🧮 Total: 9 Tasks
+
+⚙️ Component Structure & Reusability
+ Build as a dynamic component supporting spread props ({...var})
+
+ Accept input props from parent for label context and usage
+
+ Export selected label(s) back to parent on completion
+
+ Designed to be reused in different places (e.g., Create Note, Edit Label Modal)
+
+🧭 Modal Behavior
+ Opens a modal with a list of available labels
+
+ Allows user to choose one or more labels
+
+ Once selected, modal closes and passes selected label(s) to parent
+
+ Display selected label(s) visually in parent component (e.g., label tags)
+
+ Respect any pre-existing labels shown in parent (e.g., on Note Preview or Edit)
+
+
+/////////////////////////////////////
+
+✅ Header Component – Checklist
+🧮 Total: 22 Tasks
+
+🔍 Search Bar Functionality
+ Build search bar in header
+
+ Set flexible width (max 800px)
+
+ Shrink into icon after 800px
+
+ Clicking search icon expands bar again :Use position: absolute or fixed as needed
+
+ Add “X” button to collapse bar back to icon
+
+ Add placeholder: "search"
+
+ Add background styling to input
+
+ Add “X” button to clear search input content (across all media queries)
+
+ On focus: activate note list component
+
+ On input: show live filtered notes
+
+ Style to match create-note component
+
+ Support filtering by note types
+
+ (Bonus) Add sorting using RegEx to interpret search content
+
+☰ Header UI Interactions
+ Clicking hamburger icon expands sidebar
+
+ Clicking “keep” icon updates header title to match current section
+
+ Clicking user circle opens modal with username and small info
+
+🧩 Required Icons
+ Refresh icon
+
+ Circle icon with user’s initials
+
+ Alternative keep logo
+
+ Simpler hamburger icon
+
+ Toggle view icons: one for Flex, one for Grid
+
+ bonus icons for sorting "Things" :
+ Cutlery
+ headphones.
+ pl tag.
+ airplane
+
+
+//////////////////////////////////////
+
+✅ Create New Note Component – Checklist
+🧮 Total: 33 Tasks
+
+📝 Component Structure & Behavior
+ Build "Create New Note" component styled like the search bar
+
+ Include icons inside the component to choose note types : text, image, video, todos…
+
+ Clicking an icon sets the selected note type to create and opens the relevant cmp
+
+ Clicking text-input in the unexpanded create-note-search-bar,  expands it to show full empty note of selected type
+
+ For text notes: include title + content with placeholders
+
+ Add control bar from icons inside note component for formatting & actions : 🛠️ Note Functionality
+
+🎨 Styling & Layout
+ Align component with search bar styling
+
+ Add box shadow
+
+ Add border radius
+
+ Style control bar and inputs to match UI theme
+
+
+🛠️ Note Functionality
+ Add font formatting options (e.g., bold, italic, etc.)
+
+ Add background color options for notes
+
+ Add image support via URL
+
+ Add archive icon – sends note to archive and updates properties
+
+ Auto-save note content every few seconds (draft mode)
+
+ Add pinned icon in the top corner – mark note as pinned
+
+ Add close button in bottom-right corner to close note editor
+
+ Add Push pins icon to the top right corner
+ 
+ (Bonus) Add reminders (set a future notification)
+ (Bonus) Add collaborator support (share with other users)
+ (Bonus) Add image upload from user’s computer
+ (Bonus) Add "More" options icon
+ (Bonus) Add Undo/Redo buttons for note history (edit history tracking)
+
+🧩 Required Icons with Objectives
+ Icon: Letter A with underline → Formatting text
+
+ Icon: Color palette → Change background color
+
+ Icon: Bell with plus → Add reminder
+
+ Icon: Person with plus → Add collaborators
+
+ Icon: Image → Add photo
+
+ Icon: Archive → Archive note
+
+ Icon: Three dots → More options
+
+ Icon: Arrow U-turn left → Undo
+
+ Icon: Arrow U-turn right → Redo
+
+ Icon: pind note (Push pins)
+
+
+///////////////////////////////////////////////
+✅ Sidebar Component – Checklist
+🧮 Total: 8 Tasks
+
+ Sidebar displays icons only by default
+
+ Each icon has a pseudo-element showing text label
+
+ Sidebar expands to show labels on icon hover or hamburger toggle
+
+ Pressed icon becomes active – icon color becomes bolder
+
+ Pressing icon updates header "keep" logo text to match icon label
+
+ Show an open-source link only when sidebar is opened wide
+
+ Pressing icon filters notes by type in Note Index (e.g. only reminders)
+
+ Icons in sidebar trigger filtering functionality in Note List
+
+ /////////////////////////////////////////////////
+
+
+✅ Edit Label Modal Component – Checklist
+🧮 Total: 17 Tasks
+
+🧱 Modal Structure & Functionality
+ Pressing the “Add label” icon opens a modal
+
+ Modal allows user to define a new label (adds it to Label Picker component)
+
+ Modal built as a simple grid: 3 rows × 2 columns
+
+ Add visual separator (e.g. line break) in the lower part of modal
+
+ Modal displays a list of current labels
+
+ Each label row includes a pencil icon to enable editing that label
+
+ Clicking the pencil turns label into an input field for editing
+
+ Add confirmation button (“V” icon) in bottom-right corner to save
+
+ Support creating a new label directly from modal input
+
+🎨 Styling Behavior (Grouped by Hover Target)
+ Label icon hover behavior:
+  – Morphs into a trash can icon
+  – When cursor nears: shows gray, unbolded trash can
+  – On direct hover: trash can gets background + becomes bold
+  – Show “delete label” text just below the trash can icon
+  – Hovering makes icon bold with background
+
+ Pencil icon hover behavior:
+  – Shows tooltip text in a small container below
+  – Hovering makes icon bold with background
+
+ Cancel button hover behavior:
+  – Shows tooltip text in a small container below
+  – Hovering makes icon bold with background
+
+ Create label button hover behavior:
+  – Shows tooltip text in a small container below
+  – Hovering makes icon bold with background
+
+ Done button behavior:
+  – Remains bold  + gets a rectangular background gry background
+/////////////////////////////////////////////////////
+
+✅ Note Preview Component – Checklist
+🧮 Total: 11 Tasks
+
+ Build a box container ~40px wide with border line  No fixed height – component adjusts height to its content
+
+ Header centered, styled in light color matching the border
+
+ Text content in regular inline format
+
+ Display assigned labels at the bottom of the container
+
+ On hover: show circle with “V” mark to select note
+
+ On hover: border gets box-shadow to appear thicker
+
+ On hover: show pin icon at top-right corner
+
+ On hover: show bottom toolbar (like in Create Note component)
+
+ Matches styling theme of other note elements
+
+ Support showing note type as list with checkboxes
+
+ ✅ Note Toolbar Component – Checklist
+🧮 Total: 8 Tasks
+
+🧩 Component Behavior
+ Toolbar sits inside the Note Preview component
+
+ Includes a “three dots” (⋯) icon for More Options
+
+ Clicking “More Options” opens a dropdown menu
+
+📋 Dropdown Options (More Menu)
+ Delete Note – removes the note
+
+ Add Label – opens Label Picker component for selection
+
+ Make a Copy – duplicates the note
+
+ Add Drawing – opens drawing interface (if implemented)
+
+ Show Checkboxes – toggles checklist mode
+
+ Copy to Google Docs – triggers export or API call
+
+ Version History – opens past saved states of the note
+
+
+
+ /////////////////////////////////////////////////////////
+ ✅ Note List Component – Checklist
+🧮 Total: 10 Tasks
+
+📋 List Behavior
+ Render multiple Note Preview components in a grid
+
+ Use grid-dense layout to prevent empty gaps
+
+ Support toggle between Grid view and Flex (List) view
+
+ Selecting a note preview highlights its border and shows pin option
+
+ Support selecting multiple notes (for bulk actions or pinning)
+
+ Pinned notes display in separate section at top of list with labeled header
+  – Header top-left aligned
+  – Section visually separated from regular notes
+  – No borders around pinned/regular sections
+
+📝 Modal Editor Behavior
+ Clicking a note preview opens it in a modal editor
+
+ Modal editor grays out background and blocks interaction
+
+ Clicking outside or on close saves and exits modal
+
+ Modal appears slightly above vertical center
+
+ Modal is square with fixed width/height — expands vertically when needed
+  – Shrinks only when screen is too small
+  – Avoids outer edge spacing horizontally, but may allow vertical space
+
+
