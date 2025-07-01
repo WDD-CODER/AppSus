@@ -1,4 +1,4 @@
-import { loadFromStorage, makeId, saveToStorage } from '../../../services/util.service.js'
+import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
 const NOTE_KEY = 'noteDB'
@@ -60,7 +60,7 @@ function getDefaultFilter() {
 
 
 function _createNotes() {
-    let notes = loadFromStorage(NOTE_KEY)
+    let notes = utilService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
         notes = [
             _createNote('NoteTxt'),
@@ -68,15 +68,15 @@ function _createNotes() {
             _createNote('NoteTxt'),
             _createNote('NoteTxt')
         ]
-        saveToStorage(NOTE_KEY, notes)
+        utilService.saveToStorage(NOTE_KEY, notes)
     }
 }
 
 function _createNote(type) {
     const curTime = new Date
-    createdAt = { time: curTime.toTimeString(), date: curTime.toDateString() }
+    const createdAt = { time: curTime.toTimeString(), date: curTime.toDateString() }
     const note = getEmptyNote(type, createdAt)
-    note.id = makeId()
+    note.id = utilService.makeId()
     return note
 }
 
