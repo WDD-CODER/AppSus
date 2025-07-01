@@ -1,12 +1,14 @@
+import { CreateNewNote } from "./CreateNewNote.jsx";
 import { NoteList } from "../cmps/NoteList.jsx"
-import {noteService} from "../services/note.service.js"
-
 export function NoteIndex() {
+    const list = ''
 
 
     return (
         <section className="note-index grid container">
-            <NoteList/>
+            <CreateNewNote />
+            {list && <pinedNotes />}
+            {list && <NoteList />}
         </section>
     )
 }

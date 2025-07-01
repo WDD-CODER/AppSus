@@ -1,23 +1,34 @@
-.note-index  {
+.note-index {
     grid-area: main-content;
 
     width: 100%;
     height: 100%;
 }
 
-.create-new-note {
-    border-radius: 2vh;
+.create-note-container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: minmax(auto, 600px);
+
+    margin: .5em;
+    border-radius: 1vh;
     
-    gap: 1em;
-    padding: .5em 2em;
-    
-    width: 60vw;
 }
 
-.create-new-note input{
+.create-note-container input,
+.expand-note {
     border: none;
     padding: 1em;
     font-size: .9em;
-    width: 100%;
+    width: 70%;
+}
 
+.create-note-container :first-child {
+    text-align: justify;
+    cursor: text;
+}
+
+.create-note-container .expand-note:hover {
+    background-color: transparent;
+    font-weight: normal;
 }

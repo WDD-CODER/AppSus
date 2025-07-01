@@ -56,8 +56,8 @@
 // 39  rollOut                    —                               Feature hide
 // 40  zoomInDown                 —                               Header reveal
 // 41  zoomOutUp                  —                               Dialog dismiss
-// 42  fadeInTopLeft              —                               Tooltip appear
-// 43  fadeOutBottomRight         —                               Tooltip vanish
+// 42  fadeInTopLeft              —                               toolbar appear
+// 43  fadeOutBottomRight         —                               toolbar vanish
 // 44  bounceIn                   Up / Down / Left / Right        KPI counter intro
 // 45  bounceOut                  Up / Down / Left / Right        KPI counter exit
 // -----------------------------------------------------------------------------------------------------------------

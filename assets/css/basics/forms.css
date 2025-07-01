@@ -1,18 +1,44 @@
 button {
+    position: relative;
     cursor: pointer;
-    /* background-color: var(--clr-primary-1); */
     margin: 0.5em;
     border: 0;
     padding: 0.5em 0.8em;
     border-radius: 4px;
-    /* border: 1px var(--clr-border) solid; */
     background-color: transparent;
 }
 
+button.hover-show::after {
+    content: attr(data-toolbar);
+
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    padding: 4px 8px;
+    white-space: nowrap;
+    pointer-events: none;
+
+    font-size: .6em;
+    color: var(--clr-bg-main);
+
+    border-radius: 4px;
+    background-color: #474747;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
 button:hover {
-    /* background-color: var(--clr-primary-base);
-    color: white;
-    transition: .3s; */
+    font-weight: bold;
+
+    border-radius: 50%;
+    background-color: var(--clr-bg-button);
+    transition: .3s;
+}
+
+button.hover-show:hover::after {
+    opacity: 1;
 }
 
 button:active {
@@ -22,19 +48,19 @@ button:active {
 }
 
 input {
-background-color: none
+    background-color: none
 }
 
 input:focus {
-background-color: none
-;}
+    background-color: none;
+}
 
-form.container {
+/* form.container {
     display: flex;
     flex-direction: column;
 
     padding: 3em;
-}
+} */
 
 /* Special swallow model settings */
 

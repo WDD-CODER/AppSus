@@ -18,7 +18,7 @@ Position with absolute/fixed as needed.
 
 On focus: activate Note List component.
 
-On input: display live-filtered notes, matching create-new-note styling.
+On input: display live-filtered notes, matching create-note-container styling.
 
 Support filtering by note types.
 
@@ -129,7 +129,7 @@ Respects pre-selected labels (edit flows).
 
 Keyboard-navigable list & close on Esc.
 
-Integrates with create-new-note & Edit-Label Modal.
+Integrates with create-note-container & Edit-Label Modal.
 
 
 
@@ -149,13 +149,13 @@ Pencil click transforms row into editable input.
 Create-new-label inline input.
 
 Styling & Hover States (6 consolidated)
-Label row hover: icon morphs to trash-can; grey → bold with background; tooltip “Delete label”.
+Label row hover: icon morphs to trash-can; grey → bold with background; toolbar “Delete label”.
 
-Pencil hover: tooltip “Edit label”; bold + background.
+Pencil hover: toolbar “Edit label”; bold + background.
 
-Cancel button hover: tooltip “Cancel”; bold + background.
+Cancel button hover: toolbar “Cancel”; bold + background.
 
-Create-label button hover: tooltip “Create label”; bold + background.
+Create-label button hover: toolbar “Create label”; bold + background.
 
 All icons/buttons (except Done) share the same hover bold + background style.
 

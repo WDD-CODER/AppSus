@@ -68,7 +68,7 @@ OK, so generally speaking. the main application needs
 
  On input: show live filtered notes
 
- Style to match create-new-note component
+ Style to match create-note-container component
 
  Support filtering by note types
 
@@ -111,7 +111,7 @@ OK, so generally speaking. the main application needs
 
  Clicking an icon sets the selected note type to create and opens the relevant cmp
 
- Clicking text-input in the unexpanded create-new-note-search-bar,  expands it to show full empty note of selected type
+ Clicking text-input in the unexpanded create-note-container-search-bar,  expands it to show full empty note of selected type
 
  For text notes: include title + content with placeholders
 
@@ -226,15 +226,15 @@ OK, so generally speaking. the main application needs
   – Hovering makes icon bold with background
 
  Pencil icon hover behavior:
-  – Shows tooltip text in a small container below
+  – Shows toolbar text in a small container below
   – Hovering makes icon bold with background
 
  Cancel button hover behavior:
-  – Shows tooltip text in a small container below
+  – Shows toolbar text in a small container below
   – Hovering makes icon bold with background
 
  Create label button hover behavior:
-  – Shows tooltip text in a small container below
+  – Shows toolbar text in a small container below
   – Hovering makes icon bold with background
 
  Done button behavior:

@@ -1,10 +1,12 @@
 import { CreateNewNote } from "./CreateNewNote.jsx";
 
-const { useState } = React
-
 export function NoteList() {
+    const list = []
 
-    const [noteList, setNoteList] = useState()
 
-    return <div className=" note-list container"><CreateNewNote/></div>
+    return <section className=" note-list container">
+        <ul>
+            {list.map(note => { <li key={note.id}><NotePreview /></li> })}
+        </ul>
+    </section>
 }

@@ -58,7 +58,7 @@
 //  1  Check                         fas fa-check                          \f00c       Success / confirmed
 //  2  X Mark                        fas fa-xmark                          \f00d       Close / error
 //  3  Exclamation Circle            fas fa-exclamation-circle             \f06a       Warning / alert
-//  4  Info Circle                   fas fa-info-circle                    \f05a       Info tooltip
+//  4  Info Circle                   fas fa-info-circle                    \f05a       Info toolbar
 //  5  Bell                          fas fa-bell                           \f0f3       Notification enabled
 //  6  Bell Slash                    fas fa-bell-slash                     \f1f6       Notifications muted
 //  7  Spinner                       fas fa-spinner                        \f110       Loading indicator

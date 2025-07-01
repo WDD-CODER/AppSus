@@ -3,24 +3,22 @@
 import { NoteEdit } from "./NoteEdit.jsx"
 const { useState } = React
 
-export function  CreateNewNote(){
+export function CreateNewNote() {
 
-const [expand, setExpand] = useState()
+    const [expand, setExpand] = useState(true)
 
-return (
-            <div className="create-new-note box-shadow box flex align-center container">
-               {!expand &&  <React.Fragment>
-                    <button onClick={setExpand} className="open-create-note" > Take a note... </button>
-                    <div className="icon-select">
-                        <span className="icon-square-check"></span>
-                        <span className="icon-paintbrush"></span>
-                        <span className="icon-image"></span>
-                        <input type="text" />
-                    </div>
-                </React.Fragment>}
-                {expand &&  <NoteEdit onSetExpand={setExpand}/>}
+    return (
+        <div className="create-note-container box-shadow box container">
+            {!expand && 
+            <React.Fragment>
+                <button onClick={setExpand} className="expand-note" > Take a note... </button>
+                <button className="icon-square-check hover-show" data-toolbar="New list"></button>
+                <button className="icon-paintbrush hover-show" data-toolbar="New note with draying"></button>
+                <button className="icon-image hover-show" data-toolbar="New note with image"></button>
+                </React.Fragment> 
+                }
+                {expand && <NoteEdit onSetExpand={setExpand} />}
             </div>
-
-)
+    )
 
 }

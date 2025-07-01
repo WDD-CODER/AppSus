@@ -1,0 +1,11 @@
+.note-edit-container {
+    grid-area: "content";
+    position: relative;
+    
+}
+
+.pin-note {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
