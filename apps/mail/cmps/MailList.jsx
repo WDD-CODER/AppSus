@@ -4,12 +4,19 @@ export function MailList({ mails }) {
 
     if (!mails.length) return <div>No Mails to Show...</div>
     return (
-        <tbody className="mail-list">
+        <ul className="mail-list container">
             {mails.map(mail => (
-                <tr key={mail.id}>
+                <li key={mail.id}>
                     <MailPreview mail={mail} />
-                </tr>
+                </li>
             ))}
-        </tbody>
+        </ul>
+        // <tbody className="mail-list">
+        //     {mails.map(mail => (
+        //         <tr key={mail.id}>
+        //             <MailPreview mail={mail} />
+        //         </tr>
+        //     ))}
+        // </tbody>
     )
 }

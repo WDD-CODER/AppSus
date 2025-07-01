@@ -23,11 +23,13 @@ export function MailIndex() {
 
     if (!mails) return <div>Loading...</div>
     return (
-        <section className="container mail-index">Mail app:
-            <h1>Mails:</h1>
-            <table className="mails-table">
+        <section className="container mail-index">
+            <MailList mails={mails}/>
+            {/* <h1>Mails:</h1> */}
+            {/* <table className="mails-table">
                 <MailList mails={mails} />
-            </table>
+            </table> */}
+
         </section>
     )
 }

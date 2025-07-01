@@ -2,14 +2,13 @@ const { Fragment } = React
 
 export function MailPreview({ mail }) {
 
-    const { from, subject, body, isRead, sentAt } = mail
+    const { from, subject, body, sentAt } = mail
     return (
         <Fragment>
-            <td>{from}</td>
-            <td>{subject}</td>
-            <td>{body}</td>
-            <td>{isRead}</td>
-            <td>{sentAt}</td>
+            <p className="mail-prev mail-from">{from}</p>
+            <p className="mail-prev mail-subject">{subject}-</p>
+            <p className="mail-prev mail-body">{body}</p>
+            <p className="mail-prev mail-date">{sentAt}</p>
         </Fragment>
     )
 }
