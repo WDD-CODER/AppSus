@@ -27,7 +27,7 @@ Support filtering by note types.
 (Bonus) Provide four “sorting-things” icons (cutlery, headphones, tag, airplane).
 
 Auto-hide keyboard focus outline where appropriate for accessibility.
-
+Hbac had protected the valves. The manner text. Now look at it when it starts hearing me and writing it for me 
 ☰ Header UI Interactions (3)
 Hamburger icon toggles sidebar.
 
@@ -47,6 +47,8 @@ Toggle-view icons (Flex & Grid).
 
 
 ✅ 2. Sidebar Component — Checklist (7)
+when hover it dont puse the content! when it is preest by hamburger it dos!!
+
 Show icons only by default; pseudo-element text labels appear on hover or hamburger toggle.
 
 Sidebar widens when labels visible; pressed icon adopts “active” bold color.
@@ -235,3 +237,4 @@ Modal greys out background; outside click / Close saves & exits.
 
 Focus trap & Esc key to close modal.
 
+ue cc columes to set the diferent preview list ! 

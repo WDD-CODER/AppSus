@@ -2,7 +2,6 @@ import { ToolBar } from "./Toolbar.jsx";
 
 export function NotePreview({onSaveNote,onUpdateNote}) {
 
-
     return (
         <section className="note-edit-container">
             <form className="" onSubmit={onSaveNote}>
@@ -17,6 +16,5 @@ export function NotePreview({onSaveNote,onUpdateNote}) {
                 <button className="close btn" onClick={onSaveNote}>Close</button>
             </section>
         </section>
-
     )
 }
