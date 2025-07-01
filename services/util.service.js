@@ -7,7 +7,8 @@ export const utilService = {
     getDayName,
     getMonthName,
     loadFromStorage,
-    saveToStorage
+    saveToStorage,
+    debounce
 }
 
 function saveToStorage(key, val) {
@@ -70,4 +71,14 @@ function getMonthName(date) {
         "July", "August", "September", "October", "November", "December"
     ]
     return monthNames[date.getMonth()]
+}
+
+export function debounce(func, delay) {
+    let timeoutId
+    return (...args) => {
+        clearTimeout(timeoutId)
+        timeoutId = setTimeout(() => {
+            func(...args)
+        }, delay)
+    }
 }

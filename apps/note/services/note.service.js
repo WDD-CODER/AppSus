@@ -44,12 +44,13 @@ function save(note) {
 }
 
 function getEmptyNote(type = 'NoteTxt', createdAt) {
+    const now = new Date()
     return {
-        createdAt,
+        createdAt:{time: now.toLocaleTimeString(), date: now.toLocaleDateString()},
         type,
-        isPinned: Math.random() < 0.5,
+        isPinned: false,
         style: { backgroundColor: '#00d' },
-        info: { txt: 'Get on and start writing!' }
+        info: { txt: ''}
     }
 }
 
@@ -93,7 +94,6 @@ function getFilterFromSearchParams(searchParams) {
 }
 
 
-
 function _setNextPrevNoteId(note) {
     return query().then((notes) => {
         const noteIdx = notes.findIndex((currNote) => currNote.id === note.id)
@@ -104,6 +104,5 @@ function _setNextPrevNoteId(note) {
         return note
     })
 }
-
 
 
