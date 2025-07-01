@@ -5,7 +5,8 @@ button {
     border: 0;
     padding: 0.5em 0.8em;
     border-radius: 4px;
-    border: 1px var(--clr-border) solid;
+    /* border: 1px var(--clr-border) solid; */
+    background-color: transparent;
 }
 
 button:hover {
@@ -21,14 +22,12 @@ button:active {
 }
 
 input {
-    border-radius: .5vh;
+background-color: none
 }
 
 input:focus {
-
-    background-color: var(--clr-primary-1);
-    transition: background-color 1s;
-}
+background-color: none
+;}
 
 form.container {
     display: flex;

@@ -61,7 +61,10 @@ button {
     max-width: 100%;
     font: inherit;
 }
-
+input:focus{
+    background-color: none;
+    outline: none;
+}
 
 /* Takes off the scroll bar in number inputs */
 input[type="number"],

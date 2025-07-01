@@ -1,16 +1,3 @@
-/* :root {
-    --clr-primary-1: lightblue;
-    --clr-primary-base: rgb(50, 160, 204);
-    --clr-primary--1: rgb(89, 134, 206);
-    
-    --clr-primary-base: rgb(26, 115, 232);
-    --clr-success-base: rgb(24, 128, 56);
-    --clr-danger-base: rgb(197, 34, 31);
-
-    --clr-accent-1: #aaa;
-    --clr-accent-1: #888;
-    --clr-accent-1: #333;
-/* } */
 
 :root {
   /* 📘 Primary – Brand Identity: headers, buttons, links */
@@ -43,6 +30,7 @@
   /* Google Keep */
   --clr-bg-main: rgb(255 255 255);       /* lighter: backgrounds, dividers */
   --clr-bg-input: rgb(241 243 244);       /* lighter: backgrounds, dividers */
+  --clr-bg-button:rgb(233 234 234);       /* lighter: backgrounds, dividers */
   --clr-border:rgb(218 220 224);       /* lighter: backgrounds, dividers */
 
 }
