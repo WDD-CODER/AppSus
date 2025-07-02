@@ -1,7 +1,6 @@
 import { ToolBar } from "./Toolbar.jsx";
 
 export function NotePreview({note}) {
-console.log("🚀 ~ NotePreview ~ notes:", note)
 const{title, info, createdAt,id, isPinned, style, type } = note
 const labels = ''
     return (

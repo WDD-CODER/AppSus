@@ -7,12 +7,13 @@ const { useState, useEffect } = React
 const { useSearchParams } = ReactRouterDOM
 
 export function NoteIndex() {
-    const list = ''
 
     const [searchParams, setSearchParams] = useSearchParams()
 
+    const [pinnedNoteList, setPinnedNoteList] = useState()
     const [noteList, setNoteList] = useState()
     const [filterBy, setFilterBy] = useState(noteService.getFilterFromSearchParams(searchParams))
+
     useEffect(() => {
         loadNotes()
     }, [])
@@ -20,17 +21,22 @@ export function NoteIndex() {
     function loadNotes() {
         noteService.query(filterBy)
             .then(notes => {
-                setNoteList(notes)
+                filterPinnedNotes(notes)
+                return setNoteList(notes)
             })
             .catch(() => showErrorMsg('Failed loading notes'))
     }
 
+    function filterPinnedNotes(notes) {
+        const arePinned = notes.filter(note => note.isPinned === true)
+        setPinnedNoteList(() => (!arePinned.length) ? '' : arePinned)
+    }
 
     return (
         <section className="note-index ">
             <CreateNewNote />
-            {list && <PinedNotes />}
-            {noteList && <NoteList notes={noteList} />}
+            {pinnedNoteList && <NoteList key={'pinned-notes'} type={'pinned'} notes={pinnedNoteList} />}
+            {noteList && <NoteList key={'other-notes'} type={'other'} notes={noteList} />}
         </section>
     )
 }

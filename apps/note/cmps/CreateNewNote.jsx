@@ -5,7 +5,7 @@ const { useState } = React
 
 export function CreateNewNote() {
 
-    const [expand, setExpand] = useState(true)
+    const [expand, setExpand] = useState()
 
     return (
         <div className="create-note-container box container">
