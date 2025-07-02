@@ -6,7 +6,7 @@ export function MailList({ mails }) {
 
     if (!mails.length) return <div>No Mails to Show...</div>
     return (
-        <ul className="mail-list container">
+        <ul className="mail-list">
             {mails.map(mail => (
                 <li className={mail.isRead ? 'read' : 'unread'} key={mail.id}>
                     <Link to={`/mail/${mail.id}`}>
