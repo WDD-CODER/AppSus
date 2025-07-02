@@ -15,10 +15,11 @@
 @import './cmps/UserMsg.css';
 @import './cmps/SideBar.css';
 @import './cmps/nav-bar.css';
-@import './cmps/ToolBar.css';
+@import './apps/note/ToolBar.css';
 @import './apps/note/NoteIndex.css';
 @import './apps/note/NoteList.css';
 @import './apps/note/NoteEdit.css';
+@import './apps/note/NotePreview.css';
 
 /* Pages */
 @import './apps/note/NoteIndex.css';

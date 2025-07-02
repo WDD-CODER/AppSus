@@ -60,8 +60,10 @@ textarea,
 button {
     max-width: 100%;
     font: inherit;
+    border: none;
 }
-input:focus{
+
+input:focus {
     background-color: none;
     outline: none;
 }

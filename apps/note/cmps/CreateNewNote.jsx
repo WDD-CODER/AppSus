@@ -1,6 +1,6 @@
 
 
-import { NoteEdit } from "./NoteEdit.jsx"
+import { NoteEdit } from "../pages/NoteEdit.jsx"
 const { useState } = React
 
 export function CreateNewNote() {
@@ -8,10 +8,10 @@ export function CreateNewNote() {
     const [expand, setExpand] = useState(true)
 
     return (
-        <div className="create-note-container box-shadow box container">
+        <div className="create-note-container box container">
             {!expand && 
             <React.Fragment>
-                <button onClick={setExpand} className="expand-note" > Take a note... </button>
+                <input type="text" onClick={setExpand} className="expand-note" placeholder="Take a note..." />
                 <button className="icon-square-check hover-show" data-toolbar="New list"></button>
                 <button className="icon-paintbrush hover-show" data-toolbar="New note with draying"></button>
                 <button className="icon-image hover-show" data-toolbar="New note with image"></button>

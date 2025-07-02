@@ -1,0 +1,14 @@
+.note-preview {
+    break-inside: avoid;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: .5em;
+    margin-block-end: .5em;
+}
+
+.note-preview .tool-bar{
+margin-inline: auto;
+font-size: .5em;
+}

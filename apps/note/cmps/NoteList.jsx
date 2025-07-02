@@ -1,12 +1,15 @@
-import { CreateNewNote } from "./CreateNewNote.jsx";
+import { NotePreview } from "./NotePreview.jsx"
 
-export function NoteList() {
-    const list = []
+export function NoteList({ notes }) {
 
-
-    return <section className=" note-list container">
-        <ul>
-            {list.map(note => { <li key={note.id}><NotePreview /></li> })}
-        </ul>
-    </section>
+    return (
+        <div className="note-list-container ">
+            <h4>others</h4>
+            <section className="note-list ">
+                {notes.map(curNote => {
+                    return <NotePreview key={curNote.id} note={curNote} />
+                })}
+            </section>
+        </div>
+    )
 }

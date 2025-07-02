@@ -10,25 +10,20 @@
     grid-auto-flow: column;
     grid-template-columns: minmax(auto, 600px);
 
-    margin: .5em;
+    gap: 1em;
+    margin: 2em auto;
     border-radius: 1vh;
-    
+    max-width: 600px;
 }
 
-.create-note-container input,
+.create-note-container,
 .expand-note {
-    border: none;
-    padding: 1em;
-    font-size: .9em;
-    width: 70%;
+    padding: .2em;
 }
 
-.create-note-container :first-child {
+.create-note-container.expand-note :first-of-type(button) {
     text-align: justify;
     cursor: text;
-}
-
-.create-note-container .expand-note:hover {
-    background-color: transparent;
-    font-weight: normal;
+    margin-inline-end: auto;
+    background-color: aqua;
 }

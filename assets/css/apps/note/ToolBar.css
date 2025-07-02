@@ -1,5 +1,6 @@
 .tool-bar {
     grid-area: toolBar;
+    display: flex;
     margin-inline-end: auto;
 }
 .tool-bar .close{
