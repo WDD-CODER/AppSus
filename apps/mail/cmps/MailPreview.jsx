@@ -5,10 +5,16 @@ export function MailPreview({ mail }) {
     const { from, subject, body, sentAt } = mail
     return (
         <Fragment>
-            <p className="mail-prev mail-from">{from}</p>
-            <p className="mail-prev mail-subject">{subject}-</p>
-            <p className="mail-prev mail-body">{body}</p>
-            <p className="mail-prev mail-date">{sentAt}</p>
+            <div className="mail-prev mail-from">
+                <p>{from}</p>
+            </div>
+            <div className="mail-prev mail-content">
+                <p className="mail-subject">{subject}-</p>
+                <p className="mail-body">{body}</p>
+            </div>
+            <div className="mail-prev mail-date">
+                <p>{sentAt}</p>
+            </div>
         </Fragment>
     )
 }

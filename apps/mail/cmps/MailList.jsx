@@ -2,11 +2,12 @@ import { MailPreview } from "./MailPreview.jsx"
 
 export function MailList({ mails }) {
 
+
     if (!mails.length) return <div>No Mails to Show...</div>
     return (
         <ul className="mail-list container">
             {mails.map(mail => (
-                <li key={mail.id}>
+                <li className={mail.isRead ? 'read' : 'unread'} key={mail.id}>
                     <MailPreview mail={mail} />
                 </li>
             ))}
