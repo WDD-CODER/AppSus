@@ -1,1 +1,16 @@
- /* note list */
+.note-list-container {
+    display: grid;
+    padding: 1em;
+}
+
+.note-list {
+    width: 100%;
+    column-width: 220px;
+    column-gap: 1em;
+    row-gap: 1em;
+}
+
+.note-list-container h4 {
+    margin-inline: 1em;
+    text-align: justify;
+}

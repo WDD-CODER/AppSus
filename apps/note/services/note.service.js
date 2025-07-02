@@ -64,20 +64,23 @@ function _createNotes() {
     let notes = utilService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
         notes = [
-            _createNote('NoteTxt'),
-            _createNote('NoteTxt'),
-            _createNote('NoteTxt'),
-            _createNote('NoteTxt')
+            _createDemoNote('NoteTxt'),
+            _createDemoNote('NoteTxt'),
+            _createDemoNote('NoteTxt'),
+            _createDemoNote('NoteTxt')
         ]
         utilService.saveToStorage(NOTE_KEY, notes)
     }
 }
 
-function _createNote(type) {
+function _createDemoNote(type) {
     const curTime = new Date
     const createdAt = { time: curTime.toTimeString(), date: curTime.toDateString() }
     const note = getEmptyNote(type, createdAt)
     note.id = utilService.makeId()
+    note.title = utilService.makeLorem(5) 
+    note.info.txt = utilService.makeLorem(25)
+    console.log("🚀 ~ _createDemoNote ~ note:", note)
     return note
 }
 
@@ -85,7 +88,7 @@ function _createNote(type) {
 
 function getFilterFromSearchParams(searchParams) {
     const txt = searchParams.get('txt') || ''
-    const minSpeed = searchParams.get('isPinned') || ''
+    const isPinned = searchParams.get('isPinned') || ''
 
     return {
         txt,

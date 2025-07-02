@@ -1,20 +1,16 @@
 import { ToolBar } from "./Toolbar.jsx";
 
-export function NotePreview({onSaveNote,onUpdateNote}) {
-
+export function NotePreview({note}) {
+console.log("🚀 ~ NotePreview ~ notes:", note)
+const{title, info, createdAt,id, isPinned, style, type } = note
+const labels = ''
     return (
-        <section className="note-edit-container">
-            <form className="" onSubmit={onSaveNote}>
-                <button className="pin-note icon-bell "></button>
-                <div className="text-info">
-                    <h1 className="title"><input onBlur={onUpdateNote} name="title" type="text" placeholder="Titel..." /></h1>
-                    <p className="text-info"><input onBlur={onUpdateNote} name="info" type="text" placeholder="Take a note..." /></p>
-                </div>
-                <div className="labels-container">{/* { Note.label && <LabelPicker/>} */}</div>
-            </form>
-            <section className="tool-bar flex"><ToolBar/>
-                <button className="close btn" onClick={onSaveNote}>Close</button>
-            </section>
+        <section className="note-preview box container">
+            <h1>{title}</h1>
+            <p>{info.tex}</p>
+            {info.img && <figure>{info.img}</figure>}
+            {labels && <Labels/>}
+            <ToolBar/>
         </section>
     )
 }

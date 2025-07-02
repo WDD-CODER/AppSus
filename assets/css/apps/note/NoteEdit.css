@@ -1,11 +1,24 @@
-.note-edit-container {
+.note-edit {
     grid-area: "content";
     position: relative;
-    
+
 }
 
 .pin-note {
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: -7px;
+    right: -7px;
+}
+
+.edit-note-form {
+    display: grid;
+    gap: 1em;
+    padding: .5em;
+}
+
+.edit-note-form .text-info{    
+    display: grid;
+    place-content: baseline;
+
+    gap: 1em;
 }
