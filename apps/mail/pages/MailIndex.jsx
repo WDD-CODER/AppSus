@@ -23,7 +23,7 @@ export function MailIndex() {
 
     if (!mails) return <div>Loading...</div>
     return (
-        <section className="container mail-index">
+        <section className="mail-index">
             <MailList mails={mails}/>
             {/* <h1>Mails:</h1> */}
             {/* <table className="mails-table">
