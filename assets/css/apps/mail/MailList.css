@@ -6,7 +6,7 @@
      /* width: 80vw; */
  }
 
- .mail-list li a{
+ .mail-list li a {
      /* display: flex; */
      display: grid;
      grid-template-columns: 200px minmax(208px, 1fr) 72px;
@@ -30,11 +30,10 @@
 
  /* .mail-list li.read {} */
 
- .mail-list li.unread {
+ .mail-list li.unread a{
      background-color: rgba(245, 245, 245, 0.774);
 
-     >.mail-from,
-     .mail-subject {
+     >.mail-from, .mail-subject {
          font-weight: bold;
      }
  }
