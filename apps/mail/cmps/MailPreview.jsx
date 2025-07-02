@@ -9,7 +9,7 @@ export function MailPreview({ mail }) {
                 <p>{from}</p>
             </div>
             <div className="mail-prev mail-content">
-                <p className=" mail-subject">{subject}-</p>
+                <p className="mail-subject">{subject}-</p>
                 <p className="mail-body">{body}</p>
             </div>
             <div className="mail-prev mail-date">

@@ -1,4 +1,5 @@
 .mail-prev {
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 0.875rem;
     color: var(--clr-gmail-primary-base);
 }

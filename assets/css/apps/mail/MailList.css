@@ -2,7 +2,7 @@
  .mail-list {
      border: 0.5px solid var(--clr-shadow-mail-line);
      border-radius: 10px;
-     padding: 20px 0;
+     padding-top: 20px;
      /* width: 80vw; */
  }
 
@@ -15,10 +15,34 @@
      padding: 10px 0;
      /* width: 100%; */
      overflow: hidden;
+     cursor: pointer;
  }
 
  .mail-list li:first-child {
      box-shadow:
          inset 0 -1px 0 0 var(--clr-shadow-mail-line),
          inset 0 1px 0 0 var(--clr-shadow-mail-line);
+ }
+
+ .mail-list li:last-child {
+     box-shadow: none;
+ }
+
+ /* .mail-list li.read {} */
+
+ .mail-list li.unread {
+     background-color: rgba(245, 245, 245, 0.774);
+
+     >.mail-from,
+     .mail-subject {
+         font-weight: bold;
+     }
+ }
+
+ .mail-list li:hover {
+     box-shadow:
+         inset -1px 0 0 rgb(218, 220, 224),
+         inset 1px 0 0 rgb(218, 220, 224),
+         0 1px 2px 0 rgba(60, 64, 67, .3),
+         0 1px 3px 1px rgba(60, 64, 67, .15);
  }
