@@ -6,7 +6,7 @@
      /* width: 80vw; */
  }
 
- .mail-list li {
+ .mail-list li a{
      /* display: flex; */
      display: grid;
      grid-template-columns: 200px minmax(208px, 1fr) 72px;
