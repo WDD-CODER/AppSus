@@ -1,5 +1,5 @@
-export function ToolBar() {
 
+export function ToolBar() {
     return (
         <section className="tool-bar">
             <button data-toolbar={'Formatting option'} className="formatting-option hover-show">X</button>

@@ -1,6 +1,6 @@
 import { NotePreview } from "./NotePreview.jsx"
-
-export function NoteList({ notes , type }) {
+const { Link } = ReactRouterDOM
+export function NoteList({ notes, type }) {
 
     return (
         <div className="note-list-container ">

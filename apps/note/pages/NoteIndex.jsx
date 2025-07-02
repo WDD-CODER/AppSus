@@ -34,7 +34,7 @@ export function NoteIndex() {
 
     return (
         <section className="note-index ">
-            <CreateNewNote />
+            <CreateNewNote onSetNoteList={setNoteList} />
             {pinnedNoteList && <NoteList key={'pinned-notes'} type={'pinned'} notes={pinnedNoteList} />}
             {noteList && <NoteList key={'other-notes'} type={'other'} notes={noteList} />}
         </section>

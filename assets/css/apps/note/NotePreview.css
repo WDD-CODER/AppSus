@@ -4,11 +4,13 @@
     display: flex;
     flex-direction: column;
 
+    max-width: 220px;
+
     padding: .5em;
     margin-block-end: .5em;
 }
 
-.note-preview .tool-bar{
-margin-inline: auto;
-font-size: .5em;
+.note-preview .tool-bar {
+    margin-inline: auto;
+    font-size: .5em;
 }

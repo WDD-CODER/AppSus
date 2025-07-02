@@ -50,7 +50,7 @@ function getEmptyNote(type = 'NoteTxt', createdAt) {
         type,
         isPinned: false,
         style: { backgroundColor: '#00d' },
-        info: { txt: ''}
+        info: { text: ''}
     }
 }
 
