@@ -14,3 +14,27 @@
     margin-inline: auto;
     font-size: .5em;
 }
+
+.modal-enter {
+  transform: scale(0.2);
+  opacity: 0;
+  transform-origin: top center; /* or the corner where the cell sits */
+}
+
+.note-dialog {
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 300ms ease, opacity 300ms ease;
+  pointer-events: none; /* to avoid flickers */
+}
+
+.note-dialog.active {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.note-dialog.exit {
+  transform: scale(0.9);
+  opacity: 0;
+}

@@ -10,12 +10,14 @@ import { NoteIndex } from './apps/note/pages/NoteIndex.jsx'
 import { SideBar } from './cmps/SideBar.jsx'
 import { NotFound } from './cmps/NotFound.jsx'
 import { NoteEdit } from './apps/note/pages/NoteEdit.jsx'
+import { NoteDetails } from './apps/note/cmps/NoteDetails.jsx'
 
 export function RootCmp() {
     return <Router>
-        <main className="root-cmp main-layout">
+        <main className="root-cmp main-layout ">
             <AppHeader />
             <SideBar/>
+            {/* <NoteDetails /> */}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />
@@ -23,7 +25,7 @@ export function RootCmp() {
                 <Route path="/mail" element={<MailIndex />} />
                 <Route path="/note" element={<NoteIndex />} />
                 {/* <Route path="/note/edit" element={<NoteEdit />} /> */}
-                {/* <Route path="/note/edit/:noteId" element={<NoteDetails />} /> */}
+                {/* <Route path="/note/:noteId" element={<NoteDetails />} /> */}
                  <Route path="*" element={<NotFound />} />
             </Routes>
             <UserMsg />

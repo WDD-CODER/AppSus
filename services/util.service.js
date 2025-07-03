@@ -8,7 +8,8 @@ export const utilService = {
     getMonthName,
     loadFromStorage,
     saveToStorage,
-    debounce
+    debounce,
+    getTruthyValues
 }
 
 function saveToStorage(key, val) {
@@ -81,4 +82,15 @@ export function debounce(func, delay) {
             func(...args)
         }, delay)
     }
+}
+
+export function getTruthyValues(obj) {
+    const newObj = {}
+    for (const key in obj) {
+        const value = obj[key]
+        if (value) {
+            newObj[key] = value
+        }
+    }
+    return newObj
 }

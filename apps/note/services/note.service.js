@@ -46,11 +46,11 @@ function save(note) {
 function getEmptyNote(type = 'NoteTxt', createdAt) {
     const now = new Date()
     return {
-        createdAt:{time: now.toLocaleTimeString(), date: now.toLocaleDateString()},
+        createdAt: { time: now.toLocaleTimeString(), date: now.toLocaleDateString() },
         type,
         isPinned: false,
         style: { backgroundColor: '#00d' },
-        info: { text: ''}
+        info: { text: '' }
     }
 }
 
@@ -78,9 +78,8 @@ function _createDemoNote(type) {
     const createdAt = { time: curTime.toTimeString(), date: curTime.toDateString() }
     const note = getEmptyNote(type, createdAt)
     note.id = utilService.makeId()
-    note.title = utilService.makeLorem(5) 
+    note.title = utilService.makeLorem(5)
     note.info.txt = utilService.makeLorem(25)
-    console.log("🚀 ~ _createDemoNote ~ note:", note)
     return note
 }
 
@@ -89,10 +88,12 @@ function _createDemoNote(type) {
 function getFilterFromSearchParams(searchParams) {
     const txt = searchParams.get('txt') || ''
     const isPinned = searchParams.get('isPinned') || ''
+    const noteId = searchParams.get('noteId') || ''
 
     return {
         txt,
-        isPinned
+        isPinned,
+        noteId
     }
 }
 
