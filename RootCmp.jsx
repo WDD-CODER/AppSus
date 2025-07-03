@@ -11,10 +11,11 @@ import { SideBar } from './cmps/SideBar.jsx'
 import { NotFound } from './cmps/NotFound.jsx'
 import { NoteEdit } from './apps/note/pages/NoteEdit.jsx'
 import { MailDetails } from './apps/mail/pages/MailDetails.jsx'
+import { NoteDetails } from './apps/note/cmps/NoteDetails.jsx'
 
 export function RootCmp() {
     return <Router>
-        <main className="root-cmp main-layout">
+        <main className="root-cmp main-layout ">
             <AppHeader />
             <SideBar />
             <Routes>
