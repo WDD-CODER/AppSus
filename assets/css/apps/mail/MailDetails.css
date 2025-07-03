@@ -1,0 +1,50 @@
+.mail-details {
+    /* display: flex; */
+    margin: 1em;
+    border: 0.5px solid var(--clr-shadow-mail-line);
+    border-radius: 20px;
+    padding: 20px 0 0 16px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.mail-details>* {
+    padding-top: 20px;
+}
+
+.mail-details .mail-details-subject {
+    padding-left: 72px;
+    color: var(--clr-gmail-details-base);
+    font-size: 1.375rem;
+}
+
+.mail-details .mail-details-header {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 72px;
+
+    >.mail-details-from {
+        color: var(--clr-gmail-details-base);
+        font-size: 0.875rem;
+    }
+
+    >.function-btns {
+        display: flex;
+
+        >.full-time-details {
+            color: var(--clr-gmail-details--2);
+            font-size: 0.75rem;
+        }
+
+        >.starred-btn,
+        .replay-btn {
+            margin-top: 0;
+            padding-top: 0;
+            font-size: 1.25rem;
+        }
+    }
+}
+
+.mail-details .mail-details-body {
+    font: small / 1.5 Arial, Helvetica, sans-serif;
+    color: var(--clr-gmail-details-1);
+}

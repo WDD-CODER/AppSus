@@ -44,8 +44,8 @@ export function MailDetails() {
                     <button className="starred-btn">⭐</button> {/* will change the icons */}
                     <button className="replay-btn">↱</button>
                 </div>
-                <pre className="mail-details-body">{body}</pre>
             </div>
+            <pre className="mail-details-body">{body}</pre>
         </section>
     )
 }
