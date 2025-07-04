@@ -69,6 +69,7 @@ export function NoteIndex() {
                 .then(() => {
                     showSuccessMsg('Note removed with Success')
                     setIsModalOpen(false)
+                    setSelectedNote(null)
                     navigate('/note')
                 })
         }
