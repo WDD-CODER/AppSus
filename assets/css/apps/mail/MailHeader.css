@@ -1,0 +1,27 @@
+.mail-header {
+    display: flex;
+    align-items: center;
+    background-color: rgb(204, 204, 204);
+    /* Need to update the color */
+    border-radius: 20px;
+    padding: 8px;
+    margin-block: 4px;
+}
+
+.mail-header .mail-sidebar-hamburger {
+    font-size: 1.5rem;
+    padding: 12px;
+}
+
+.mail-header .gmail-logo {
+    width: 110px;
+    height: 40px;
+    margin-right: 100px;
+}
+
+.mail-header p {
+    width: 600px;
+    height: 50px;
+
+    background-color: #fff;
+}
