@@ -105,6 +105,3 @@ function _setNextPrevMailId(mail) {
         return mail
     })
 }
-
-
-
