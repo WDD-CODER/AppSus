@@ -26,6 +26,7 @@
 
 /* Cmps mail*/
 @import './apps/note/NoteDetails.css';
+@import './apps/mail/MailHeader.css';
 @import './apps/mail/MailPreview.css';
 @import './apps/mail/MailDetails.css';
 

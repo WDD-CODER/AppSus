@@ -5,9 +5,9 @@ export function MailHeader() {
     const navigate = useNavigate()
 
     return (
-        <header className="mail-header container">
+        <header className="mail-header">
             <div className="mail-sidebar-hamburger">≡</div>
-            <div className="gmail-logo">LOGO</div>
+            <img className="gmail-logo" src="../../assets/images/Gmail-logo.png" alt="Gmail-Logo" />
             <p>wil be here search cmp</p>
         </header>
     )
