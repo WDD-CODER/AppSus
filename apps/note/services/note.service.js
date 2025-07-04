@@ -11,9 +11,13 @@ export const noteService = {
     save,
     getEmptyNote,
     getDefaultFilter,
-    getFilterFromSearchParams
+    getFilterFromSearchParams,
+    getNoteParams
 }
+'use strict';
 
+
+// LIST
 function query(filterBy = {}) {
     return storageService.query(NOTE_KEY)
         .then(notes => {
@@ -26,39 +30,8 @@ function query(filterBy = {}) {
         })
 }
 
-function get(noteId) {
-    return storageService.get(NOTE_KEY, noteId).then(_setNextPrevNoteId)
-}
 
-function remove(noteId) {
-    // return Promise.reject('Oh No!')
-    return storageService.remove(NOTE_KEY, noteId)
-}
-
-function save(note) {
-    if (note.id) {
-        return storageService.put(NOTE_KEY, note)
-    } else {
-        return storageService.post(NOTE_KEY, note)
-    }
-}
-
-function getEmptyNote(type = 'NoteTxt', createdAt) {
-    const now = new Date()
-    return {
-        createdAt: { time: now.toLocaleTimeString(), date: now.toLocaleDateString() },
-        type,
-        isPinned: false,
-        style: { backgroundColor: '#00d' },
-        info: { text: '' }
-    }
-}
-
-function getDefaultFilter() {
-    return { type: '', isPinned: '' }
-}
-
-
+// CREATE
 
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTE_KEY)
@@ -83,7 +56,36 @@ function _createDemoNote(type) {
     return note
 }
 
+//  SAVE 
+function save(note) {
+    if (note.id) {
+        return storageService.put(NOTE_KEY, note)
+    } else {
+        return storageService.post(NOTE_KEY, note)
+    }
+}
 
+
+// READ
+function get(noteId) {
+    return storageService.get(NOTE_KEY, noteId).then(_setNextPrevNoteId)
+}
+
+
+function getEmptyNote(type = 'NoteTxt', createdAt) {
+    const now = new Date()
+    return {
+        createdAt: { time: now.toLocaleTimeString(), date: now.toLocaleDateString() },
+        type,
+        isPinned: false,
+        style: { backgroundColor: '#00d' },
+        info: { txt: '' }
+    }
+}
+
+function getDefaultFilter() {
+    return { type: '', isPinned: '' }
+}
 
 function getFilterFromSearchParams(searchParams) {
     const txt = searchParams.get('txt') || ''
@@ -98,6 +100,7 @@ function getFilterFromSearchParams(searchParams) {
 }
 
 
+// UPDATE
 function _setNextPrevNoteId(note) {
     return query().then((notes) => {
         const noteIdx = notes.findIndex((currNote) => currNote.id === note.id)
@@ -109,4 +112,19 @@ function _setNextPrevNoteId(note) {
     })
 }
 
+function getNoteParams(searchParams, note) {
+    searchParams.set('txt', (note.info && note.info.txt) || '')
+    searchParams.set('type', note.type || '')
+    searchParams.set('isPinned', note.isPinned || '')
+    searchParams.set('background-Color', note.style.backgroundColor || '')
+    searchParams.set('date-createdAt', (note.createdAt && note.createdAt.date) || '')
+    searchParams.set('time-createdAt', (note.createdAt && note.createdAt.time) || '')
+    return searchParams
+}
 
+
+// DELETE
+function remove(noteId) {
+    // return Promise.reject('Oh No!')
+    return storageService.remove(NOTE_KEY, noteId)
+}

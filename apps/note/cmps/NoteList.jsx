@@ -1,9 +1,9 @@
 import { NotePreview } from "./NotePreview.jsx"
-const { useState } = React
-const { Link, } = ReactRouterDOM
-export function NoteList({ notes, type}) {
 
-const [renderList, setRenderList] = useState()
+const {useSearchParams} =ReactRouterDOM
+const {useState}= React
+export function NoteList({ notes, type }) {
+
 
 
     return (
@@ -11,7 +11,7 @@ const [renderList, setRenderList] = useState()
             <h4>{type}</h4>
             <section className="note-list ">
                 {notes.map(curNote => {
-                    return <NotePreview onSetNote={setRenderList} key={curNote.id} note={curNote} />
+                    return <NotePreview key={curNote.id} note={curNote} />
                 })}
             </section>
         </div>

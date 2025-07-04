@@ -1,29 +1,32 @@
-import { utilService } from "../../../services/util.service.js"
+import { getTruthyValues} from "../../../services/util.service.js"
 import { noteService } from "../services/note.service.js"
-import { NotePreview } from "../cmps/NotePreview.jsx"
-import { ToolBar } from "./Toolbar.jsx"
+import { ToolBar } from "../cmps/Toolbar.jsx"
+import { showErrorMsg } from "../../../services/event-bus.service.js"
 
 const { useState, useEffect } = React
-const { useParams, useNavigate } = ReactRouterDOM
+const { useParams, useNavigate, useSearchParams } = ReactRouterDOM
 
-export function NoteEdit({ onSetExpand, onSaveNote }) {
-
-
-    const [savedNote, setSavedNote] = useState()
-    const { noteId } = useParams()
+export function NoteEdit({ setSelectedNote, onSetToExpand }) {
+    const [searchParams, setSearchParams] = useSearchParams()
+    const [savedNote, setSavedNote] = useState(null)
     const navigate = useNavigate()
-    
+
+
     useEffect(() => {
+        setSearchParams(getTruthyValues(searchParams))
         loadNote()
     }, [])
 
     function loadNote() {
-        if (!noteId) return setSavedNote(noteService.getEmptyNote())
-        else noteService.get(noteId)
-            .then(note => {
-                setSavedNote(note)
+        if (!searchParams.get('noteId')) {
+            setSavedNote(noteService.getEmptyNote())
+        }
+        else noteService.get(searchParams.get('noteId'))
+            .then(res => {
+                console.log('res')
+                setSavedNote(res)
+                setSelectedNote(null)
             })
-            .catch(() => showErrorMsg('Problem loading note'))
     }
 
     function handleChange({ target }) {
@@ -44,39 +47,63 @@ export function NoteEdit({ onSetExpand, onSaveNote }) {
                 break
         }
 
-        setSavedNote(prevReview => ({ ...prevReview, [field]: value }))
+        setSavedNote(prevNote => ({ ...prevNote, [field]: value }))
     }
 
-    function onUpdateNote(ev) {
-        utilService.debounce(handleChange(ev), 500)
+    function setNoteParams(note) {
+        if (!note.id) {
+            showErrorMsg('seems like there is no not...')
+        }
+        searchParams.set('txt', (note.info && note.info.txt) || '')
+        searchParams.set('type', note.type || '')
+        searchParams.set('isPinned', note.isPinned || '')
+        searchParams.set('background-Color', note.style.backgroundColor || '')
+        searchParams.set('date-createdAt', (note.createdAt && note.createdAt.date) || '')
+        searchParams.set('time-createdAt', (note.createdAt && note.createdAt.time) || '')
+        setSearchParams(searchParams)
     }
+
+
 
     function onSaveNote(ev) {
+        // setSavedNote()
         ev.preventDefault()
         noteService.save(savedNote)
-            .then(onSetExpand(false))
-            .then(() => onSaveNote())
+            .then(() => {
+                onSetToExpand(false)
+                setSelectedNote(null)
+                navigate('/note')
+            })
     }
 
-function goBack(){
-    onSetExpand('')
-}
+    // const title = (!savedNote) ? '' : savedNote.title
+    // const info = (!savedNote) ? '' : {savedNote.info}
 
     return (
-        <section className="note-edit">
+        <section key={(savedNote) ? savedNote.id : ''} className="note-edit">
             <form className="edit-note-form" onSubmit={onSaveNote}>
                 <button className="pin-note icon-bell "></button>
                 <div className="text-info">
-                    <h1 className="title"><input onChange={onUpdateNote} name="title" type="text" placeholder="Titel..." /></h1>
-                    <p className="text-info"><input onChange={onUpdateNote} name="info" type="text" placeholder="Take a note..." /></p>
+                    <h1 className="title">
+                        <input onChange={handleChange}
+                            // value={savedNote.title}
+                            name="title"
+                            type="text" placeholder="title..." />
+                    </h1>
+                    <p className="info">
+                        <input onChange={handleChange}
+                            // value={savedNote.info.txt}
+                            name="info"
+                            type="text"
+                            placeholder="Take a note..." />
+                    </p>
                 </div>
                 <div className="labels-container">{/* { Note.label && <LabelPicker/>} */}</div>
             </form>
             <section className="tool-bar flex"><ToolBar />
-                <button className="close btn" onClick={goBack}>Close</button>
+                <button className="close btn" onClick={onSaveNote}>Close</button>
             </section>
         </section>
     )
 }
-
 
