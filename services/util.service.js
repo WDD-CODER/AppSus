@@ -9,7 +9,8 @@ export const utilService = {
     loadFromStorage,
     saveToStorage,
     debounce,
-    getTruthyValues
+    getTruthyValues,
+    formatTimeOrDate,
 }
 
 function saveToStorage(key, val) {
@@ -94,4 +95,40 @@ export function getTruthyValues(obj) {
         }
     }
     return newObj
+}
+
+
+function formatTimeOrDate(timestamp) {
+    const now = Date.now()
+    const twentyFourHours = 24 * 60 * 60 * 1000 // 24 hours in milliseconds
+    const oneYear = 365 * 24 * 60 * 60 * 1000 // Approximately 1 year in milliseconds (ignoring leap years for simplicity)
+
+    const date = new Date(timestamp)
+    const diff = now - timestamp // Difference in milliseconds
+
+    // Options for month names
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ]
+
+    if (diff <= twentyFourHours) {
+        // Within the last 24 hours, return time in HH:MM format
+        const hours = date.getHours().toString().padStart(2, '0')
+        const minutes = date.getMinutes().toString().padStart(2, '0')
+        return `${hours}:${minutes}`
+
+    } else if (diff < oneYear) {
+        // More than 24 hours but less than 1 year ago, return date like "June 12"
+        const month = monthNames[date.getMonth()]
+        const day = date.getDate()
+        return `${month} ${day}`
+
+    } else {
+        // More than 1 year ago, return date in DD-MM-YYYY format
+        const year = date.getFullYear()
+        const month = (date.getMonth() + 1).toString().padStart(2, '0')
+        const day = date.getDate().toString().padStart(2, '0')
+        return `${day}-${month}-${year}`
+    }
 }
