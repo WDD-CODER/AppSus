@@ -1,5 +1,13 @@
-.note-details {
+.note-details-modal {
     position: fixed;
+    /* display: grid;
+    grid:
+        "title pinned"
+        "info   info "
+        "label   createdAt "
+        "tool-bar   tool-bar "
+    ; */
+
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -21,4 +29,8 @@
 
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 20;
+}
+
+.title{
+    grid-area: title;
 }

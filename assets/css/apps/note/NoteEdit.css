@@ -12,13 +12,15 @@
 
 .edit-note-form {
     display: grid;
+    place-content: baseline;
+
     gap: 1em;
     padding: .5em;
 }
 
-.edit-note-form .text-info{    
-    display: grid;
-    place-content: baseline;
+.text-info{
+    display: flex;
+    flex-direction: column;
 
     gap: 1em;
 }

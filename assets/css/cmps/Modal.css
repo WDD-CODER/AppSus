@@ -1,0 +1,42 @@
+.modal-backdrop {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+
+    inset: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 0;
+}
+
+.modal-content {
+    position: fixed;
+    inset: 0;
+    width: 70vw;
+    max-width: 600px;
+    height: fit-content;
+
+    margin: auto;
+    padding: 1em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    background-color: var(--clr-bg-main);
+    z-index: 3;
+}
+
+.modal-content button.close-btn {
+    color: white;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+}
+
+p {
+    text-align: center;
+    margin: 15px;
+}

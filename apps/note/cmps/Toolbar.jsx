@@ -1,7 +1,12 @@
 
+const { useSearchParams } = ReactRouterDOM
 export function ToolBar() {
+
+    const [searchParams, setSearchParams] = useSearchParams()
+
+
     return (
-        <section className="tool-bar">
+        <section className="tool-bar flex">
             <button data-toolbar={'Formatting option'} className="formatting-option hover-show">X</button>
             <button data-toolbar={'Background color'} className="background-color hover-show">X</button>
             <button data-toolbar={'remainder'} className="remainder hover-show">X</button>

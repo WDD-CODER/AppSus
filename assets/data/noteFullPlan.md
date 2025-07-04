@@ -18,7 +18,7 @@ Position with absolute/fixed as needed.
 
 On focus: activate Note List component.
 
-On input: display live-filtered notes, matching create-note-container styling.
+On input: display live-filtered notes, matching add-note styling.
 
 Support filtering by note types.
 
@@ -131,7 +131,7 @@ Respects pre-selected labels (edit flows).
 
 Keyboard-navigable list & close on Esc.
 
-Integrates with create-note-container & Edit-Label Modal.
+Integrates with add-note & Edit-Label Modal.
 
 
 

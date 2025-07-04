@@ -15,6 +15,7 @@
 @import './cmps/UserMsg.css';
 @import './cmps/SideBar.css';
 @import './cmps/nav-bar.css';
+@import './cmps/Modal.css';
 
 /* Cmps Note*/
 @import './apps/note/ToolBar.css';

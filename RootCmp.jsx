@@ -12,6 +12,7 @@ import { NotFound } from './cmps/NotFound.jsx'
 import { NoteEdit } from './apps/note/pages/NoteEdit.jsx'
 import { MailDetails } from './apps/mail/pages/MailDetails.jsx'
 import { NoteDetails } from './apps/note/cmps/NoteDetails.jsx'
+import { Modal } from './cmps/Modal.jsx'
 
 export function RootCmp() {
     return <Router>
@@ -25,8 +26,8 @@ export function RootCmp() {
                 <Route path="/mail" element={<MailIndex />} />
                 <Route path="/mail/:mailId" element={<MailDetails />} />
                 <Route path="/note" element={<NoteIndex />} />
-                {/* <Route path="/note/edit" element={<NoteEdit />} /> */}
-                {/* <Route path="/note/edit/:noteId" element={<NoteDetails />} /> */}
+                {/* <Route path="/note/edit" element={<NoteEdit />} />
+                <Route path="/note/edit/:noteId" element={<Modal />} /> */}
                 <Route path="*" element={<NotFound />} />
             </Routes>
             <UserMsg />
