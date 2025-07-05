@@ -1,6 +1,7 @@
 .note-list-container {
+    grid-area: note-list;
+
     display: grid;
-    padding: 1em;
     align-items: center;
 }
 

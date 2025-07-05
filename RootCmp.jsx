@@ -18,7 +18,6 @@ export function RootCmp() {
     return <Router>
         <main className="root-cmp main-layout ">
             <AppHeader />
-            <SideBar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />

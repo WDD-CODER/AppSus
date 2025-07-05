@@ -1,0 +1,19 @@
+.note-header {
+    grid-area: note-header;
+    display: flex;
+
+    width: 100%;
+    border-top: 1px var(--clr-border) solid;
+    border-bottom: 1px var(--clr-border) solid;
+}
+
+.note-header>* {
+    display: flex;
+    place-items: center;
+
+    gap: .5em;
+}
+
+.note-header :first-child {
+    margin-inline-end: auto;
+}

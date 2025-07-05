@@ -23,6 +23,7 @@
 @import './apps/note/NoteList.css';
 @import './apps/note/AddNote.css';
 @import './apps/note/NotePreview.css';
+@import './apps/note/NoteHeader.css';
 
 /* Cmps mail*/
 @import './apps/note/NoteEdit.css';

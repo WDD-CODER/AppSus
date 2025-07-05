@@ -44,7 +44,7 @@ export function NoteEdit({ selectedNote, setSelectedNote, onDeleteNote }) {
                 ev.preventDefault()
                 onSave()
             }}>
-                <button className="pin-note icon-bell "></button>
+                <button className="pin-note icon-bell icon "></button>
                 <div className="text-info">
                     <h1 className="title">
                         <input onChange={handleChange}

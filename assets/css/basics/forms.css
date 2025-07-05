@@ -37,6 +37,7 @@ button:hover {
     transition: .3s;
 }
 
+
 button.hover-show:hover::after {
     opacity: 1;
 }

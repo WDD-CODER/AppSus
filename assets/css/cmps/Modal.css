@@ -10,6 +10,7 @@
 }
 
 .modal-content {
+    grid-area: main-content;
     position: fixed;
     inset: 0;
     width: 70vw;

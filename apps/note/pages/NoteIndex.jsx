@@ -1,7 +1,9 @@
 import { Modal } from "../../../cmps/Modal.jsx";
+import { SideBar } from "../../../cmps/SideBar.jsx";
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js";
 import { CreateNote } from "../cmps/CreateNote.jsx";
 import { NoteEdit } from "../cmps/NoteEdit.jsx";
+import { NoteHeader } from "../cmps/NoteHeader.jsx";
 import { NoteList } from "../cmps/NoteList.jsx"
 import { noteService } from "../services/note.service.js"
 
@@ -70,24 +72,28 @@ export function NoteIndex() {
         }
     }
     return (
-        <section className="note-index ">
+
+        <div className="note-index note-layout">
             {/* <Link to="/note/edit"> */}
-            <CreateNote
-                setSelectedNote={setSelectedNote}
-                onDeleteNote={onDeleteNote}
-            />
-            {/* </Link> */}
-            {selectedNote && <Modal isOpen={isModalOpen}>
-                <NoteEdit
-                    selectedNote={selectedNote}
+            <SideBar />
+            <NoteHeader />
+            <section className="lists-container">
+                <CreateNote
                     setSelectedNote={setSelectedNote}
                     onDeleteNote={onDeleteNote}
                 />
-            </Modal>}
-            {pinnedNoteList && <NoteList key={'pinned-notes'} type={'pinned'} notes={pinnedNoteList} />}
-            {!selectedNote && noteList && <NoteList key={'other-notes'} type={'other'} notes={noteList} />}
-            {/* <button onClick={() => onDeleteNote()} data-toolbar={'Delete'} className="delete">Delete</button> */}
-
-        </section>
+                {/* </Link> */}
+                {selectedNote && <Modal isOpen={isModalOpen}>
+                    <NoteEdit
+                        selectedNote={selectedNote}
+                        setSelectedNote={setSelectedNote}
+                        onDeleteNote={onDeleteNote}
+                    />
+                </Modal>}
+                {pinnedNoteList && <NoteList key={'pinned-notes'} type={'pinned'} notes={pinnedNoteList} />}
+                {!selectedNote && noteList && <NoteList key={'other-notes'} type={'other'} notes={noteList} />}
+                {/* <button onClick={() => onDeleteNote()} data-toolbar={'Delete'} className="delete">Delete</button> */}
+            </section>
+        </div>
     )
 }
