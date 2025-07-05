@@ -5,7 +5,7 @@
     height: 100%;
 }
 
-.add-note {
+.create-note {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: minmax(auto, 600px);
@@ -24,12 +24,12 @@
 }
 
 
-.add-note,
+.create-note,
 .expand-note {
     padding: .2em;
 }
 
-.add-note.expand-note :first-of-type(button) {
+.create-note.expand-note :first-of-type(button) {
     text-align: justify;
     cursor: text;
     margin-inline-end: auto;

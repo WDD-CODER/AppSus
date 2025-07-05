@@ -1,0 +1,26 @@
+.add-note {
+    grid-area: "content";
+    position: relative;
+
+}
+
+.pin-note {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+}
+
+.edit-note-form {
+    display: grid;
+    place-content: baseline;
+
+    gap: 1em;
+    padding: .5em;
+}
+
+.text-info{
+    display: flex;
+    flex-direction: column;
+
+    gap: 1em;
+}
