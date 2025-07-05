@@ -1,13 +1,12 @@
 import { Modal } from "../../../cmps/Modal.jsx";
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js";
-import { AddNote } from "../cmps/AddNote.jsx";
-import { NoteDetails } from "../cmps/NoteDetails.jsx";
+import { CreateNote } from "../cmps/CreateNote.jsx";
+import { NoteEdit } from "../cmps/NoteEdit.jsx";
 import { NoteList } from "../cmps/NoteList.jsx"
 import { noteService } from "../services/note.service.js"
-import { NoteEdit } from "./NoteEdit.jsx";
 
 const { useState, useEffect } = React
-const { useSearchParams, useNavigate } = ReactRouterDOM
+const { useSearchParams, useParams, Link } = ReactRouterDOM
 
 export function NoteIndex() {
 
@@ -17,34 +16,33 @@ export function NoteIndex() {
     const [noteList, setNoteList] = useState()
     const [selectedNote, setSelectedNote] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState()
-    const navigate = useNavigate()
-    const [filterBy, setFilterBy] = useState(noteService.getFilterFromSearchParams(searchParams))
+
+    const params = useParams()
 
     useEffect(() => {
-        console.log("🚀 ~ useEffect ~ useEffect:")
         if (searchParams.get('noteId')) {
-            const res = searchParams.get('noteId')
-            noteService.get(res)
-                .then(setSelectedNote)
-                .then(() => setIsModalOpen(true))
+            noteService.get(searchParams.get('noteId'))
+                .then(note => {
+                    setIsModalOpen(true)
+                    setSelectedNote(note)
+                })
                 .catch(err => {
                     console.log('err', err)
                     showErrorMsg('Problem opening  modal')
                 })
+
+        } else {
+            loadNotes()
+            setSelectedNote(null)
+            setIsModalOpen(false)
         }
+    }, [params, searchParams])
 
-        setFilterBy(noteService.getFilterFromSearchParams(searchParams))
-        loadNotes()
-
-    }, [searchParams])
 
 
     function loadNotes() {
-        console.log('loadNotes')
-        noteService.query(filterBy)
+        noteService.query()
             .then(notes => {
-                console.log("🚀 ~ loadNotes ~ notes:", notes)
-                // setIsModalOpen(true)
                 filterPinnedNotes(notes)
                 setNoteList(notes)
             })
@@ -58,35 +56,31 @@ export function NoteIndex() {
     }
 
 
-    function onDeleteNote(ev) {
-        console.log("🚀 ~ onDeleteNote ~ ev:", ev)
-        ev.preventDefault()
-        console.log("🚀 ~ onDeleteNote ~ searchParams.get('noteId'):", searchParams.get('noteId'))
-        if (!searchParams.get('noteId')) return eventBusService.showErrorMsg('No note selected')
+    function onDeleteNote(noteId) {
+        const curNoteId = (noteId) ? noteId : searchParams.get('noteId')
+        if (!curNoteId) return eventBusService.showErrorMsg('No note selected')
         else {
-            const noteToRemove = searchParams.get('noteId')
-            noteService.remove(noteToRemove)
+            noteService.remove(curNoteId)
                 .then(() => {
-                    showSuccessMsg('Note removed with Success')
                     setIsModalOpen(false)
+                    showSuccessMsg('Note removed with Success')
                     setSelectedNote(null)
-                    navigate('/note')
+                    setSearchParams({})
                 })
         }
     }
-
-
     return (
         <section className="note-index ">
-            <AddNote
+            {/* <Link to="/note/edit"> */}
+            <CreateNote
                 setSelectedNote={setSelectedNote}
-                onSetToExpand={setIsModalOpen}
+                onDeleteNote={onDeleteNote}
             />
+            {/* </Link> */}
             {selectedNote && <Modal isOpen={isModalOpen}>
-                <NoteDetails
+                <NoteEdit
                     selectedNote={selectedNote}
                     setSelectedNote={setSelectedNote}
-                    setIsModalOpen={setIsModalOpen}
                     onDeleteNote={onDeleteNote}
                 />
             </Modal>}
