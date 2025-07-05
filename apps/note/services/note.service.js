@@ -12,7 +12,7 @@ export const noteService = {
     getEmptyNote,
     getDefaultFilter,
     getFilterFromSearchParams,
-    getNoteParams
+    onSetNoteParams
 }
 'use strict';
 
@@ -52,7 +52,7 @@ function _createDemoNote(type) {
     const note = getEmptyNote(type, createdAt)
     note.id = utilService.makeId()
     note.title = utilService.makeLorem(5)
-    note.info.txt = utilService.makeLorem(25)
+    note.info = { txt: utilService.makeLorem(25) }
     return note
 }
 
@@ -112,14 +112,16 @@ function _setNextPrevNoteId(note) {
     })
 }
 
-function getNoteParams(searchParams, note) {
+function onSetNoteParams(note, searchParams, setSearchParams) {
+    if (!note.id) return showErrorMsg('seems like there is no not...')
+
     searchParams.set('txt', (note.info && note.info.txt) || '')
     searchParams.set('type', note.type || '')
     searchParams.set('isPinned', note.isPinned || '')
     searchParams.set('background-Color', note.style.backgroundColor || '')
     searchParams.set('date-createdAt', (note.createdAt && note.createdAt.date) || '')
     searchParams.set('time-createdAt', (note.createdAt && note.createdAt.time) || '')
-    return searchParams
+    setSearchParams(searchParams)
 }
 
 
