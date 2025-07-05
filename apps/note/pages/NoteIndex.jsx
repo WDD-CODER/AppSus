@@ -5,6 +5,7 @@ import { CreateNote } from "../cmps/CreateNote.jsx";
 import { NoteEdit } from "../cmps/NoteEdit.jsx";
 import { NoteHeader } from "../cmps/NoteHeader.jsx";
 import { NoteList } from "../cmps/NoteList.jsx"
+import { NoteSideBar } from "../cmps/NoteSideBar.jsx";
 import { noteService } from "../services/note.service.js"
 
 const { useState, useEffect } = React
@@ -75,7 +76,7 @@ export function NoteIndex() {
 
         <div className="note-index note-layout">
             {/* <Link to="/note/edit"> */}
-            <SideBar />
+            <NoteSideBar />
             <NoteHeader />
             <section className="lists-container">
                 <CreateNote

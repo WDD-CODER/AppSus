@@ -1,0 +1,27 @@
+.note-side-bar {
+    grid-area: side-bar;
+    display: grid;
+    
+    max-width: 150px;
+    height: 100%;
+    
+    border-top: none;
+}
+
+.note-side-bar img{
+    max-width: 100px;
+}
+.note-side-bar img{
+    max-width: 100px;
+}
+.note-note-nav-bar {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.note-small{
+    width:50px ;
+}
+
+
