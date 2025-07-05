@@ -36,7 +36,7 @@
     background-color: transparent;
 }
 
-p {
+.modal-content .p {
     text-align: center;
     margin: 15px;
 }

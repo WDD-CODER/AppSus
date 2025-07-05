@@ -1,10 +1,6 @@
 import { NotePreview } from "./NotePreview.jsx"
 
-const {useSearchParams} =ReactRouterDOM
-const {useState}= React
 export function NoteList({ notes, type }) {
-
-
 
     return (
         <div className="note-list-container ">

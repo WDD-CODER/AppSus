@@ -4,11 +4,11 @@
 
 // const { useState, useEffect, useRef } = React
 // const { useParams, useNavigate, useSearchParams } = ReactRouterDOM
-// export function NoteDetails() {
+// export function NoteEdit() {
 
 //     const [searchParams, setSearchParams] = useSearchParams()
 //     const [note, setNote] = useState()
-//     console.log("🚀 ~ NoteDetails ~ note:", note)
+//     console.log("🚀 ~ NoteEdit ~ note:", note)
 //     const navigate = useNavigate()
 
 
@@ -37,7 +37,7 @@
 
 //     return (
 //         <React.Fragment>
-//             <form className="note-details box" onSubmit={() => onSetSearchParams()}>
+//             <form className="NoteEdit box" onSubmit={() => onSetSearchParams()}>
 //                 <button className="pin-note icon-bell "></button>
 //                 <div className="text-info">
 //                     <h1 className="title"><input name="title" type="text" placeholder="title..." /></h1>
