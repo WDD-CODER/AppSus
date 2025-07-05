@@ -5,6 +5,7 @@
     justify-content: space-between;
     padding: 1em;
     font-family: 'Bitcount';
+    background-color: var(--clr-primary-base);
 }
 
 .header-nav-bar a {

@@ -1,4 +1,4 @@
-.main-layout {
+/* .main-layout {
     position: relative;
 
     display: grid;
@@ -6,4 +6,13 @@
         "header header" 60px 
         "side-bar main-content" 1fr
          /minmax(50px, auto) minmax(auto, 1fr);
+} */
+
+.main-layout {
+    position: relative;
+
+    display: grid;
+    grid:
+        "header" 60px 
+        "content" 1fr
 }
