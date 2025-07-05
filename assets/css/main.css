@@ -21,11 +21,11 @@
 @import './apps/note/ToolBar.css';
 @import './apps/note/NoteIndex.css';
 @import './apps/note/NoteList.css';
-@import './apps/note/NoteEdit.css';
+@import './apps/note/AddNote.css';
 @import './apps/note/NotePreview.css';
 
 /* Cmps mail*/
-@import './apps/note/NoteDetails.css';
+@import './apps/note/NoteEdit.css';
 @import './apps/mail/MailPreview.css';
 @import './apps/mail/MailDetails.css';
 
