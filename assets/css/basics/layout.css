@@ -5,5 +5,5 @@
     grid:
         "header header" 60px 
         "side-bar main-content" 1fr
-         /minmax(auto, 150px) minmax(auto, 1fr);
+         /minmax(50px, auto) minmax(auto, 1fr);
 }
