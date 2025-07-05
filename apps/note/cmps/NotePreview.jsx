@@ -1,19 +1,25 @@
 import { ToolBar } from "./Toolbar.jsx";
 
-const { useSearchParams } = ReactRouterDOM
+const { useSearchParams, useNavigate } = ReactRouterDOM
 
 export function NotePreview({ note }) {
+    const labels = ''
+
     const { title, info, createdAt, id, isPinned, style, type } = note
     const [searchParams, setSearchParams] = useSearchParams()
 
-    const labels = ''
+    function onSetParams() {
+        searchParams.set('noteId', note.id)
+        setSearchParams(searchParams)
+    }
+
     return (
-        <section onClick={() => setSearchParams({ noteId: note.id })} className="note-preview box container">
+        <section onClick={() => onSetParams()} className="note-preview box container">
             <h1>{title}</h1>
-            <p>{info.tex}</p>
+            <p>{info.txt}</p>
             {info.img && <figure>{info.img}</figure>}
             {labels && <Labels />}
             <ToolBar />
-        </section>
+        </section >
     )
 }
