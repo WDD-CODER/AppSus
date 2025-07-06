@@ -1,5 +1,6 @@
 import { mailService } from "../services/mail.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
+import { utilService } from "../../../services/util.service.js"
 
 const { useParams, useNavigate, Link } = ReactRouterDOM
 const { useState, useEffect } = React
@@ -32,7 +33,9 @@ export function MailDetails() {
 
     if (isLoading) return <div>Loading...</div>
 
-    const { subject, body, isRead, sentAt, from } = mail
+    const fullTimeAndDate = utilService.getFullDateAndTime(mail.sentAt)
+    const { subject, body, isRead, from } = mail
+
     return (
         <section className="mail-details">
             {/* will be here nav-header */}
@@ -40,7 +43,7 @@ export function MailDetails() {
             <div className="mail-details-header">
                 <p className="mail-details-from">{from}</p>
                 <div className="function-btns">
-                    <p className="full-time-details">{sentAt}</p>
+                    <p className="full-time-details">{fullTimeAndDate}</p>
                     <button className="starred-btn">⭐</button> {/* will change the icons */}
                     <button className="replay-btn">↱</button>
                 </div>
