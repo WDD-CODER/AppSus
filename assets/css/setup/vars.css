@@ -46,4 +46,5 @@
   --clr-gmail-details-1: rgb(34, 34, 34); /* secondary mail details body color */
   --clr-gmail-active-btn: rgb(211, 227, 253); /*mail sidebar active btn */
   --clr-gmail-button: rgb(233 234 234);
+  --clr-gmail-header-sidebar-bgc: rgb(248, 250, 253); /* mail header and sidebar color */
 }

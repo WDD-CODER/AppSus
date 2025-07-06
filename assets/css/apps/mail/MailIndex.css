@@ -5,5 +5,7 @@
        "mail-header     mail-header" 60px
        "mail-side-bar   mail-list" auto
        /minmax(50px, auto) minmax(auto, 1fr);
-    margin-inline: 1em;
+    padding-inline: 1em;
+
+    background-color: var(--clr-gmail-header-sidebar-bgc);
 }
