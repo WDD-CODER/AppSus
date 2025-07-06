@@ -36,7 +36,9 @@
   --clr-font-base: rgb(32 33 36)
 
   /* Gmail */
-  --clr-shadow-mail-line: rgba(100, 121, 143, .12); /* the shadow of mail line */
+  --clr-gmail-shadow-lin: rgba(100, 121, 143, .12); /* the shadow of mail line */
+  --clr-gmail-shadow-line: rgba(100, 121, 143, .12); /* the shadow of mail line */
+
   --clr-gmail-primary-base: rgb(32, 33, 36); /* main mails text color */
   --clr-gmail-primary--1: rgb(95, 99, 104); /* secondary mails text color */
   --clr-gmail-details-base: rgb(31, 31, 31); /* main mail details color */
