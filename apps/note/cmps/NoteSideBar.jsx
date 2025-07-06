@@ -5,41 +5,41 @@ export function NoteSideBar() {
     const [isActive, setIsActive] = useState()
 
     function onSetActive(ev) {
-        if (isActive) {
-            isActive.classList.remove('long')
-            isActive.classList.remove('active')
-        }
+        const el = ev.currentTarget
 
-        ev.currentTarget.classList.add('long')
-        ev.currentTarget.classList.add('active')
-        setIsActive(ev.currentTarget)
+        if (isActive === el) {
+            el.classList.remove('long', 'active')
+            setIsActive(null)
+        } else {
+            if (isActive) {
+                isActive.classList.remove('long', 'active')
+            }
+            el.classList.add('long', 'active')
+            setIsActive(el)
+        }
     }
 
     return (
         <section className="note-side-bar">
             <div className="filters-container">
                 <div className="selection-container flex align-center" onClick={onSetActive}>
-                    <button className="icon-lightbulb icon"></button>
-                    <span >Notes</span>
+                    <button className="icon-lightbulb icon">lightbulb</button>
+                    <span>Notes</span>
                 </div>
                 <div className="selection-container flex align-center" onClick={onSetActive}>
-                    <button className="icon-bell icon"></button>
+                    <button className="icon-notifications icon">notifications</button>
                     <span >Reminders</span>
                 </div>
                 <div className="selection-container flex align-center" onClick={onSetActive}>
-                    <button className="icon-pen icon"></button>
+                    <button className="icon-edit icon">edit</button>
                     <span >Labels</span>
                 </div>
                 <div className="selection-container flex align-center" onClick={onSetActive}>
-                    <button className="icon-archive icon"></button>
+                    <button className="icon-archive icon">archive</button>
                     <span >Edit Labels</span>
                 </div>
-                {/* <div className="selection-container flex align-center" onClick={onSetActive}>
-                    <button className="icon-archive icon"></button>
-                    <span >Archive</span>
-                </div> */}
                 <div className="selection-container flex align-center " onClick={onSetActive}>
-                    <button className="icon-trash-can icon"></button>
+                    <button className="icon-delete icon">delete</button>
                     <span >Trashed</span>
                 </div>
             </div>

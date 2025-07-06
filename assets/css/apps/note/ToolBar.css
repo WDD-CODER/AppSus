@@ -1,13 +1,15 @@
 .tool-bar {
     grid-area: toolBar;
-    display: flex;
-    margin-inline-end: auto;
+    width: 100%;
+    justify-content: space-between
 }
-.tool-bar .close{
+
+.tool-bar .close {
     border-radius: .5vh;
     margin-inline: 1em;
 }
 
-.tool-bar > button{
+.tool-bar>button {
     margin: 0;
+    padding: .3em;
 }
