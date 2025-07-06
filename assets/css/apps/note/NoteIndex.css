@@ -2,10 +2,10 @@
     grid-area: content;
     display: grid;
     grid:
-        "note-header note-header" 60px 
-        "side-bar create-note" auto
-        /* "side-bar note-content" auto */
-        "side-bar note-list" auto
+        "note-header   note-header" 60px 
+        "side-bar      create-note" auto
+    /*  "side-bar     note-content" auto */
+        "side-bar        note-list" auto
          /minmax(50px, auto) minmax(auto, 1fr);
 
 
