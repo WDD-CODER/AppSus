@@ -1,8 +1,7 @@
 .mail-header {
+    grid-area: mail-header;
     display: flex;
     align-items: center;
-    background-color: rgb(204, 204, 204);
-    /* Need to update the color */
     border-radius: 20px;
     padding: 8px;
     margin-block: 4px;

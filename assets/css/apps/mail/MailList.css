@@ -1,16 +1,17 @@
  /* mail list */
  .mail-list {
-     border: 0.5px solid var(--clr-shadow-mail-line);
+     border: 0.5px solid var(--clr-gmail-shadow-line);
      border-radius: 20px;
      padding-top: 20px;
      /* width: 80vw; */
  }
 
  .mail-list li a {
+    grid-area: mail-list;
      /* display: flex; */
      display: grid;
      grid-template-columns: 200px minmax(208px, 1fr) auto;
-     box-shadow: inset 0 -1px 0 0 var(--clr-shadow-mail-line);
+     box-shadow: inset 0 -1px 0 0 var(--clr-gmail-shadow-line);
      height: 40px;
      padding: 10px 0;
      /* width: 100%; */
@@ -20,18 +21,20 @@
 
  .mail-list li:first-child {
      box-shadow:
-         inset 0 -1px 0 0 var(--clr-shadow-mail-line),
-         inset 0 1px 0 0 var(--clr-shadow-mail-line);
+         inset 0 -1px 0 0 var(--clr-gmail-shadow-line),
+         inset 0 1px 0 0 var(--clr-gmail-shadow-line);
  }
 
  .mail-list li:last-child {
      box-shadow: none;
  }
 
- /* .mail-list li.read {} */
+ .mail-list li.read {
+    background-color: rgb(242, 246, 252);
+ }
 
  .mail-list li.unread a{
-     background-color: rgba(245, 245, 245, 0.774);
+     /* background-color: rgba(245, 245, 245, 0.774); */
 
      >.mail-from, .mail-subject {
          font-weight: bold;
