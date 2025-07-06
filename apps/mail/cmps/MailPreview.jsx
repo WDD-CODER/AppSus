@@ -1,8 +1,11 @@
+import { utilService } from "../../../services/util.service.js"
+
 const { Fragment } = React
 
 export function MailPreview({ mail }) {
 
     const { from, subject, body, sentAt } = mail
+    const formatedTime = utilService.formatTimeOrDate(sentAt)
     return (
         <Fragment>
             <div className="mail-prev mail-from">
@@ -13,7 +16,7 @@ export function MailPreview({ mail }) {
                 <p className="mail-body">{body}</p>
             </div>
             <div className="mail-prev mail-date">
-                <p>{sentAt}</p>
+                <p>{formatedTime}</p>
             </div>
         </Fragment>
     )

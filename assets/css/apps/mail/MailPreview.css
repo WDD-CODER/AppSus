@@ -25,6 +25,10 @@
 } */
 
 .mail-prev.mail-date {
-    width: 72px;
+    width: max-content;
     padding: 0 16px 0 30px;
+
+    >p {
+        width: max-content;
+    }
 }
