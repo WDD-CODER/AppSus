@@ -29,9 +29,9 @@ export function CreateNote({ setSelectedNote, onDeleteNote, }) {
         <div className="create-note box container">
             {!expand && <React.Fragment>
                 <input type="text" onClick={() => onCreatENote()} className="expand-note" placeholder="Take a note..." />
-                <button className="icon-square-check hover-show" data-toolbar="New list"></button>
-                <button className="icon-paintbrush hover-show" data-toolbar="New note with draying"></button>
-                <button className="icon-image hover-show" data-toolbar="New note with image"></button>
+                <button className="icon-square-check hover-show icon" data-toolbar="New list"></button>
+                <button className="icon-paintbrush hover-show icon" data-toolbar="New note with draying"></button>
+                <button className="icon-image hover-show icon" data-toolbar="New note with image"></button>
             </React.Fragment>}
             {expand && <AddNote
                 setSelectedNote={setSelectedNote}

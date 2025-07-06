@@ -27,12 +27,13 @@
   --clr-danger-1: #FCE8E6;       /* lighter: soft alert */
 
   
-  /* Google  */
+  /* Keep  */
   --clr-bg-main: rgb(255 255 255);       /* lighter: backgrounds, dividers */
   --clr-bg-input: rgb(241 243 244);       /* lighter: backgrounds, dividers */
   --clr-bg-button:rgb(233 234 234);       /* lighter: backgrounds, dividers */
+  --clr-bg-button-active:rgb(254 239 195);       /* lighter: backgrounds, dividers */
   --clr-border:rgb(218 220 224);       /* lighter: backgrounds, dividers */
-
+  --clr-font-base: rgb(32 33 36)
 
   /* Gmail */
   --clr-shadow-mail-line: rgba(100, 121, 143, .12); /* the shadow of mail line */

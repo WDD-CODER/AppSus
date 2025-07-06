@@ -1,5 +1,4 @@
 html {
-    /* font-family: 'Chewy'; */
     background-color: var(--clr-bg-main);
 }
 
@@ -31,3 +30,6 @@ img {
     place-content: center;
 }
 
+/* .icon {
+    width: 24px;
+} */

@@ -68,7 +68,7 @@ export function AddNote({ setSelectedNote, onSetToExpand, onDeleteNote }) {
     return (
         <section key={(savedNote) ? savedNote.id : ''} className="add-note">
             <form className="edit-note-form" onSubmit={onSaveNote}>
-                <button className="pin-note icon-bell "></button>
+                <button className="pin-note icon-bell icon"></button>
                 <div className="text-info">
                     <h1 className="title">
                         <input onChange={handleChange}
