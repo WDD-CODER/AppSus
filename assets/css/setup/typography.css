@@ -25,7 +25,7 @@
 
 .fa-twitter::before {
   content: "\f099";
-  font-family:"fa-brands";
+  font-family: "fa-brands";
 }
 
 .fa-instagram::before {
@@ -37,70 +37,52 @@
   content: "\f09b";
   font-family: "fa-brands";
 }
-.icon-lightbulb::before {
-  content: "\f0eb";
-  font-family: "fa-regular";
+
+
+/* Icon classes */
+.icon-archive,
+.icon-add_alert,
+.icon-brush,
+.icon-check,
+.icon-check_box,
+.icon-close,
+.icon-close_small,
+.icon-delete,
+.icon-edit,
+.icon-lightbulb,
+.icon-menu,
+.icon-more_vert,
+.icon-palette,
+.icon-person_add,
+.icon-pin,
+.icon-format_color_text,
+.icon-headphones,
+.icon-image,
+.icon-label,
+.icon-replay,
+.icon-restaurant,
+.icon-travel,
+.icon-view_selection,
+.icon-redo,
+.icon-refresh {
+  font-family: 'Material Symbols Outlined';
+  font-weight:normal;
+  font-size: 16px;
+  display: inline-block;
 }
 
-.icon-bell::before {
-  content: "\f0f3";
-  font-family: "fa-regular";
-}
-
-.icon-label::before {
-  content: "\f02b ";
-  font-family: "fa-solid";
-}
-
-.icon-pen::before {
-  content: "\f304";
-  font-family: "fa-solid";
-}
-
-.icon-archive::before {
-  content: "\f187";
-  font-family: "fa-solid";
-}
-
-.icon-trash-can::before {
-  content: "\f2ed";
-  font-family: "fa-regular";
-}
-
-.icon-privet::before {
-  content: "\f02b";
-  font-family: "fa-solid";
-}
-
-.icon-square-check::before {
-  content: "\f14a";
-  font-family: "fa-regular";
-}
-
-.icon-paintbrush::before {
-  content: "\f1fc";
-  font-family: "fa-solid";
-}
-.icon-image::before {
-  content: "\f03e";
-  font-family: "fa-solid";
-}
+/* .icon-brush{
+  color: red;
+} */
 
 
-
-Header Component:
+/* Still missing icons.:
 
 User-circle icon - needs to be created by me
 
 Alternative "Keep" logo
 
-
-
-
-
 Create-label button/icon
 
-
 Select-circle with checkmark (on hover) - need to make my oun
-
-
+ */

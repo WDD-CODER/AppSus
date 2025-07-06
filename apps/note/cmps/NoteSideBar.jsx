@@ -34,10 +34,10 @@ export function NoteSideBar() {
                     <button className="icon-archive icon"></button>
                     <span >Edit Labels</span>
                 </div>
-                <div className="selection-container flex align-center" onClick={onSetActive}>
+                {/* <div className="selection-container flex align-center" onClick={onSetActive}>
                     <button className="icon-archive icon"></button>
                     <span >Archive</span>
-                </div>
+                </div> */}
                 <div className="selection-container flex align-center " onClick={onSetActive}>
                     <button className="icon-trash-can icon"></button>
                     <span >Trashed</span>

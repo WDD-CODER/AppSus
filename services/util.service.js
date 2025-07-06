@@ -131,6 +131,25 @@ function formatTimeOrDate(timestamp) {
         const day = date.getDate().toString().padStart(2, '0')
         return `${day}-${month}-${year}`
     }
+
+
+    
+}
+
+function getFullDateAndTime(timestamp) {
+    const date = new Date(timestamp)
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ]
+
+    const hours = date.getHours().toString().padStart(2, '0')
+    const minutes = date.getMinutes().toString().padStart(2, '0')
+    const day = date.getDate()
+    const month = monthNames[date.getMonth()]
+    const year = date.getFullYear()
+
+    return `${day} ${month} ${year}, ${hours}:${minutes}`
 }
 
 function getFullDateAndTime(timestamp) {
