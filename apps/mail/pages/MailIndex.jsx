@@ -1,4 +1,5 @@
 import { MailList } from "../cmps/MailList.jsx"
+import { MailSideBar } from "../cmps/MailSideBar.jsx"
 import { MailHeader } from "../cmps/MailHeader.jsx"
 import { mailService } from "../services/mail.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
@@ -25,6 +26,7 @@ export function MailIndex() {
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index">
+            <MailSideBar />
             <MailHeader />
             <MailList mails={mails} />
             {/* <h1>Mails:</h1> */}
