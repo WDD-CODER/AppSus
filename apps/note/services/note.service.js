@@ -112,9 +112,8 @@ function _setNextPrevNoteId(note) {
     })
 }
 
-function onSetNoteParams(note, searchParams, setSearchParams) {
+function onSetNoteParams(note) {
     if (!note.id) return showErrorMsg('seems like there is no not...')
-
     searchParams.set('txt', (note.info && note.info.txt) || '')
     searchParams.set('type', note.type || '')
     searchParams.set('isPinned', note.isPinned || '')
