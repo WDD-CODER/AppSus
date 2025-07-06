@@ -40,8 +40,9 @@
 
 
 /* Icon classes */
-.icon-archive,
+.icon-apps,
 .icon-add_alert,
+.icon-archive,
 .icon-brush,
 .icon-check,
 .icon-check_box,
@@ -49,22 +50,25 @@
 .icon-close_small,
 .icon-delete,
 .icon-edit,
-.icon-lightbulb,
-.icon-menu,
-.icon-more_vert,
-.icon-palette,
-.icon-person_add,
-.icon-pin,
 .icon-format_color_text,
 .icon-headphones,
 .icon-image,
 .icon-label,
+.icon-lightbulb,
+.icon-menu,
+.icon-more_vert,
+.icon-notifications,
+.icon-palette,
+.icon-person_add,
+.icon-pin,
+.icon-redo,
+.icon-refresh,
 .icon-replay,
 .icon-restaurant,
+.icon-search,
+.icon-settings,
 .icon-travel,
-.icon-view_selection,
-.icon-redo,
-.icon-refresh {
+.icon-view_selection {
   font-family: 'Material Symbols Outlined';
   font-weight:normal;
   font-size: 16px;

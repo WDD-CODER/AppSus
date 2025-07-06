@@ -17,3 +17,21 @@
 .note-header :first-child {
     margin-inline-end: auto;
 }
+
+.user-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 40px;
+    height: 40px;
+    
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+
+
+    text-transform: uppercase;
+    color: var(--clr-primary-base);
+    border-radius: 50%;
+    background-color: #d3e3fd;
+}

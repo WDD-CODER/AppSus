@@ -23,6 +23,7 @@
     border-top-right-radius: 2vh;
     border-bottom-right-radius: 2vh;
 
+
     &.active .icon {
         border-radius: 50%;
         background-color: var(--clr-bg-button-active)
@@ -51,8 +52,5 @@
         opacity: 1;
     }
 
-    &:hover.active {
-        background-color: var(--clr-bg-button-active)
-    }
-
+transition: 1s;
 }
