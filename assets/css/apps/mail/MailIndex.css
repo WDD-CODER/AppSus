@@ -1,4 +1,9 @@
 .mail-index {
     display: grid;
+    grid-area: content;
+    grid:
+       "mail-header     mail-header" 60px
+       "mail-side-bar   mail-list" auto
+       /minmax(50px, auto) minmax(auto, 1fr);
     margin-inline: 1em;
 }
