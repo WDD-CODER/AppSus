@@ -33,7 +33,7 @@
   --clr-bg-button:rgb(233 234 234);       /* lighter: backgrounds, dividers */
   --clr-bg-button-active:rgb(254 239 195);       /* lighter: backgrounds, dividers */
   --clr-border:rgb(218 220 224);       /* lighter: backgrounds, dividers */
-  --clr-font-base: rgb(32 33 36);
+  --clr-primary-font: rgb(32 33 36);
   --clr-font-gray: rgb(95 99 104);
 
   /* Gmail */

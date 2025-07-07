@@ -1,6 +1,7 @@
 html {
     /* font-family: 'Chewy'; */
     /* font-size: ; */
+    color: var(--clr-primary-font);
     background-color: var(--clr-bg-main);
 }
 

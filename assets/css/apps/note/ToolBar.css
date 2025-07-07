@@ -9,7 +9,7 @@
     margin-inline: 1em;
 }
 
-.tool-bar>button {
+.tool-bar > button {
     margin: 0;
-    padding: .3em;
+    padding: 0;
 }

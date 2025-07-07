@@ -6,7 +6,7 @@
 }
 
 .note-list {
-    column-width: 200px;
+    column-width: 15em;
     column-gap: .3em;
 
 }

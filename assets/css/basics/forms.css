@@ -26,24 +26,38 @@ button.hover-show::after {
     border-radius: 4px;
     opacity: 0;
 
-    font-family:'Chewy';
+    font-family: 'Chewy';
     background-color: #474747;
     transition: opacity 0.2s ease-in-out;
 }
-
-button:hover {
-    font-weight: bold;
-
-    border-radius: 50%;
-    background-color: var(--clr-bg-button);
-    transition: .3s;
-}
-
 
 button.hover-show:hover::after {
     opacity: 1;
 }
 
+/* button:hover {
+    font-weight: bold;
+    border-radius: 50%;
+    background-color: var(--clr-bg-button);
+    transition: .3s;
+} */
+
+button .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 16px;
+    padding: 16px;
+    height: 16px;
+}
+
+.icon:hover {
+    border-radius: 50%;
+    color: var(--clr-primary-font);
+    background-color: var(--clr-bg-button);
+    transition: background-color 0.2s ease;
+}
 
 input {
     background-color: none
@@ -52,4 +66,3 @@ input {
 input:focus {
     background-color: none;
 }
-
