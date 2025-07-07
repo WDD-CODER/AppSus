@@ -15,13 +15,13 @@ export function NoteHeader() {
                     <input id="search-for" type="text" hidden/>
 
                 </label>
-                <button data-toolbar={'Search'} className="icon-search icon hover-show">search</button>
-                <button data-toolbar={'Refresh'} className="icon-refresh icon hover-show">refresh</button>
-                <button data-toolbar={'Settings'} className="icon-settings icon hover-show">settings</button>
+                <button data={'Search'} className="icon-search icon hover-show">search</button>
+                <button data={'Refresh'} className="icon-refresh icon hover-show">refresh</button>
+                <button data={'Settings'} className="icon-settings icon hover-show">settings</button>
             </section>
             <section className="user-actions">
-                <button data-toolbar={'Google Apps'} className="icon-apps icon hover-show">apps</button>
-                <button data-toolbar={'Google account'} className="user-circle hover-show">D</button>
+                <button data={'Google Apps'} className="icon-apps icon hover-show">apps</button>
+                <button data={'Google account'} className="user-circle hover-show">D</button>
             </section>
         </header>
     )

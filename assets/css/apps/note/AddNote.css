@@ -1,13 +1,25 @@
 .add-note {
     grid-area: "content";
     position: relative;
+    padding: .5em;
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
+.add-note input {
+    background-color: inherit;
+}
+
+.add-note .icon {
+    color: var(--clr-primary-font);
 }
 
 .pin-note {
     position: absolute;
-    top: -7px;
-    right: -7px;
+    top: 5px;
+    right: 5px;
+    /* border-radius: 50% !important; */
 }
 
 .edit-note-form {
@@ -18,7 +30,7 @@
     padding: .5em;
 }
 
-.text-info{
+.text-info {
     display: flex;
     flex-direction: column;
 

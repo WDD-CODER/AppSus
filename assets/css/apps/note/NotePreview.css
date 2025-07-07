@@ -1,33 +1,41 @@
 .note-preview {
-    break-inside: avoid;
+  break-inside: avoid;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    gap: .5em;
+  gap: .5em;
 
-    max-width: 15em;
+  max-width: 15em;
 
-    padding: .5em;
-    margin-block-end: .5em;
+  padding: .5em;
+  margin-block-end: .5em;
 }
 
 .note-preview .tool-bar {
-    margin-inline: auto;
-    font-size: .5em;
+  opacity: 0;
+  margin-inline: auto;
+  font-size: .5em;
+  transition: opacity .5s;
+}
+
+.note-preview .tool-bar:hover {
+  opacity: 1;
 }
 
 .modal-enter {
   transform: scale(0.2);
   opacity: 0;
-  transform-origin: top center; /* or the corner where the cell sits */
+  transform-origin: top center;
+  /* or the corner where the cell sits */
 }
 
 .note-dialog {
   transform: scale(0.9);
   opacity: 0;
   transition: transform 300ms ease, opacity 300ms ease;
-  pointer-events: none; /* to avoid flickers */
+  pointer-events: none;
+  /* to avoid flickers */
 }
 
 .note-dialog.active {

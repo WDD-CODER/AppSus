@@ -1,0 +1,27 @@
+.create-note {
+    grid-area: create-note;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: minmax(auto, 600px);
+
+    min-height: 26px;
+    max-width: 37.5em;
+
+    padding: .5em 1em;
+    margin: 1em auto;
+
+    cursor: text;
+
+    overflow-wrap: break-word;
+
+
+}
+
+.create-note .close:hover {
+    transition: .5s;
+    background-color: var(--clr-bg-button);
+}
+
+.create-note:has(.add-note){
+    padding: 0;
+}

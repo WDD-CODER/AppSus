@@ -1,0 +1,48 @@
+.color-drop-down{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);    
+    background-color: var(--clr-bg-main);
+}
+.color-choose{
+    padding-inline: .2em;
+    gap: .5em;
+}
+    
+.color-drop-down .color-pick{
+    display: block;
+    
+    width: 1.76em;
+    height:  1.76em;
+    border-radius: .88em;
+}
+.color-drop-down .img-pick{
+    display: block;
+    
+    width: 1.76em;
+    height:  1.76em;
+    border-radius: .88em;
+}
+
+.img-pick {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+}
+
+.cover-1{
+    background-image:url("../../../images/Miss\ Books\ Logo\ Design.png")
+}
+.cover-2{
+    background-image:url("../../../images/MissBooks\ Celebration\ Moment.png Books\ Logo\ Design.png")
+}
+.cover-3{
+    background-image:url("../../../images/NoBook.png Books\ Logo\ Design.png")
+}
+.cover-4{
+    background-image:url("../../../images/onSale.png Books\ Logo\ Design.png")
+}
+.cover-5{
+    background-image:url("../../../images/welcomeBooks.png Books\ Logo\ Design.png")
+}

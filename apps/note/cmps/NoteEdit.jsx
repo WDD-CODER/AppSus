@@ -62,7 +62,7 @@ export function NoteEdit({ selectedNote, setSelectedNote, onDeleteNote }) {
                 </div>
                 {/* <div className="labels-container">{ Note.label && <LabelPicker/>}</div> */}
                 <section className="tool-bar"><ToolBar />
-                    <button className="delete" data-toolbar={'Delete'}
+                    <button className="delete"data={'Delete'}
                         onClick={ev => {
                             ev.preventDefault()
                             onRemoveNote()
