@@ -1,8 +1,8 @@
-const { useNavigate } = ReactRouterDOM
+// const { useNavigate } = ReactRouterDOM
 
 export function MailHeader() {
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     return (
         <header className="mail-header">
