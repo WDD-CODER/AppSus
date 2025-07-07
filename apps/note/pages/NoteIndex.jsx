@@ -70,7 +70,7 @@ export function NoteIndex() {
                 })
         }
     }
-    noteList = false
+    
     if (!noteList) return (<div ref={loadingRef} className="loading "> Loading...</div>)
 
     return (
