@@ -3,24 +3,40 @@ import { ToolBar } from "../cmps/Toolbar.jsx"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 const { useState, useEffect, useRef } = React
-const { useNavigate } = ReactRouterDOM
+const { useNavigate, useSearchParams } = ReactRouterDOM
 
 export function AddNote({ setSelectedNote, onSetToExpand, onDeleteNote }) {
     const [savedNote, setSavedNote] = useState(noteService.getEmptyNote())
+    const [searchParams, setSearchParams] = useSearchParams()
     const navigate = useNavigate()
-    const noteRef = useRef()
-    var intervalID
 
 
 
     useEffect(() => {
+
         if (!savedNote.id) {
-            noteService.save(savedNote).then(note => {
-                setSavedNote(note)
-                showSuccessMsg('saved to storage, ready for edit :)')
-            })
+            noteService.save(savedNote)
+                .then(note => {
+                    setSavedNote(note)
+                    searchParams.set('EditNoteId', note.id)
+                    noteService.onSetNoteParams(note, searchParams, setSearchParams)
+                    showSuccessMsg('saved to storage, ready for edit :)')
+
+                })
         }
-    }, [])
+
+        if (searchParams.get('background-color')) {
+            console.log("searchParams.get('background-color')")
+            savedNote.style.backgroundColor = searchParams.get('background-color')
+            setSavedNote(prevNote => ({ ...prevNote, savedNote }))
+        }
+
+        if (searchParams.get('background-image')) {
+            savedNote.style.backgroundImage = searchParams.get('background-image')
+            setSavedNote(savedNote)
+        }
+
+    }, [searchParams])
 
 
 
@@ -36,10 +52,10 @@ export function AddNote({ setSelectedNote, onSetToExpand, onDeleteNote }) {
 
     function onSaveNote(ev) {
         ev.preventDefault()
-            setSelectedNote(null)
+        setSelectedNote(null)
         noteService.save(savedNote)
             .then(() => {
-             onSetToExpand(false)
+                onSetToExpand(false)
                 navigate('/note')
             })
 
@@ -49,14 +65,6 @@ export function AddNote({ setSelectedNote, onSetToExpand, onDeleteNote }) {
             })
     }
 
-
-    function updateNote() {
-        noteService.save(savedNote).then(note => {
-            noteRef.current = note
-            showSuccessMsg('updated!')
-        })
-    }
-
     function onRemoveNote() {
         onDeleteNote(savedNote.id)
         onSetToExpand(false)
@@ -64,11 +72,12 @@ export function AddNote({ setSelectedNote, onSetToExpand, onDeleteNote }) {
 
     const title = savedNote && savedNote.title ? savedNote.title : ''
     const info = (savedNote && savedNote.info && savedNote.info.txt) ? savedNote.info.txt : ''
+    const coverImg = (!savedNote.style.backgroundImage) ? { backgroundColor: savedNote.style.backgroundColor } : { backgroundImage: savedNote.style.backgroundImage }
 
     return (
-        <section key={(savedNote) ? savedNote.id : ''} className="add-note">
+        <section style={coverImg} key={(savedNote) ? savedNote.id : ''} className="add-note box">
             <form className="edit-note-form" onSubmit={onSaveNote}>
-                <button className="pin-note icon-bell icon"></button>
+                <button className="pin-note"><span className=" icon-keep icon">keep</span></button>
                 <div className="text-info">
                     <h1 className="title">
                         <input onChange={handleChange}
@@ -84,10 +93,11 @@ export function AddNote({ setSelectedNote, onSetToExpand, onDeleteNote }) {
                             placeholder="Take a note..." />
                     </p>
                 </div>
+
                 <div className="labels-container">{/* { Note.label && <LabelPicker/>} */}</div>
             </form>
             <section className="tool-bar flex"><ToolBar />
-                <button className="delete" data-toolbar={'Delete'} onClick={ev => { ev.preventDefault(), onRemoveNote() }}>Delete</button>
+                <button className="delete" data={'Delete'} onClick={ev => { ev.preventDefault(), onRemoveNote() }}>Delete</button>
                 <button className="close btn" onClick={onSaveNote}>Close</button>
             </section>
         </section>

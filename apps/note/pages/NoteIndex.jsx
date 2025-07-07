@@ -18,6 +18,7 @@ export function NoteIndex() {
     const [pinnedNoteList, setPinnedNoteList] = useState()
     const [noteList, setNoteList] = useState()
     const [selectedNote, setSelectedNote] = useState(null)
+    console.log("🚀 ~ NoteIndex ~ selectedNote:", selectedNote)
     const [isModalOpen, setIsModalOpen] = useState()
 
     const params = useParams()
@@ -75,7 +76,6 @@ export function NoteIndex() {
     return (
 
         <div className="note-index note-layout">
-            {/* <Link to="/note/edit"> */}
             <NoteSideBar />
             <NoteHeader />
             <section className="lists-container">
@@ -83,7 +83,6 @@ export function NoteIndex() {
                     setSelectedNote={setSelectedNote}
                     onDeleteNote={onDeleteNote}
                 />
-                {/* </Link> */}
                 {selectedNote && <Modal isOpen={isModalOpen}>
                     <NoteEdit
                         selectedNote={selectedNote}
@@ -93,7 +92,7 @@ export function NoteIndex() {
                 </Modal>}
                 {pinnedNoteList && <NoteList key={'pinned-notes'} type={'pinned'} notes={pinnedNoteList} />}
                 {!selectedNote && noteList && <NoteList key={'other-notes'} type={'other'} notes={noteList} />}
-                {/* <button onClick={() => onDeleteNote()} data-toolbar={'Delete'} className="delete">Delete</button> */}
+                {/* <button onClick={() => onDeleteNote()}data={'Delete'} className="delete">Delete</button> */}
             </section>
         </div>
     )

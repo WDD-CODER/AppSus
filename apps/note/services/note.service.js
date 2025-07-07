@@ -58,6 +58,7 @@ function _createDemoNote(type) {
 
 //  SAVE 
 function save(note) {
+    console.log("🚀 ~ save ~ note:", note)
     if (note.id) {
         return storageService.put(NOTE_KEY, note)
     } else {
@@ -73,12 +74,15 @@ function get(noteId) {
 
 
 function getEmptyNote(type = 'NoteTxt', createdAt) {
+    const color = getComputedStyle(document.documentElement)
+                  .getPropertyValue('--clr-bg-main')
+                  .trim();
     const now = new Date()
     return {
         createdAt: { time: now.toLocaleTimeString(), date: now.toLocaleDateString() },
         type,
         isPinned: false,
-        style: { backgroundColor: '#00d' },
+        style: { backgroundColor: color },
         info: { txt: '' }
     }
 }
@@ -112,15 +116,15 @@ function _setNextPrevNoteId(note) {
     })
 }
 
-function onSetNoteParams(note) {
+function onSetNoteParams(note, data, func ) {
     if (!note.id) return showErrorMsg('seems like there is no not...')
-    searchParams.set('txt', (note.info && note.info.txt) || '')
-    searchParams.set('type', note.type || '')
-    searchParams.set('isPinned', note.isPinned || '')
-    searchParams.set('background-Color', note.style.backgroundColor || '')
-    searchParams.set('date-createdAt', (note.createdAt && note.createdAt.date) || '')
-    searchParams.set('time-createdAt', (note.createdAt && note.createdAt.time) || '')
-    setSearchParams(searchParams)
+    data.set('txt', (note.info && note.info.txt) || '')
+    // data.set('type', note.type || '')
+    // data.set('isPinned', note.isPinned || '')
+    data.set('background-color', note.style.backgroundColor || '')
+    // data.set('date-createdAt', (note.createdAt && note.createdAt.date) || '')
+    // data.set('time-createdAt', (note.createdAt && note.createdAt.time) || '')
+    func(data)
 }
 
 
