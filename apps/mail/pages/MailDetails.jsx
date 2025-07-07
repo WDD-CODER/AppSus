@@ -1,6 +1,7 @@
 import { mailService } from "../services/mail.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 import { utilService } from "../../../services/util.service.js"
+import { MailDetailsHeader } from "../cmps/MailDetailsHeader.jsx"
 
 const { useParams, useNavigate, Link } = ReactRouterDOM
 const { useState, useEffect } = React
@@ -38,14 +39,13 @@ export function MailDetails() {
 
     return (
         <section className="mail-details">
-            {/* will be here nav-header */}
+            <MailDetailsHeader onBack={onBack}/>
             <p className="mail-details-subject">{subject}</p>
-            <div className="mail-details-header">
+            <div className="mail-data-details">
                 <p className="mail-details-from">{from}</p>
                 <div className="function-btns">
                     <p className="full-time-details">{fullTimeAndDate}</p>
-                    <button className="starred-btn">⭐</button> {/* will change the icons */}
-                    <button className="replay-btn">↱</button>
+                    <button className="icon-star icon">star</button>
                 </div>
             </div>
             <pre className="mail-details-body">{body}</pre>

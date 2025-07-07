@@ -32,3 +32,8 @@
         width: max-content;
     }
 }
+
+.mail-prev .mail-act-btns {
+    z-index: 0;
+}
+

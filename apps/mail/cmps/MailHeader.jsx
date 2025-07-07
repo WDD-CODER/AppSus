@@ -1,12 +1,12 @@
-const { useNavigate } = ReactRouterDOM
+// const { useNavigate } = ReactRouterDOM
 
 export function MailHeader() {
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     return (
         <header className="mail-header">
-            <div className="mail-folder-list-hamburger">≡</div>
+            <div className="mail-folder-list-hamburger icon-menu icon">menu</div>
             <img className="gmail-logo" src="../../assets/images/Gmail-logo.png" alt="Gmail-Logo" />
             <p>wil be here search cmp</p>
         </header>

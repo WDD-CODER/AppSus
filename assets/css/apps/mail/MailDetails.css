@@ -3,7 +3,7 @@
     margin: 1em;
     border: 0.5px solid var(--clr-gmail-shadow-line);
     border-radius: 20px;
-    padding: 20px 0 0 16px;
+    padding: 0 0 0 16px;
     font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -17,7 +17,7 @@
     font-size: 1.375rem;
 }
 
-.mail-details .mail-details-header {
+.mail-details .mail-data-details {
     display: flex;
     justify-content: space-between;
     padding-left: 72px;
@@ -35,8 +35,7 @@
             font-size: 0.75rem;
         }
 
-        >.starred-btn,
-        .replay-btn {
+        >.icon-star {
             margin-top: 0;
             padding-top: 0;
             font-size: 1.25rem;
@@ -47,4 +46,18 @@
 .mail-details .mail-details-body {
     font: small / 1.5 Arial, Helvetica, sans-serif;
     color: var(--clr-gmail-details-1);
+}
+
+.mail-details-header {
+    display: flex;
+}
+
+.mail-details-header button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+}
+
+.mail-details-header .icon-arrow_back {
+    margin-right: 28px;
 }
