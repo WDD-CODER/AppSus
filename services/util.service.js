@@ -12,6 +12,7 @@ export const utilService = {
     getTruthyValues,
     formatTimeOrDate,
     getFullDateAndTime,
+    animateCSS,
 }
 
 function saveToStorage(key, val) {
@@ -166,4 +167,20 @@ function getFullDateAndTime(timestamp) {
     const year = date.getFullYear()
 
     return `${day} ${month} ${year}, ${hours}:${minutes}`
+}
+
+export function animateCSS(el, animation = 'bounce', isRemoveClass = true) {
+    const prefix = 'animate__'
+    return new Promise((resolve, reject) => {
+        const animationName = `${prefix}${animation}`
+        el.classList.add(`${prefix}animated`, animationName)
+
+        function handleAnimationEnd(ev) {
+            ev.stopPropagation()
+            if (isRemoveClass) el.classList.remove(`${prefix}animated`, animationName)
+            resolve('Animation ended')
+        }
+
+        el.addEventListener('animationend', handleAnimationEnd, { once: true })
+    })
 }

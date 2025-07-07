@@ -19,6 +19,7 @@
 
 /* Cmps Note*/
 @import './apps/note/NoteSideBar.css';
+@import './apps/note/Loading.css';
 @import './apps/note/ColorDropDown.css';
 @import './apps/note/CreateNote.css';
 @import './apps/note/ToolBar.css';
