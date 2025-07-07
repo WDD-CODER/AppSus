@@ -1,5 +1,5 @@
-.mail-side-bar {
-    grid-area: mail-side-bar;
+.mail-folder-list {
+    grid-area: mail-folder-list;
     position: relative;
     display: grid;
     height: 48px;
@@ -7,7 +7,7 @@
     transition: .5s ease-in;
 }
 
-.mail-side-bar .mail-filters-container span {
+.mail-folder-list .mail-filters-container span {
     display: none;
     opacity: 0;
 
@@ -15,7 +15,7 @@
     background-color: transparent;
 }
 
-.mail-side-bar .mail-filters-container div {
+.mail-folder-list .mail-filters-container div {
     border-top-right-radius: 2vh;
     border-bottom-right-radius: 2vh;
 
@@ -49,12 +49,12 @@
     }
 }
 
-.mail-side-bar .mail-filters-container:hover span {
+.mail-folder-list .mail-filters-container:hover span {
     display: inline;
     opacity: 1;
 }
 
-.mail-side-bar .mail-filters-container:has(div.active.long) span {
+.mail-folder-list .mail-filters-container:has(div.active.long) span {
     display: inline;
     opacity: 1;
 }

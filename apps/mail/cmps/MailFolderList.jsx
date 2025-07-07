@@ -1,6 +1,6 @@
 const { useState } = React
 
-export function MailSideBar() {
+export function MailFolderList() {
 
     const [isActive, setIsActive] = useState()
 
@@ -16,7 +16,7 @@ export function MailSideBar() {
     }
 
     return (
-        <section className="mail-side-bar">
+        <section className="mail-folder-list">
             <div className="mail-filters-container">
                 <div className="compose-mail flex align-center">
                     <button className="icon">✏</button>
