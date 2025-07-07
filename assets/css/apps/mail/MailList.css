@@ -7,7 +7,7 @@
  }
 
  .mail-list li a {
-    grid-area: mail-list;
+     grid-area: mail-list;
      /* display: flex; */
      display: grid;
      grid-template-columns: 200px minmax(208px, 1fr) auto;
@@ -30,13 +30,14 @@
  }
 
  .mail-list li.read {
-    background-color: rgb(242, 246, 252);
+     background-color: rgb(242, 246, 252);
  }
 
- .mail-list li.unread a{
+ .mail-list li.unread a {
      /* background-color: rgba(245, 245, 245, 0.774); */
 
-     >.mail-from, .mail-subject {
+     >.mail-from,
+     .mail-subject {
          font-weight: bold;
      }
  }
@@ -47,4 +48,12 @@
          inset 1px 0 0 rgb(218, 220, 224),
          0 1px 2px 0 rgba(60, 64, 67, .3),
          0 1px 3px 1px rgba(60, 64, 67, .15);
+
+     >a .mail-prev.mail-date {
+         display: none;
+     }
+
+     >a .mail-prev.mail-act-btns {
+         z-index: 1;
+     }
  }
