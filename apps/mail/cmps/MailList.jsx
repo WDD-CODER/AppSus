@@ -1,4 +1,5 @@
 import { MailPreview } from "./MailPreview.jsx"
+import { MailPreviewBtns } from "./MailPreviewBtns.jsx"
 const { Link } = ReactRouterDOM
 
 export function MailList({ mails }) {
@@ -11,6 +12,7 @@ export function MailList({ mails }) {
                 <li className={mail.isRead ? 'read' : 'unread'} key={mail.id}>
                     <Link to={`/mail/${mail.id}`}>
                         <MailPreview mail={mail} />
+                        <MailPreviewBtns mail={mail} />
                     </Link>
                 </li>
             ))}

@@ -33,7 +33,7 @@
     }
 }
 
-.mail-prev .mail-act-btns {
-    z-index: 0;
+.mail-prev.mail-act-btns {
+    display: none;
 }
 
