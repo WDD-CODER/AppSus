@@ -1,5 +1,4 @@
 import { Modal } from "../../../cmps/Modal.jsx";
-import { SideBar } from "../../../cmps/SideBar.jsx";
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js";
 import { CreateNote } from "../cmps/CreateNote.jsx";
 import { NoteEdit } from "../cmps/NoteEdit.jsx";
@@ -9,7 +8,7 @@ import { NoteSideBar } from "../cmps/NoteSideBar.jsx";
 import { noteService } from "../services/note.service.js"
 
 const { useState, useEffect } = React
-const { useSearchParams, useParams, Link } = ReactRouterDOM
+const { useSearchParams, useParams } = ReactRouterDOM
 
 export function NoteIndex() {
 
@@ -18,7 +17,6 @@ export function NoteIndex() {
     const [pinnedNoteList, setPinnedNoteList] = useState()
     const [noteList, setNoteList] = useState()
     const [selectedNote, setSelectedNote] = useState(null)
-    console.log("🚀 ~ NoteIndex ~ selectedNote:", selectedNote)
     const [isModalOpen, setIsModalOpen] = useState()
 
     const params = useParams()
@@ -30,12 +28,9 @@ export function NoteIndex() {
                     setIsModalOpen(true)
                     setSelectedNote(note)
                 })
-                .catch(err => {
-                    console.log('err', err)
-                    showErrorMsg('Problem opening  modal')
-                })
-
-        } else {
+                .catch(() => showErrorMsg('Problem opening  modal'))
+        }
+        else {
             loadNotes()
             setSelectedNote(null)
             setIsModalOpen(false)
@@ -73,6 +68,9 @@ export function NoteIndex() {
                 })
         }
     }
+
+    if (!noteList) return <div className="loading"> Loading...</div>
+
     return (
 
         <div className="note-index note-layout">
@@ -83,7 +81,7 @@ export function NoteIndex() {
                     setSelectedNote={setSelectedNote}
                     onDeleteNote={onDeleteNote}
                 />
-                {selectedNote && <Modal isOpen={isModalOpen}>
+                {selectedNote && <Modal onSetIsModalOpen={setIsModalOpen} isOpen={isModalOpen}>
                     <NoteEdit
                         selectedNote={selectedNote}
                         setSelectedNote={setSelectedNote}
