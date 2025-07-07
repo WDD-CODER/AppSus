@@ -19,27 +19,27 @@ export function MailFolderList() {
         <section className="mail-folder-list">
             <div className="mail-filters-container">
                 <div className="compose-mail flex align-center">
-                    <button className="icon">✏</button>
+                    <button className="icon-edit icon">edit</button>
                     <span>Compose</span>
                 </div>
                 <div className="mail-filter-container flex align-center" onClick={onSetActive}>
-                    <button className="icon">📫</button>
+                    <button className="icon-inbox icon">inbox</button>
                     <span>Inbox</span>
                 </div>
                 <div className="mail-filter-container flex align-center" onClick={onSetActive}>
-                    <button className="icon">⭐</button>
+                    <button className="icon-star icon">star</button>
                     <span>Starred</span>
                 </div>
                 <div className="mail-filter-container flex align-center" onClick={onSetActive}>
-                    <button className="icon">📩</button>
+                    <button className="icon-send icon">send</button>
                     <span>Sent</span>
                 </div>
                 <div className="mail-filter-container flex align-center" onClick={onSetActive}>
-                    <button className="icon">📄</button>
+                    <button className="icon-draft icon">draft</button>
                     <span>Draft</span>
                 </div>
                 <div className="mail-filter-container flex align-center" onClick={onSetActive}>
-                    <button className="icon">🗑</button>
+                    <button className="icon-delete icon">delete</button>
                     <span>Trash</span>
                 </div>
             </div>
