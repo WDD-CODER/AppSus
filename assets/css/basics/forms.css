@@ -1,15 +1,15 @@
 button {
     position: relative;
     cursor: pointer;
-    margin: 0.5em;
+    /* margin: 0.5em; */
     border: 0;
-    padding: 0.5em 0.8em;
+    /* padding: 0.5em 0.8em; */
     border-radius: 4px;
     background-color: transparent;
 }
 
 button.hover-show::after {
-    content: attr(data-toolbar);
+    content: attr(data);
 
     position: absolute;
     top: 110%;
@@ -29,17 +29,20 @@ button.hover-show::after {
     font-family: 'Chewy';
     background-color: #474747;
     transition: opacity 0.2s ease-in-out;
+
 }
 
 button.hover-show:hover::after {
     opacity: 1;
 }
+button.hover-show.active:hover::after {
+    opacity: 0;
+}
 
 /* button:hover {
     font-weight: bold;
-    border-radius: 50%;
+    transition: .5s;
     background-color: var(--clr-bg-button);
-    transition: .3s;
 } */
 
 button .icon {
@@ -50,6 +53,8 @@ button .icon {
     width: 16px;
     padding: 16px;
     height: 16px;
+
+    border-radius: 50%;
 }
 
 .icon:hover {

@@ -23,7 +23,7 @@
 }
 
 .box {
-    border-radius: .5vh;
+    border-radius: 1vh;
     border: 1px var(--clr-border) solid
 }
 

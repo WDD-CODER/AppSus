@@ -4,18 +4,16 @@ export function NoteSideBar() {
 
     const [isActive, setIsActive] = useState()
 
-    function onSetActive(ev) {
-        const el = ev.currentTarget
-
-        if (isActive === el) {
-            el.classList.remove('long', 'active')
+    function onSetActive({currentTarget}) {
+        if (isActive === currentTarget) {
+            currentTarget.classList.remove('long', 'active')
             setIsActive(null)
         } else {
             if (isActive) {
                 isActive.classList.remove('long', 'active')
             }
-            el.classList.add('long', 'active')
-            setIsActive(el)
+            currentTarget.classList.add('long', 'active')
+            setIsActive(currentTarget)
         }
     }
 

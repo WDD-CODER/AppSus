@@ -4,12 +4,15 @@
     justify-content: space-between
 }
 
+
 .tool-bar .close {
+    padding: 10px;
     border-radius: .5vh;
     margin-inline: 1em;
 }
 
-.tool-bar > button {
+.tool-bar >  button {
     margin: 0;
     padding: 0;
 }
+
