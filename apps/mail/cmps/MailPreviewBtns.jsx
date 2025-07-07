@@ -3,6 +3,7 @@
 export function MailPreviewBtns({ mail }) {
 
     const handleActionClick = (ev) => {
+        ev.preventDefault()
         ev.stopPropagation() 
         console.log('Action button clicked for mail:', mail.id)
         // e.g., if you have different buttons:
