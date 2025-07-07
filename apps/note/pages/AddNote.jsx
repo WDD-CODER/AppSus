@@ -6,34 +6,34 @@ const { useState, useEffect, useRef } = React
 const { useNavigate, useSearchParams } = ReactRouterDOM
 
 export function AddNote({ setSelectedNote, onSetToExpand, onDeleteNote }) {
-    const [savedNote, setSavedNote] = useState(noteService.getEmptyNote())
+    const [note, setNote] = useState(noteService.getEmptyNote())
     const [searchParams, setSearchParams] = useSearchParams()
     const navigate = useNavigate()
 
 
 
     useEffect(() => {
+console.log('add note')
 
-        if (!savedNote.id) {
-            noteService.save(savedNote)
+        if (!note.id) {
+            noteService.save(note)
                 .then(note => {
-                    setSavedNote(note)
+                    console.log("🚀 ~ useEffect ~ note:", note)
+                    setNote(note)
                     searchParams.set('EditNoteId', note.id)
                     noteService.onSetNoteParams(note, searchParams, setSearchParams)
                     showSuccessMsg('saved to storage, ready for edit :)')
-
                 })
         }
 
         if (searchParams.get('background-color')) {
-            console.log("searchParams.get('background-color')")
-            savedNote.style.backgroundColor = searchParams.get('background-color')
-            setSavedNote(prevNote => ({ ...prevNote, savedNote }))
+            note.style.backgroundColor = searchParams.get('background-color')
+            setNote(prevNote => ({ ...prevNote, note: note }))
         }
 
         if (searchParams.get('background-image')) {
-            savedNote.style.backgroundImage = searchParams.get('background-image')
-            setSavedNote(savedNote)
+            note.style.backgroundImage = searchParams.get('background-image')
+            setNote(note)
         }
 
     }, [searchParams])
@@ -45,15 +45,15 @@ export function AddNote({ setSelectedNote, onSetToExpand, onDeleteNote }) {
         let value = target.value
 
         if (field === 'info') {
-            setSavedNote(prev => ({ ...prev, info: { ...prev.info, txt: value } }))
+            setNote(prev => ({ ...prev, info: { ...prev.info, txt: value } }))
         }
-        else setSavedNote(prevNote => ({ ...prevNote, [field]: value }))
+        else setNote(prevNote => ({ ...prevNote, [field]: value }))
     }
 
     function onSaveNote(ev) {
         ev.preventDefault()
         setSelectedNote(null)
-        noteService.save(savedNote)
+        noteService.save(note)
             .then(() => {
                 onSetToExpand(false)
                 navigate('/note')
@@ -66,16 +66,16 @@ export function AddNote({ setSelectedNote, onSetToExpand, onDeleteNote }) {
     }
 
     function onRemoveNote() {
-        onDeleteNote(savedNote.id)
+        onDeleteNote(note.id)
         onSetToExpand(false)
     }
 
-    const title = savedNote && savedNote.title ? savedNote.title : ''
-    const info = (savedNote && savedNote.info && savedNote.info.txt) ? savedNote.info.txt : ''
-    const coverImg = (!savedNote.style.backgroundImage) ? { backgroundColor: savedNote.style.backgroundColor } : { backgroundImage: savedNote.style.backgroundImage }
+    const title = note && note.title ? note.title : ''
+    const info = (note && note.info && note.info.txt) ? note.info.txt : ''
+    const coverImg = (!note.style.backgroundImage) ? { backgroundColor: note.style.backgroundColor } : { backgroundImage: note.style.backgroundImage }
 
     return (
-        <section style={coverImg} key={(savedNote) ? savedNote.id : ''} className="add-note box">
+        <section style={coverImg} key={(note) ? note.id : ''} className="add-note box">
             <form className="edit-note-form" onSubmit={onSaveNote}>
                 <button className="pin-note"><span className=" icon-keep icon">keep</span></button>
                 <div className="text-info">

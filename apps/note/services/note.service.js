@@ -58,7 +58,6 @@ function _createDemoNote(type) {
 
 //  SAVE 
 function save(note) {
-    console.log("🚀 ~ save ~ note:", note)
     if (note.id) {
         return storageService.put(NOTE_KEY, note)
     } else {
@@ -122,8 +121,10 @@ function onSetNoteParams(note, data, func ) {
     // data.set('type', note.type || '')
     // data.set('isPinned', note.isPinned || '')
     data.set('background-color', note.style.backgroundColor || '')
+    data.set('background-image', note.style.backgroundImage || '')
     // data.set('date-createdAt', (note.createdAt && note.createdAt.date) || '')
     // data.set('time-createdAt', (note.createdAt && note.createdAt.time) || '')
+    // return Promise.resolve(func(data))
     func(data)
 }
 

@@ -13,8 +13,10 @@ export function NotePreview({ note }) {
         setSearchParams(searchParams)
     }
 
+// const img = (!note.style.backgroundImage)? '' : note.style.backgroundImage
+
     return (
-        <section onClick={() => onSetParams()} className="note-preview box container">
+        <section style={{...note.style}} onClick={() => onSetParams()} className="note-preview box container">
             <h1>{title}</h1>
             <p>{info.txt}</p>
             {info.img && <figure>{info.img}</figure>}

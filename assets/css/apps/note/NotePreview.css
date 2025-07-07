@@ -10,6 +10,11 @@
 
   padding: .5em;
   margin-block-end: .5em;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+
 }
 
 .note-preview .tool-bar {
@@ -27,7 +32,6 @@
   transform: scale(0.2);
   opacity: 0;
   transform-origin: top center;
-  /* or the corner where the cell sits */
 }
 
 .note-dialog {
