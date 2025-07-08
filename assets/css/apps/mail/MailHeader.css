@@ -10,6 +10,7 @@
 .mail-header .mail-folder-list-hamburger {
     font-size: 1.5rem;
     padding: 12px;
+    cursor: pointer;
 }
 
 .mail-header .gmail-logo {
