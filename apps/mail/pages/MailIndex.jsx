@@ -23,12 +23,20 @@ export function MailIndex() {
             })
     }
 
+    function updateMailInList(updatedMail) {
+        setMails(prevMails => 
+            prevMails.map(mail => (
+                mail.id === updatedMail.id ? updatedMail : mail
+            ))
+        )
+    }
+
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index">
             <MailFolderList />
             <MailHeader />
-            <MailList mails={mails} />
+            <MailList mails={mails} onUpdateMailList={updateMailInList} />
             {/* <h1>Mails:</h1> */}
             {/* <table className="mails-table">
                 <MailList mails={mails} />
