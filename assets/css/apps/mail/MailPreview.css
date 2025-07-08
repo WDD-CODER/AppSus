@@ -5,13 +5,15 @@
 }
 
 .mail-prev.mail-from {
-    width: 168px;
-    padding-right: 32px;
+    display: flex;
+    width: auto;
+    margin-right: 32px;
 }
 
 .mail-prev.mail-content {
     display: grid;
-    grid-template-columns: minmax(210px, 335px) minmax(0, 1fr);
+    grid-template-columns: minmax(auto, 335px) minmax(auto, 1fr);
+    margin-left: 2em;
 }
 
 /* .mail-prev.mail-subject {
