@@ -1,14 +1,26 @@
+import { mailService } from "../services/mail.service.js"
 
+const { useState } = React
 
 export function MailPreviewBtns({ mail }) {
+
+    const [mailToMark, setMailToMark] = useState(mail)
 
     const handleActionClick = (ev) => {
         ev.preventDefault()
         ev.stopPropagation()
         console.log('Action button clicked for mail:', mail.id)
 
-        if (ev.target.dataset.action === 'mark-read') console.log('mark')
+        if (ev.target.dataset.action === 'mark-read') onMarkRead()
         if (ev.target.dataset.action === 'delete') console.log('delete')
+    }
+
+    function onMarkRead(ev) {
+        // ev.preventDefault()
+        mail.isRead = !mail.isRead
+        setMailToMark(mail)
+        mailService.save(mailToMark)
+        .then(mail => console.log(mail))
     }
 
     const checkIsMailRead = isReadMail()

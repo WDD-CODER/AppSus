@@ -12,7 +12,7 @@ export function MailIndex() {
 
     useEffect(() => {
         loadMails()
-    }, [])
+    }, [mails])
 
     function loadMails() {
         mailService.query()
