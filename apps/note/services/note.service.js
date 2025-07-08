@@ -117,13 +117,13 @@ function _setNextPrevNoteId(note) {
 
 function onSetNoteParams(note, data, func ) {
     if (!note.id) return showErrorMsg('seems like there is no not...')
-    data.set('txt', (note.info && note.info.txt) || '')
+    // data.set('txt', (note.info && note.info.txt) || '')
     // data.set('type', note.type || '')
     // data.set('isPinned', note.isPinned || '')
-    data.set('background-color', note.style.backgroundColor || '')
-    data.set('background-image', note.style.backgroundImage || '')
-    // data.set('date-createdAt', (note.createdAt && note.createdAt.date) || '')
-    // data.set('time-createdAt', (note.createdAt && note.createdAt.time) || '')
+    // data.set('background-color', note.style.backgroundColor || '')
+    // data.set('background-image', note.style.backgroundImage || '')
+    data.set('date-createdAt', (note.createdAt && note.createdAt.date) || '')
+    data.set('time-createdAt', (note.createdAt && note.createdAt.time) || '')
     // return Promise.resolve(func(data))
     func(data)
 }

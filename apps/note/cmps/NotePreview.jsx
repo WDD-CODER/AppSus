@@ -1,6 +1,7 @@
+import { noteService } from "../services/note.service.js";
 import { ToolBar } from "./Toolbar.jsx";
 
-const { useSearchParams, useNavigate } = ReactRouterDOM
+const { useSearchParams } = ReactRouterDOM
 
 export function NotePreview({ note }) {
     const labels = ''
@@ -10,7 +11,7 @@ export function NotePreview({ note }) {
 
     function onSetParams() {
         searchParams.set('noteId', note.id)
-        setSearchParams(searchParams)
+        noteService.onSetNoteParams(note, searchParams, setSearchParams)
     }
 
 // const img = (!note.style.backgroundImage)? '' : note.style.backgroundImage
