@@ -2,7 +2,7 @@ import { Modal } from "../../../cmps/Modal.jsx";
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js";
 import { animateCSS } from "../../../services/util.service.js";
 import { CreateNote } from "../cmps/CreateNote.jsx";
-import { NoteEdit } from "../cmps/NoteEdit.jsx";
+import { NoteEdit } from "../pages/NoteEdit.jsx";
 import { NoteHeader } from "../cmps/NoteHeader.jsx";
 import { NoteList } from "../cmps/NoteList.jsx"
 import { NoteSideBar } from "../cmps/NoteSideBar.jsx";
@@ -16,15 +16,20 @@ export function NoteIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const [pinnedNoteList, setPinnedNoteList] = useState()
-    var [noteList, setNoteList] = useState()
+    const [noteList, setNoteList] = useState()
     const [selectedNote, setSelectedNote] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState()
     const loadingRef = useRef()
     const params = useParams()
 
     useEffect(() => {
-        animateCSS(loadingRef.current, 'heartBeat', false)
-        if (searchParams.get('noteId')) {
+
+        if (!noteList) {
+            animateCSS(loadingRef.current, 'heartBeat', false)
+            loadNotes()
+        }
+
+        if (searchParams.get('time-createdAt')) {
             noteService.get(searchParams.get('noteId'))
                 .then(note => {
                     setIsModalOpen(true)
@@ -32,18 +37,21 @@ export function NoteIndex() {
                 })
                 .catch(() => showErrorMsg('Problem opening  modal'))
         }
+
+
+
         else {
-            loadNotes()
             setSelectedNote(null)
             setIsModalOpen(false)
         }
-    }, [params, searchParams])
+    }, [params, searchParams.get('noteId'), !noteList])
 
 
 
     function loadNotes() {
         noteService.query()
             .then(notes => {
+
                 filterPinnedNotes(notes)
                 setNoteList(notes)
             })
@@ -64,14 +72,14 @@ export function NoteIndex() {
             noteService.remove(curNoteId)
                 .then(() => {
                     setIsModalOpen(false)
-                    showSuccessMsg('Note removed with Success')
                     setSelectedNote(null)
                     setSearchParams({})
+                    showSuccessMsg('Note removed with Success')
                 })
         }
     }
-    
-    if (!noteList) return (<div ref={loadingRef} className="loading "> Loading...</div>)
+
+    if (!noteList) return (<div ref={loadingRef} className="loading"> Loading...</div>)
 
     return (
 
@@ -80,13 +88,13 @@ export function NoteIndex() {
             <NoteHeader />
             <section className="lists-container">
                 <CreateNote
-                    setSelectedNote={setSelectedNote}
+                    // setSelectedNote={setSelectedNote}
                     onDeleteNote={onDeleteNote}
                 />
                 {selectedNote && <Modal onSetIsModalOpen={setIsModalOpen} isOpen={isModalOpen}>
                     <NoteEdit
                         selectedNote={selectedNote}
-                        setSelectedNote={setSelectedNote}
+                        // setSelectedNote={setSelectedNote}
                         onDeleteNote={onDeleteNote}
                     />
                 </Modal>}

@@ -1,25 +1,36 @@
 import { eventBusService, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
+import { animateCSS } from "../../../services/util.service.js"
 import { noteService, } from "../services/note.service.js"
-import { ToolBar } from "./Toolbar.jsx"
+import { ToolBar } from "../cmps/Toolbar.jsx"
 
-const { useState, useEffect } = React
+const { useState, useEffect, useRef } = React
 const { useNavigate, useSearchParams } = ReactRouterDOM
 
-export function NoteEdit({ selectedNote, setSelectedNote, onDeleteNote }) {
+export function NoteEdit({ selectedNote, onDeleteNote, onSetToExpand }) {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const [note, setNote] = useState(selectedNote)
+    const loadingRef = useRef()
     const navigate = useNavigate()
+    const addOrEdit = (searchParams.get('time-createdAt')) ? 'edit' : 'add'
+    console.log("🚀 ~ NoteEdit ~ addOrEdit:", addOrEdit)
 
     useEffect(() => {
-        note.style.backgroundColor = searchParams.get('background-color')
-        note.style.backgroundImage = (!searchParams.get('background-image')) ? '' : searchParams.get('background-image')
-        setNote(prevNote => ({ ...prevNote, ...note }))
-        noteService.onSetNoteParams(note, searchParams, setSearchParams)
-        showSuccessMsg('saved to storage, ready for edit :)')
+        if (!note) animateCSS(loadingRef.current, 'heartBeat', false)
 
-    }, [searchParams.get('background-image'), searchParams.get('background-color')])
+        if (!note) {
 
+            const note = noteService.getEmptyNote()
+            noteService.save(note)
+                .then(note => {
+                    setNote(note)
+                    searchParams.set('noteId', note.id)
+                    setSearchParams(searchParams)
+                    showSuccessMsg('saved to storage, ready for edit :)')
+                })
+        }
+
+    }, [searchParams.get('time-createdAt')])
 
 
     function handleChange({ target }) {
@@ -30,21 +41,25 @@ export function NoteEdit({ selectedNote, setSelectedNote, onDeleteNote }) {
     }
 
     function onRemoveNote() {
-        onDeleteNote()
+        if (addOrEdit === 'add') onSetToExpand(false)
+        onDeleteNote(note.id)
     }
 
     function onSave() {
+        if (addOrEdit === 'add') onSetToExpand(false)
         noteService.save(note)
-            .then(() => setSelectedNote(null))
+            // .then(() => setSelectedNote(null))
             .then(() => navigate('/note'))
             .catch(() => showErrorMsg('problem saving note'))
     }
 
-    const coverImg = (!note.style) ? {} : { ...note.style }
+    // const coverImg = (!note.style) ? {} : { ...note.style }
+    if (!note) return (<div ref={loadingRef} className="loading"> Loading...</div>)
 
     return (
         <React.Fragment>
-            <form style={coverImg}
+            <form
+                //  style={coverImg}
                 className="NoteEdit box"
                 onSubmit={ev => {
                     ev.preventDefault()
@@ -54,7 +69,7 @@ export function NoteEdit({ selectedNote, setSelectedNote, onDeleteNote }) {
                 <div className="text-info">
                     <h1 className="title">
                         <input onChange={handleChange}
-                            value={note.title}
+                            value={note.title || ''}
                             name="title" type="text"
                             placeholder="title..." />
                     </h1>
@@ -66,7 +81,7 @@ export function NoteEdit({ selectedNote, setSelectedNote, onDeleteNote }) {
                             type="text"
                             placeholder="Take a note..." />
                     </p>
-                    
+
                 </div>
                 {/* <div className="labels-container">{ Note.label && <LabelPicker/>}</div> */}
                 <section className="tool-bar"><ToolBar />

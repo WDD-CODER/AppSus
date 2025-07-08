@@ -1,27 +1,27 @@
 
 
 import { AddNote } from "../pages/AddNote.jsx"
+import { NoteEdit } from "../pages/NoteEdit.jsx"
 const { useState, useEffect } = React
 const { useNavigate, useSearchParams } = ReactRouterDOM
 
-export function CreateNote({ setSelectedNote, onDeleteNote, }) {
+export function CreateNote({ onDeleteNote, }) {
 
     const [searchParams, setSearchParams] = useSearchParams()
 
     const navigate = useNavigate()
     const [expand, setExpand] = useState()
 
-
     useEffect(() => {
-        if (expand) {
-            (searchParams.get('noteId')) ? setExpand(false) : setExpand(expand)
+        if (searchParams.get('time-createdAt')) {
+            setExpand(false)
         }
-    }, [searchParams.get('noteId')])
+
+    }, [searchParams.get('time-createdAt')])
 
 
     function onCreatENote() {
         setExpand(true)
-        navigate(`/note/edit`)
     }
 
     return (
@@ -33,8 +33,8 @@ export function CreateNote({ setSelectedNote, onDeleteNote, }) {
                 <button className=" hover-show " data="New note with draying"><span className="icon-brush icon">brush</span></button>
                 <button className=" hover-show " data="New note with image"><span className="icon-image icon">image</span></button>
             </React.Fragment>}
-            {expand && <AddNote
-                setSelectedNote={setSelectedNote}
+            {expand && <NoteEdit
+                // setSelectedNote={setSelectedNote}
                 onSetToExpand={setExpand}
                 onDeleteNote={onDeleteNote}
             />}

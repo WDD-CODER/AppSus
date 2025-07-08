@@ -11,7 +11,7 @@ import { SideBar } from './cmps/SideBar.jsx'
 import { NotFound } from './cmps/NotFound.jsx'
 import { AddNote } from './apps/note/pages/AddNote.jsx'
 import { MailDetails } from './apps/mail/pages/MailDetails.jsx'
-import { NoteEdit } from './apps/note/cmps/NoteEdit.jsx'
+import { NoteEdit } from './apps/note/pages/NoteEdit.jsx'
 import { Modal } from './cmps/Modal.jsx'
 
 export function RootCmp() {
