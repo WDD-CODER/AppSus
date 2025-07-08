@@ -23,10 +23,10 @@ export function NoteIndex() {
     const params = useParams()
 
     useEffect(() => {
+        loadNotes()
 
         if (!noteList) {
             animateCSS(loadingRef.current, 'heartBeat', false)
-            loadNotes()
         }
 
         if (searchParams.get('time-createdAt')) {
@@ -37,14 +37,11 @@ export function NoteIndex() {
                 })
                 .catch(() => showErrorMsg('Problem opening  modal'))
         }
-
-
-
         else {
             setSelectedNote(null)
             setIsModalOpen(false)
         }
-    }, [params, searchParams.get('noteId'), !noteList])
+    }, [params, searchParams.get('noteId'),isModalOpen])
 
 
 
@@ -57,7 +54,6 @@ export function NoteIndex() {
             })
             .catch(() => showErrorMsg('Failed loading notes'))
     }
-
 
     function filterPinnedNotes(notes) {
         const arePinned = notes.filter(note => note.isPinned === true)
