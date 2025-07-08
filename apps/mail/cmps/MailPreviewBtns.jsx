@@ -4,11 +4,11 @@ export function MailPreviewBtns({ mail }) {
 
     const handleActionClick = (ev) => {
         ev.preventDefault()
-        ev.stopPropagation() 
+        ev.stopPropagation()
         console.log('Action button clicked for mail:', mail.id)
-        // e.g., if you have different buttons:
+
         if (ev.target.dataset.action === 'mark-read') console.log('mark')
-        if (ev.target.dataset.action === 'delete') console.log('mark')
+        if (ev.target.dataset.action === 'delete') console.log('delete')
     }
 
     const checkIsMailRead = isReadMail()
@@ -31,8 +31,10 @@ export function MailPreviewBtns({ mail }) {
 
     return (
         <div className="mail-prev mail-act-btns">
-            <button className="icon-delete icon" data-action="delete" onClick={handleActionClick}>delete</button>
-            <button className={checkIsMailRead.iconClassName} data-action="mark-read" onClick={handleActionClick}>{checkIsMailRead.iconString}</button>
+            <button className="icon-delete icon" data-action="delete"
+                onClick={handleActionClick}>delete</button>
+            <button className={checkIsMailRead.iconClassName} data-action="mark-read"
+                onClick={handleActionClick}>{checkIsMailRead.iconString}</button>
         </div>
     )
 }
