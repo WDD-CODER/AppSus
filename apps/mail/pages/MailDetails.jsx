@@ -20,12 +20,25 @@ export function MailDetails() {
     function loadMail() {
         setIsLoading(true)
         mailService.get(params.mailId)
-            .then(mail => setMail(mail))
+            .then(mail => {
+                setMail(mail)
+            })
             .catch(err => {
                 console.log('err:', err)
                 showErrorMsg('Cannot get mail..')
             })
             .finally(() => setIsLoading(false))
+    }
+
+    function onToggleMailRead(mailToUpdate) {
+        const updatedMail = { ...mailToUpdate, isRead: !mailToUpdate.isRead }
+
+        mailService.save(updatedMail)
+            .then(savedMail => setMail(savedMail))
+            .catch(err => {
+                console.log('Error updating mail read status:', err)
+                showErrorMsg('Could not update mail status.')
+            })
     }
 
     function onBack() {
@@ -39,7 +52,10 @@ export function MailDetails() {
 
     return (
         <section className="mail-details">
-            <MailDetailsHeader onBack={onBack}/>
+            <MailDetailsHeader
+                onBack={onBack}
+                mail={mail}
+                onToggleMailRead={onToggleMailRead} />
             <p className="mail-details-subject">{subject}</p>
             <div className="mail-data-details">
                 <p className="mail-details-from">{from}</p>
