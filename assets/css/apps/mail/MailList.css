@@ -10,7 +10,7 @@
      grid-area: mail-list;
      /* display: flex; */
      display: grid;
-     grid-template-columns: 200px minmax(208px, 1fr) auto;
+     grid-template-columns: 250px minmax(208px, 1fr) auto;
      box-shadow: inset 0 -1px 0 0 var(--clr-gmail-shadow-line);
      height: 40px;
      padding: 10px 0;
