@@ -1,12 +1,12 @@
 
 const { useSearchParams } = ReactRouterDOM
-export function Modal({ children, isOpen, onSetIsModalOpen }) {
+export function Modal({ children, isOpen, onSetIsModalOpen, onClose }) {
+console.log("🚀 ~ Modal ~ children:", children)
 
   const [searchParams, setSearchParams] = useSearchParams()
 
   function closeModal() {
-    onSetIsModalOpen(false)
-    setSearchParams({})
+    onClose()
   }
 
   if (!isOpen) return null
