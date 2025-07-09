@@ -70,7 +70,7 @@ function getEmptyMail(subject = '') {
 }
 
 function getDefaultFilter() {
-    return { txt: '', folder: '' }
+    return { txt: '', folder: 'inbox' }
 }
 
 function getFilterFromSearchParams(searchParams) {

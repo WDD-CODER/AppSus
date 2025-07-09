@@ -5,10 +5,13 @@ import { mailService } from "../services/mail.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 const { useState, useEffect } = React
+const { useSearchParams } = ReactRouterDOM
 
 export function MailIndex() {
 
     const [mails, setMails] = useState(null)
+    const [searchParams, setSearchParams] = useSearchParams()
+    const [filterBy, setFilterBy] = useState(mailService.getFilterFromSearchParams(searchParams))
 
     useEffect(() => {
         loadMails()
