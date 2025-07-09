@@ -2,6 +2,7 @@ import { MailList } from "../cmps/MailList.jsx"
 import { MailFolderList } from "../cmps/MailFolderList.jsx"
 import { MailHeader } from "../cmps/MailHeader.jsx"
 import { mailService } from "../services/mail.service.js"
+import { utilService } from "../../../services/util.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 const { useState, useEffect } = React
@@ -15,10 +16,11 @@ export function MailIndex() {
 
     useEffect(() => {
         loadMails()
-    }, [])
+        setSearchParams(utilService.getTruthyValues(filterBy))
+    }, [filterBy])
 
     function loadMails() {
-        mailService.query()
+        mailService.query(filterBy)
             .then(mails => setMails(mails))
             .catch(err => {
                 console.log('err', err)
@@ -27,18 +29,22 @@ export function MailIndex() {
     }
 
     function updateMailInList(updatedMail) {
-        setMails(prevMails => 
+        setMails(prevMails =>
             prevMails.map(mail => (
                 mail.id === updatedMail.id ? updatedMail : mail
             ))
         )
     }
 
+    function onSetFilterBy(filterByToEdit) {
+        setFilterBy(prevFilter => ({ ...prevFilter, ...filterByToEdit }))
+    }
+
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index">
             <MailFolderList />
-            <MailHeader />
+            <MailHeader onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
             <MailList mails={mails} onUpdateMailList={updateMailInList} />
             {/* <h1>Mails:</h1> */}
             {/* <table className="mails-table">
