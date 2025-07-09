@@ -6,9 +6,11 @@
 }
 
 .note-list {
-    column-width: 15em;
-    column-gap: .3em;
+    columns: auto 15em;
+    /* column-width: 15em; */
+    column-gap: 10px;
 
+    transition: 1s ease-out;
 }
 
 .note-list-container h4 {

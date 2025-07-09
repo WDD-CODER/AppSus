@@ -78,10 +78,12 @@ function getMonthName(date) {
 }
 
 export function debounce(func, delay) {
+    
     let timeoutId
     return (...args) => {
         clearTimeout(timeoutId)
         timeoutId = setTimeout(() => {
+            console.log('debounce')
             func(...args)
         }, delay)
     }

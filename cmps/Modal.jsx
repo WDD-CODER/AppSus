@@ -1,12 +1,16 @@
+import { noteService } from "../apps/note/services/note.service.js"
+import { showErrorMsg } from "../services/event-bus.service.js"
 
 const { useSearchParams } = ReactRouterDOM
-export function Modal({ children, isOpen, onSetIsModalOpen, onClose }) {
-console.log("🚀 ~ Modal ~ children:", children)
-
+export function Modal({ children, isOpen, onCloseModal }) {
   const [searchParams, setSearchParams] = useSearchParams()
 
   function closeModal() {
-    onClose()
+    console.log('closeModal')
+
+    noteService.get(searchParams.get('noteId'))
+      .then(note => onCloseModal(note))
+      .catch(() => showErrorMsg(' Problem closing model '))
   }
 
   if (!isOpen) return null

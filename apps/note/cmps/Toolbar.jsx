@@ -1,21 +1,18 @@
-import { showErrorMsg } from '../../../services/event-bus.service.js'
+import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 import { noteService } from '../services/note.service.js'
-import { ColorDropDown } from './ColorDropDown.jsx'
+import { SetBackground } from './SetBackground.jsx'
 const { useState, useEffect } = React
-const { useSearchParams } = ReactRouterDOM
-export function ToolBar() {
+const { useSearchParams, useNavigate } = ReactRouterDOM
+export function ToolBar({ onSetNote }) {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const [isActive, setIsActive] = useState()
     const [note, setNote] = useState()
-    // const debounceGetCurNote = debounce(getCurNote, 1000)
-
-
+    const navigate = useNavigate()
     useEffect(() => {
-        
-        if (searchParams.get('noteId') || searchParams.get('EditNoteId')) getCurNote()
+        if (searchParams.get('noteId')) getCurNote()
 
-    }, [searchParams.get('noteId'), searchParams.get('EditNoteId')])
+    }, [searchParams.get('noteId')])
 
 
     function onSetActive({ currentTarget }) {
@@ -58,41 +55,67 @@ export function ToolBar() {
             .then(setNote)
     }
 
+
+    function onSetBackground({ target }) {
+        console.log("🚀 ~ onSetBackground ~ target:", target)
+
+        const style = { backgroundColor: '', backgroundImage: '' }
+        if (target.style['background-color']) {
+            style.backgroundColor = target.style['background-color']
+        }
+        else if (target.style['background-image']) {
+            style.backgroundImage = target.style['background-image']
+        }
+
+        note.style = { ...style }
+        noteService.save(note)
+            .then(note => {
+                onSetNote(note)
+                showSuccessMsg(' Color changed ')
+            })
+            .catch(err => {
+                console.log('err', err)
+                showErrorMsg(' Color was not updated correct ')
+            })
+    }
+
+
+
     const tool = (!isActive) ? '' : isActive.classList
 
     return (
         <section className="tool-bar flex">
 
-            <button data={'Formatting option'} className="formatting hover-show">
+            <button data-type={'Formatting option'} className="formatting hover-show">
                 <span className='icon-format_color_text  icon '>format_color_text</span>
             </button>
 
-            <button data={'Archive'} className="archive hover-show">
+            <button data-type={'Archive'} className="archive hover-show">
                 <span className='icon-archive icon '>archive</span>
             </button>
 
-            <button data={'Background color'} className="hover-show palette"
+            <button data-type={'Background'} className="hover-show palette"
                 onClick={ev => {
                     ev.preventDefault()
                     onSetActive(ev)
                 }}>
                 <span className="icon-palette icon">palette</span>
-                {tool.length > 0 && tool.contains('palette')
-                    && <ColorDropDown onSetBgImg={onSetBgImg} onSetBgColor={onSetBgColor} />}
+                {isActive && isActive.classList.contains('palette')
+                    && <SetBackground onSetBackground={onSetBackground} />}
             </button>
 
-            <button data={'Add alert'} className="alert hover-show">
+            <button data-type={'Add-alert'} className="alert hover-show">
                 <span className="icon-add_alert icon">add_alert</span>
             </button>
 
-            <button data={'Collaborator'} className="collaborator hover-show">
+            <button data-type={'Collaborator'} className="collaborator hover-show">
                 <span className="icon-person_add icon">person_add</span>
             </button>
 
-            <button data={'Add image'} className="image hover-show">
+            <button data-type={'Add-image'} className="image hover-show">
                 <span className="icon-image icon">image</span>
             </button>
-            <button data={'More'} className="more hover-show">
+            <button data-type={'More'} className="more hover-show">
                 <span className="icon-more_vert icon">more_vert</span>
             </button>
         </section>

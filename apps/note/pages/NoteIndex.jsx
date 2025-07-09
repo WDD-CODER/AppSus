@@ -24,34 +24,40 @@ export function NoteIndex() {
 
     useEffect(() => {
 
+        const noteId = searchParams.get('noteId')
+        const noteTimeCreated = searchParams.get('time-createdAt')
+
         if (!noteList) {
             animateCSS(loadingRef.current, 'heartBeat', false)
         }
 
-        if (searchParams.get('noteId')) {
-            noteService.get(searchParams.get('noteId'))
+        if (noteId) {
+            noteService.get(noteId)
                 .then(note => {
-                    if (searchParams.get('time-createdAt')) {
+                    if (noteTimeCreated) {
+                        console.log('variable')
                         setIsModalOpen(true)
                         setSelectedNote(note)
                     }
-                    else setSelectedNote(note)
+                    else {
+                        setIsModalOpen(false)
+                        setSelectedNote(note)
+                        setAddNote(true)
+                    }
                 })
                 .catch(() => showErrorMsg('Problem opening  modal'))
         }
 
-        if (!searchParams.get('noteId')) {
-            loadNotes()
-            setAddNote(false)
-}
-    }, [searchParams.get('noteId')])
+        if (!noteId)   loadNotes()
+  
+        if (!noteId && !noteTimeCreated) setAddNote(false)
 
+    }, [searchParams.get('noteId'), searchParams.get('time-createdAt')])
 
 
     function loadNotes() {
         noteService.query()
             .then(notes => {
-
                 filterPinnedNotes(notes)
                 setNoteList(notes)
             })
@@ -62,7 +68,6 @@ export function NoteIndex() {
         const arePinned = notes.filter(note => note.isPinned === true)
         setPinnedNoteList(() => (!arePinned.length) ? '' : arePinned)
     }
-
 
     function onDeleteNote(noteId) {
         const curNoteId = (noteId) ? noteId : searchParams.get('noteId')
@@ -78,17 +83,15 @@ export function NoteIndex() {
         }
     }
 
-    function onCreatENote() {
-        setExpand(true)
+    function onCloseModal(note) {
+        noteService.save(note)
+            .then(() => {
+                setIsModalOpen(false)
+                setSelectedNote(null)
+                setSearchParams({})
+                showSuccessMsg(' Close model and saved note')
+            })
     }
-
-
-    function onClose() {
-        setIsModalOpen(false)
-        setSelectedNote(null)
-        setSearchParams({})
-    }
-
 
     if (!noteList) return (<div ref={loadingRef} className="loading"> Loading...</div>)
 
@@ -98,24 +101,29 @@ export function NoteIndex() {
             <NoteSideBar />
             <NoteHeader />
             <section className="lists-container">
-                <div onClick={() => setAddNote(true)}>
-                    {!addNote && <AddNoteBar onAddNote={setAddNote} />}
+                <div className="on-add-note-container"
+
+                    onClick={() => setAddNote(true)}
+                >
+                    {!addNote && <AddNoteBar
+                    //  onAddNote={setAddNote} 
+                    />}
                     {addNote && <NoteEdit
-                        onClose={onClose}
+                        onCloseModal={onCloseModal}
                         selectedNote={selectedNote}
                         onDeleteNote={onDeleteNote}
                     />}
                 </div>
-                {isModalOpen && <Modal onClose={onClose} isOpen={isModalOpen}>
+                {isModalOpen && <Modal onCloseModal={onCloseModal} isOpen={isModalOpen}>
                     <NoteEdit
-                        onClose={onClose}
+                        onCloseModal={onCloseModal}
                         selectedNote={selectedNote}
                         onDeleteNote={onDeleteNote}
                     />
                 </Modal>}
                 {pinnedNoteList && <NoteList key={'pinned-notes'} type={'pinned'} notes={pinnedNoteList} />}
                 {!isModalOpen && noteList && <NoteList key={'other-notes'} type={'other'} notes={noteList} />}
-                {/* <button onClick={() => onDeleteNote()}data={'Delete'} className="delete">Delete</button> */}
+                {/* <button onClick={() => onDeleteNote()}data-type={'Delete'} className="delete">Delete</button> */}
             </section>
         </div>
     )

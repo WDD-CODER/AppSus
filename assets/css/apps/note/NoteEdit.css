@@ -1,28 +1,17 @@
 .note-edit {
+    position: relative;
     max-width: 600px;
     margin: auto;
+    z-index: 100;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.note-edit-modal {
-    position: fixed;
-    /* display: grid;
-    grid:
-        "title pinned"
-        "info   info "
-        "label   createdAt "
-        "tool-bar   tool-bar "
-    ; */
-
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    max-width: 566px;
-    padding: 1em;
 
 
-    background-color: var(--clr-bg-main);
-    z-index: 100;
+.note-edit input {
+    background: inherit;
 }
 
 .back-drop {
@@ -39,3 +28,36 @@
 .title {
     grid-area: title;
 }
+
+.transparent-drop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 20;
+}
+
+/* .note-edit-modal {
+    position: fixed;
+    display: grid;
+    grid:
+        "title pinned"
+        "info   info "
+        "label   createdAt "
+        "tool-bar   tool-bar "
+    ;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    max-width: 566px;
+    padding: 1em;
+
+
+    background-color: var(--clr-bg-main);
+    z-index: 100;
+} */

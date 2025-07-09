@@ -33,3 +33,33 @@ img {
     place-content: center;
 }
 
+.hover-show::after {
+    content: attr(data-type);
+
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    padding: 4px 8px;
+    white-space: nowrap;
+    pointer-events: none;
+
+    font-size: .6em;
+    color: var(--clr-bg-main);
+
+    border-radius: 4px;
+    opacity: 0;
+
+    font-family: 'Chewy';
+    background-color: #474747;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 1;
+}
+
+.hover-show:hover::after {
+    opacity: 1;
+}
+.hover-show.active:hover::after {
+    opacity: 0;
+}

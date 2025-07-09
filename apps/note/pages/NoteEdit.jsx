@@ -1,19 +1,18 @@
 import { eventBusService, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
-import { animateCSS } from "../../../services/util.service.js"
+import { animateCSS, debounce } from "../../../services/util.service.js"
 import { noteService, } from "../services/note.service.js"
 import { ToolBar } from "../cmps/Toolbar.jsx"
 
 const { useState, useEffect, useRef } = React
 const { useNavigate, useSearchParams } = ReactRouterDOM
-export function NoteEdit({ onClose, selectedNote, onDeleteNote }) {
+export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const [note, setNote] = useState(selectedNote)
     const loadingRef = useRef()
     const navigate = useNavigate()
-    // const addOrEdit = (searchParams.get('time-createdAt')) ? 'edit' : 'add'
 
-    
+
     useEffect(() => {
 
         if (!note) {
@@ -28,8 +27,15 @@ export function NoteEdit({ onClose, selectedNote, onDeleteNote }) {
                 })
         }
 
-        
+
     }, [searchParams.get('time-createdAt')])
+
+
+    useEffect(() => {
+        if (note) noteService.save(note)
+    }, [note])
+
+
 
 
     function handleChange({ target }) {
@@ -40,16 +46,16 @@ export function NoteEdit({ onClose, selectedNote, onDeleteNote }) {
     }
 
     function onRemoveNote() {
-        // if (addOrEdit === 'add') onSetToExpand(false)
         onDeleteNote(note.id)
     }
 
     function onSave() {
-        // if (addOrEdit === 'add') onSetToExpand(false)
+        console.log('onSave')
+
         noteService.save(note)
             .then(note => {
-                onClose()
-                setNote(note)
+                onCloseModal(note)
+                // setNote(note)
                 navigate('/note')
             })
             .catch(err => {
@@ -63,16 +69,19 @@ export function NoteEdit({ onClose, selectedNote, onDeleteNote }) {
 
     return (
         <React.Fragment>
-            <form
-                //  style={coverImg}
-                className="note-edit box"
+            <div className="transparent-drop" onClick={() => onSave()}></div>
+            <form className="note-edit box" 
+                onClick={(ev) => ev.stopPropagation()}
+                style={{ ...note.style }}
                 onSubmit={ev => {
                     ev.preventDefault()
                     onSave()
                 }}>
 
-                <div className="text-info">
+                <div className="text-info"
+                >
                     <h1 className="title">
+
                         <input onChange={handleChange}
                             value={note.title || ''}
                             name="title" type="text"
@@ -89,12 +98,12 @@ export function NoteEdit({ onClose, selectedNote, onDeleteNote }) {
 
                 </div>
                 {/* <div className="labels-container">{ Note.label && <LabelPicker/>}</div> */}
-                <section className="tool-bar"><ToolBar />
+                <section className="tool-bar"><ToolBar onSetNote={setNote} />
                     <button className="pin-note">
                         <span className=" icon-keep icon ">keep</span>
                     </button>
                     <button className="delete btn "
-                        data={'Delete'}
+                        data-type={'Delete'}
                         onClick={ev => {
                             ev.preventDefault()
                             onRemoveNote()
