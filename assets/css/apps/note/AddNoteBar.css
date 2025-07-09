@@ -1,5 +1,5 @@
-.create-note {
-    grid-area: create-note;
+.add-note-bar {
+    grid-area: add-note-bar;
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: minmax(auto, 600px);
@@ -7,21 +7,22 @@
     min-height: 26px;
     max-width: 37.5em;
 
-    padding: .5em 1em;
-    margin: 1em auto;
+    padding: .5em ;
+    margin: auto;
 
     cursor: text;
 
     overflow-wrap: break-word;
 
+    text-align: left;
 
 }
 
-.create-note .close:hover {
+.add-note-bar .close:hover {
     transition: .5s;
     background-color: var(--clr-bg-button);
 }
 
-.create-note:has(.add-note){
+.add-note-bar:has(.add-note){
     padding: 0;
 }

@@ -5,21 +5,19 @@ import { ToolBar } from "../cmps/Toolbar.jsx"
 
 const { useState, useEffect, useRef } = React
 const { useNavigate, useSearchParams } = ReactRouterDOM
-
-export function NoteEdit({ selectedNote, onDeleteNote, onSetToExpand }) {
+export function NoteEdit({ onClose, selectedNote, onDeleteNote }) {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const [note, setNote] = useState(selectedNote)
     const loadingRef = useRef()
     const navigate = useNavigate()
-    const addOrEdit = (searchParams.get('time-createdAt')) ? 'edit' : 'add'
-    console.log("🚀 ~ NoteEdit ~ addOrEdit:", addOrEdit)
+    // const addOrEdit = (searchParams.get('time-createdAt')) ? 'edit' : 'add'
 
+    
     useEffect(() => {
-        if (!note) animateCSS(loadingRef.current, 'heartBeat', false)
 
         if (!note) {
-
+            animateCSS(loadingRef.current, 'heartBeat', false)
             const note = noteService.getEmptyNote()
             noteService.save(note)
                 .then(note => {
@@ -30,6 +28,7 @@ export function NoteEdit({ selectedNote, onDeleteNote, onSetToExpand }) {
                 })
         }
 
+        
     }, [searchParams.get('time-createdAt')])
 
 
@@ -41,16 +40,22 @@ export function NoteEdit({ selectedNote, onDeleteNote, onSetToExpand }) {
     }
 
     function onRemoveNote() {
-        if (addOrEdit === 'add') onSetToExpand(false)
+        // if (addOrEdit === 'add') onSetToExpand(false)
         onDeleteNote(note.id)
     }
 
     function onSave() {
-        if (addOrEdit === 'add') onSetToExpand(false)
+        // if (addOrEdit === 'add') onSetToExpand(false)
         noteService.save(note)
-            // .then(() => setSelectedNote(null))
-            .then(() => navigate('/note'))
-            .catch(() => showErrorMsg('problem saving note'))
+            .then(note => {
+                onClose()
+                setNote(note)
+                navigate('/note')
+            })
+            .catch(err => {
+                console.log('err', err)
+                showErrorMsg('problem saving note')
+            })
     }
 
     // const coverImg = (!note.style) ? {} : { ...note.style }
@@ -60,7 +65,7 @@ export function NoteEdit({ selectedNote, onDeleteNote, onSetToExpand }) {
         <React.Fragment>
             <form
                 //  style={coverImg}
-                className="NoteEdit box"
+                className="note-edit box"
                 onSubmit={ev => {
                     ev.preventDefault()
                     onSave()

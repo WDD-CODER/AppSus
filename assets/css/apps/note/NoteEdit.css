@@ -1,3 +1,8 @@
+.note-edit {
+    max-width: 600px;
+    margin: auto;
+}
+
 .note-edit-modal {
     position: fixed;
     /* display: grid;
@@ -31,6 +36,6 @@
     z-index: 20;
 }
 
-.title{
+.title {
     grid-area: title;
 }
