@@ -1,6 +1,7 @@
 import { MailList } from "../cmps/MailList.jsx"
 import { MailFolderList } from "../cmps/MailFolderList.jsx"
 import { MailHeader } from "../cmps/MailHeader.jsx"
+import { ComposeMail } from "../cmps/ComposeMail.jsx"
 import { mailService } from "../services/mail.service.js"
 import { utilService } from "../../../services/util.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
@@ -54,6 +55,7 @@ export function MailIndex() {
             {/* <table className="mails-table">
                 <MailList mails={mails} />
             </table> */}
+            <ComposeMail />
 
         </section>
     )

@@ -52,11 +52,6 @@ export function ComposeMail() {
 
     return (
         <Fragment>
-            <div className="compose-mail-btn flex align-center">
-                <button className="icon-edit icon">edit</button>
-                <span>Compose</span>
-            </div>
-
             <form className="new-mail-compose">
                 <div className="mail-compose-header">
                     <h3>New Message</h3>
