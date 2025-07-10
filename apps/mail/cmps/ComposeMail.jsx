@@ -54,7 +54,7 @@ export function ComposeMail() {
         <Fragment>
             <form className="new-mail-compose">
                 <div className="mail-compose-header">
-                    <h3>New Message</h3>
+                    <span>New Message</span>
                     <button className="icon-close icon" type="button"
                         onClick={onCloseAndDraftingCompose}>close
                     </button>
