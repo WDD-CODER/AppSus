@@ -33,15 +33,15 @@ function query(filterBy = {}) {
             }
             if (filterBy.folder) {
                 if (filterBy.folder === 'inbox') {
-                    mails.filter(mail => mail.to === loggedinUser.email && !mail.removedAt)
+                    mails = mails.filter(mail => mail.to === loggedinUser.email && !mail.removedAt)
                 } else if (filterBy.folder === 'starred') {
-                    mails.filter(mail => mail.starred && mail.sentAt && !mail.removedAt)
+                    mails = mails.filter(mail => mail.starred && mail.sentAt && !mail.removedAt)
                 } else if (filterBy.folder === 'sent') {
-                    mails.filter(mail => mail.from === loggedinUser.email && mail.sentAt && !mail.removedAt)
+                    mails = mails.filter(mail => mail.from === loggedinUser.email && mail.sentAt && !mail.removedAt)
                 } else if (filterBy.folder === 'draft') {
-                    mails.filter(mail => mail.from === loggedinUser.email && mail.sentAt === null && !mail.removedAt)
+                    mails = mails.filter(mail => mail.from === loggedinUser.email && mail.sentAt === null && !mail.removedAt)
                 } else if (filterBy.folder === 'trash') {
-                    mails.filter(mail => mail.removedAt)
+                    mails = mails.filter(mail => mail.removedAt)
                 }
             }
             return mails
@@ -77,7 +77,7 @@ function getFilterFromSearchParams(searchParams) {
     const defaultFilter = getDefaultFilter()
     const filterBy = {}
     for (const field in defaultFilter) {
-        filterBy[field] = searchParams.get(field) || ''
+        filterBy[field] = searchParams.get(field) || defaultFilter[field]
     }
 
     return filterBy
