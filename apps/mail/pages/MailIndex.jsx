@@ -19,6 +19,10 @@ export function MailIndex() {
         setSearchParams(utilService.getTruthyValues(filterBy))
     }, [filterBy])
 
+    useEffect(() => {
+        setFilterBy(mailService.getFilterFromSearchParams(searchParams))
+    }, [searchParams])
+
     function loadMails() {
         mailService.query(filterBy)
             .then(mails => setMails(mails))
@@ -43,7 +47,7 @@ export function MailIndex() {
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index">
-            <MailFolderList />
+            <MailFolderList onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
             <MailHeader onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
             <MailList mails={mails} onUpdateMailList={updateMailInList} />
             {/* <h1>Mails:</h1> */}

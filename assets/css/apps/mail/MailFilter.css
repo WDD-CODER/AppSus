@@ -1,0 +1,27 @@
+.mail-filter {
+    display: flex;
+    justify-content: center;
+    width: 50vw;
+    height: 45px;
+    border-radius: 2em;
+}
+
+.mail-filter,
+.mail-filter input {
+    background-color: rgb(233, 238, 246);
+}
+
+.mail-filter input {
+    align-self: center;
+    width: 85%;
+    height: 80%;
+}
+
+.mail-filter input,
+input::placeholder {
+    font: 1.25rem/3 Helvetica, Arial, sans-serif;
+}
+
+.mail-filter .icon-search {
+    font-size: 2em;
+}
