@@ -1,15 +1,24 @@
 .app-header {
     grid-area: header;
+    position: sticky;
+    top: 0;
+    left: 0;
+     
+    height: 60px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1em;
     font-family: 'Bitcount';
     background-color: var(--clr-primary-base);
+    z-index: 10;
 }
 
-.header-nav-bar a {
-    margin: .5em;
+.header-nav-bar  {
+    height: 60px;
+    gap: .5em;
+
 }
 .hide-txt{
     justify-self: center;
