@@ -98,8 +98,8 @@ export function NoteIndex() {
     return (
 
         <div className="note-index note-layout">
+             <NoteHeader />
             <NoteSideBar />
-            <NoteHeader />
             <section className="lists-container">
                 <div className="on-add-note-container"
 
