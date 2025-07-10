@@ -65,8 +65,17 @@ function save(mail) {
     }
 }
 
-function getEmptyMail(subject = '') {
-    return { subject }
+function getEmptyMail() {
+    return {
+        createdAt: Date.now(),
+        subject: '',
+        body: '',
+        isRead: true,
+        sentAt: null,
+        removedAt: null,
+        from: loggedinUser.email,
+        to: '',
+    }
 }
 
 function getDefaultFilter() {

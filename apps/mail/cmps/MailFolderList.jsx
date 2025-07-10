@@ -1,3 +1,5 @@
+import { ComposeMail } from "./ComposeMail.jsx"
+
 const { useState, useEffect } = React
 
 export function MailFolderList({ filterBy, onSetFilterBy }) {
@@ -31,10 +33,7 @@ export function MailFolderList({ filterBy, onSetFilterBy }) {
     return (
         <section className="mail-folder-list">
             <div className="mail-filters-container">
-                <div className="compose-mail flex align-center">
-                    <button className="icon-edit icon">edit</button>
-                    <span>Compose</span>
-                </div>
+                <ComposeMail />
                 <div className="mail-filter-container flex align-center"
                     onClick={(ev) => onChangeFolder('inbox', ev)}>
                     <button className="icon-inbox icon">inbox</button>
