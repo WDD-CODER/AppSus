@@ -5,17 +5,17 @@ const { useState, useEffect, useRef } = React
 export function MailFilter({ filterBy, onSetFilterBy }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
-    const onSetFilterByDebounce = useRef(utilService.debounce(onSetFilterBy, 500)).current
+    // const onSetFilterByDebounce = useRef(utilService.debounce(onSetFilterBy, 500)).current
 
     useEffect(() => {
         setFilterByToEdit(filterBy)
     }, [filterBy])
 
-    useEffect(() => {
-        if (JSON.stringify(filterByToEdit) !== JSON.stringify(filterBy)) {
-            onSetFilterByDebounce(filterByToEdit)
-        }
-    }, [filterByToEdit])
+    // useEffect(() => {
+    //     if (JSON.stringify(filterByToEdit) !== JSON.stringify(filterBy)) {
+    //         onSetFilterByDebounce(filterByToEdit)
+    //     }
+    // }, [filterByToEdit])
 
     function handleChange({ target }) {
         const field = target.name
@@ -33,10 +33,15 @@ export function MailFilter({ filterBy, onSetFilterBy }) {
         setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
     }
 
+    function onSubmitFilter(ev) {
+        ev.preventDefault()
+        onSetFilterBy(filterByToEdit)
+    }
+
     const { txt } = filterByToEdit
 
     return (
-        <form className="mail-filter">
+        <form className="mail-filter" onSubmit={onSubmitFilter}>
             <button className="icon-search icon">search</button>
             <input onChange={handleChange} value={txt || ''}
                 type="text" name="txt" id="txt"
