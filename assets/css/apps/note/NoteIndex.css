@@ -6,7 +6,7 @@
         "side-bar      add-note-bar" auto
     /*  "side-bar     note-content" auto */
         "side-bar        note-list" auto
-         /minmax(50px, auto) minmax(auto, 1fr);
+         /auto minmax(auto, 1fr);
 }
 
 .lists-container{

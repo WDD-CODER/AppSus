@@ -16,7 +16,8 @@ import { Modal } from './cmps/Modal.jsx'
 
 export function RootCmp() {
     return <Router>
-        <main className="root-cmp main-layout ">
+        {/* <main className="root-cmp main-layout "> */}
+        <main className="root-cmp">
             <AppHeader />
             <Routes>
                 <Route path="/" element={<Home />} />

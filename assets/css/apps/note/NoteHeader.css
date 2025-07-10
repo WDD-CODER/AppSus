@@ -1,10 +1,15 @@
 .note-header {
     grid-area: note-header;
+    position: sticky;
+    top: 60px;
+    left: 0;
+    margin-bottom: auto;
     display: flex;
 
     width: 100%;
     border-top: 1px var(--clr-border) solid;
     border-bottom: 1px var(--clr-border) solid;
+    background-color: var(--clr-bg-main);
 }
 
 .note-header>* {

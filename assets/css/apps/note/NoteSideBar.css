@@ -1,58 +1,81 @@
 .note-side-bar {
     grid-area: side-bar;
-    position: relative;
-    display: grid;
-
-    height: 100%;
+    overflow: visible;
+    height: 100vh;
     transition: .5s ease-in;
-
 }
 
 .note-side-bar button {
     font-size: 24px;
 }
 
-
-.filters-container span {
-    display: none;
-    opacity: 0;
-
-    white-space: nowrap;
-    background-color: transparent;
+.filters-container {
+    position: sticky;
+    top: 120px;
+    z-index: 2;
+    background: var(--clr-bg-main);
 }
 
-.filters-container div {
+.filters-container span {
+    position: fixed;
+    display: flex;
+    place-items: center;
+
+    left: 50px;
+    width: 14em;
     height: 3em;
+
+    opacity: 0;
+
     border-top-right-radius: 2vh;
     border-bottom-right-radius: 2vh;
+    transition: .5s;
+}
 
 
-    &.active .icon {
+.filters-container div {
+    position: relative;
+    display: flex;
+
+    width: 50px;
+    height: 3em;
+    transition: .5s;
+
+    &.active button {
         border-radius: 50%;
-        background-color: var(--clr-bg-button-active)
+        background-color: var(--clr-bg-button-active);
     }
 
     &.active.long {
         width: 16.6em;
         opacity: 1;
-        background-color: var(--clr-bg-button-active)
+        background-color: var(--clr-bg-button-active);
+        border-top-right-radius: 2vh;
+        border-bottom-right-radius: 2vh;
+
+
     }
 
     &.active.long span {
-        display: inline;
+        display: flex;
         opacity: 1;
+        place-items: center;
+        background-color: var(--clr-bg-button-active);
     }
 
     &:hover {
-        width: 16.6em;
         opacity: 1;
-        background-color: var(--clr-bg-button)
+        background-color: var(--clr-bg-button);
+
+
     }
 
     &:hover span {
-        display: inline;
+        position: fixed;
+        left: 50px;
         opacity: 1;
+        background-color: var(--clr-bg-button);
+
     }
 
-    transition: 1s ;
 }

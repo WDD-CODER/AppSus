@@ -22,7 +22,7 @@ export function NoteSideBar() {
             <div className="filters-container">
                 <div className="selection-container flex align-center" onClick={onSetActive}>
                     <button className="icon-lightbulb icon">lightbulb</button>
-                    <span className="icon">Notes</span>
+                    <span >Notes</span>
                 </div>
                 <div className="selection-container flex align-center" onClick={onSetActive}>
                     <button className="icon-notifications icon">notifications</button>
