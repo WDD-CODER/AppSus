@@ -25,11 +25,29 @@ function query(filterBy = {}) {
         .then(mails => {
             if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i')
-                mails = mails.filter(mail => regExp.test(mail.subject))
+                mails = mails.filter(mail =>
+                    regExp.test(mail.subject)
+                    || regExp.test(mail.body)
+                    || regExp.test(mail.from)
+                )
+            }
+            if (filterBy.folder) {
+                if (filterBy.folder === 'inbox') {
+                    mails = mails.filter(mail => mail.to === loggedinUser.email && !mail.removedAt)
+                } else if (filterBy.folder === 'starred') {
+                    mails = mails.filter(mail => mail.starred && mail.sentAt && !mail.removedAt)
+                } else if (filterBy.folder === 'sent') {
+                    mails = mails.filter(mail => mail.from === loggedinUser.email && mail.sentAt && !mail.removedAt)
+                } else if (filterBy.folder === 'draft') {
+                    mails = mails.filter(mail => mail.from === loggedinUser.email && mail.sentAt === null && !mail.removedAt)
+                } else if (filterBy.folder === 'trash') {
+                    mails = mails.filter(mail => mail.removedAt)
+                }
             }
             return mails
         })
 }
+
 
 function get(mailId) {
     return storageService.get(MAIL_KEY, mailId).then(_setNextPrevMailId)
@@ -52,14 +70,14 @@ function getEmptyMail(subject = '') {
 }
 
 function getDefaultFilter() {
-    return { txt: '' }
+    return { txt: '', folder: 'inbox' }
 }
 
 function getFilterFromSearchParams(searchParams) {
     const defaultFilter = getDefaultFilter()
     const filterBy = {}
     for (const field in defaultFilter) {
-        filterBy[field] = searchParams.get(field) || ''
+        filterBy[field] = searchParams.get(field) || defaultFilter[field]
     }
 
     return filterBy

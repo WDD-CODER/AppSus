@@ -55,5 +55,6 @@
 
      >a .mail-prev.mail-act-btns {
          display: inline-flex;
+         justify-content: center;
      }
  }

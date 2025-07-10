@@ -1,8 +1,19 @@
-const { useState } = React
+const { useState, useEffect } = React
 
-export function MailFolderList() {
+export function MailFolderList({ filterBy, onSetFilterBy }) {
 
     const [isActive, setIsActive] = useState()
+    const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
+
+    useEffect(() => {
+        setFilterByToEdit(filterBy)
+    }, [filterBy])
+
+    function onChangeFolder(folderName, ev) {
+        setFilterByToEdit(prevFilter => ({ ...prevFilter, folder: folderName }))
+        onSetFilterBy({ ...filterBy, folder: folderName })
+        onSetActive(ev)
+    }
 
     function onSetActive(ev) {
         if (isActive) {
@@ -15,6 +26,8 @@ export function MailFolderList() {
         setIsActive(ev.currentTarget)
     }
 
+    // const currentFolder = filterBy.folder
+
     return (
         <section className="mail-folder-list">
             <div className="mail-filters-container">
@@ -22,23 +35,28 @@ export function MailFolderList() {
                     <button className="icon-edit icon">edit</button>
                     <span>Compose</span>
                 </div>
-                <div className="mail-filter-container flex align-center" onClick={onSetActive}>
+                <div className="mail-filter-container flex align-center"
+                    onClick={(ev) => onChangeFolder('inbox', ev)}>
                     <button className="icon-inbox icon">inbox</button>
                     <span>Inbox</span>
                 </div>
-                <div className="mail-filter-container flex align-center" onClick={onSetActive}>
-                    <button className="icon-star icon">star</button>
+                <div className="mail-filter-container flex align-center"
+                    onClick={(ev) => onChangeFolder('starred', ev)}>
+                    <button className="icon-star icon" >star</button>
                     <span>Starred</span>
                 </div>
-                <div className="mail-filter-container flex align-center" onClick={onSetActive}>
+                <div className="mail-filter-container flex align-center"
+                    onClick={(ev) => onChangeFolder('sent', ev)}>
                     <button className="icon-send icon">send</button>
                     <span>Sent</span>
                 </div>
-                <div className="mail-filter-container flex align-center" onClick={onSetActive}>
+                <div className="mail-filter-container flex align-center"
+                    onClick={(ev) => onChangeFolder('draft', ev)}>
                     <button className="icon-draft icon">draft</button>
                     <span>Draft</span>
                 </div>
-                <div className="mail-filter-container flex align-center" onClick={onSetActive}>
+                <div className="mail-filter-container flex align-center"
+                    onClick={(ev) => onChangeFolder('trash', ev)}>
                     <button className="icon-delete icon">delete</button>
                     <span>Trash</span>
                 </div>
