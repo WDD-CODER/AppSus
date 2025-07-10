@@ -6,7 +6,7 @@ export function NoteHeader() {
     return (
         <header className="note-header">
             <section className="filter-selection">
-                <button className="icon-menu icon">menu</button>
+                <button ><span className="icon-menu icon">menu</span></button>
                 <img className="keep-logo" src="../../assets/images/keep_2020q4_48dp.png" alt="keep-img" />
                 <span className="cur-filter-at flex">Keep</span>
             </section>
@@ -15,13 +15,13 @@ export function NoteHeader() {
                     <input id="search-for" type="text" hidden/>
 
                 </label>
-                <button data-type={'Search'} className="icon-search icon hover-show">search</button>
-                <button data-type={'Refresh'} className="icon-refresh icon hover-show">refresh</button>
-                <button data-type={'Settings'} className="icon-settings icon hover-show">settings</button>
+                <button data-type={'Search'} className=" hover-show"><span className="icon-search icon">search</span></button>
+                <button data-type={'Refresh'} className=" hover-show"><span className="icon-refresh icon">refresh</span></button>
+                <button data-type={'Settings'} className=" hover-show"><span className="icon-settings icon">settings</span></button>
             </section>
             <section className="user-actions">
-                <button data-type={'Google Apps'} className="icon-apps icon hover-show">apps</button>
-                <button data-type={'Google account'} className="user-circle hover-show">D</button>
+                <button data-type={'Google Apps'} className=" hover-show"><span className="icon-apps icon">apps</span></button>
+                <button data-type={'Google account'} className="hover-show"><span className="user-circle ">D</span></button>
             </section>
         </header>
     )

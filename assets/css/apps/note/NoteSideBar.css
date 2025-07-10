@@ -22,26 +22,29 @@
     place-items: center;
 
     left: 50px;
-    width: 14em;
+    width: 0;
     height: 3em;
-
     opacity: 0;
 
     border-top-right-radius: 2vh;
     border-bottom-right-radius: 2vh;
+
     transition: .5s;
 }
 
+button:hover {
+    background-color: none;
+}
 
 .filters-container div {
     position: relative;
     display: flex;
-
+    place-content: center;    
     width: 50px;
     height: 3em;
     transition: .5s;
 
-    &.active button {
+    &.active .icon {
         border-radius: 50%;
         background-color: var(--clr-bg-button-active);
     }
@@ -67,15 +70,28 @@
         opacity: 1;
         background-color: var(--clr-bg-button);
 
-
     }
 
     &:hover span {
+        display: flex;
         position: fixed;
         left: 50px;
         opacity: 1;
         background-color: var(--clr-bg-button);
+        width: 14em;
+        transition: 1s;
 
     }
 
 }
+
+/* 
+.selection-container:hover span {
+    display: flex;
+    position: fixed;
+    left: 50px;
+    opacity: 1;
+    background-color: var(--clr-bg-button);
+    transition: 1s;
+
+} */

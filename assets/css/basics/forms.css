@@ -27,9 +27,13 @@ button .icon {
 }
 
 .icon:hover {
-    border-radius: 50%;
+    display: flex;
+    place-content: center;
+    
     color: var(--clr-primary-font);
+    border-radius: 50%;
     background-color: var(--clr-bg-button);
+    
     transition: background-color 0.2s ease;
 }
 
