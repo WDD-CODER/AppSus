@@ -61,3 +61,7 @@
 .mail-details-header .icon-arrow_back {
     margin-right: 28px;
 }
+
+.mail-details-header .icon:hover {
+    display: block;
+}
