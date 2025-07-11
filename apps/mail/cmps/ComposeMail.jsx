@@ -3,7 +3,7 @@ import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.servic
 
 const { Fragment, useEffect, useState } = React
 
-export function ComposeMail() {
+export function ComposeMail({ toggleModal, isVisable, setIsVisable }) {
 
     const [mailToCompose, setMailToCompose] = useState(mailService.getEmptyMail())
 
@@ -25,19 +25,34 @@ export function ComposeMail() {
 
     function onCloseAndDraftingCompose() {
         console.log(mailToCompose)
+        mailService.save(mailToCompose)
+            .then(mail => {
+                console.log('Mail saved as a draft 📤', mail)
+                showSuccessMsg('The email saved as a draft')
+                closeModal()
+            })
+            .catch(err => {
+                console.log('Cannot save mail as a draft', err)
+                showErrorMsg('The email cant saved as a draft for now...')
+                closeModal()
+            })
+
     }
 
     function closeModal() {
         console.log('close modal...')
+        toggleModal('close')
         setMailToCompose(mailService.getEmptyMail())
     }
 
     function onSendMail(ev) {
         ev.preventDefault()
-        mailService.save(mailToCompose)
+        const mailToSend = { ...mailToCompose, sentAt: Date.now() }
+        setMailToCompose(mailToSend)
+        mailService.save(mailToSend)
             .then(mail => {
                 console.log('Mail sent 📤', mail)
-                showErrorMsg('The email was sent successfully')
+                showSuccessMsg('The email was sent successfully')
                 closeModal()
             })
             .catch(err => {
@@ -70,7 +85,7 @@ export function ComposeMail() {
                 </textarea>
 
                 <div className="mail-compose-footer">
-                    <button className="send-mail-btn">Send</button>
+                    <button className="send-mail-btn" onClick={onSendMail} type="submit">Send</button>
                     <button className="icon-delete icon" type="button"
                         onClick={closeModal}>delete
                     </button>
