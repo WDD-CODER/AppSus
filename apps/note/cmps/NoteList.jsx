@@ -1,6 +1,7 @@
 import { NotePreview } from "./NotePreview.jsx"
 
 export function NoteList({ notes, type }) {
+console.log("🚀 ~ NoteList ~ notes:", notes)
 
     return (
         <div className="note-list-container ">
