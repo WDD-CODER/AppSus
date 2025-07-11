@@ -51,6 +51,41 @@ export function MailIndex() {
         if (str === 'close') setIsVisable(false)
     }
 
+    function onDeleteMail(mailId) {
+        mailService.get(mailId)
+            .then(mail => {
+                if (!mail.removedAt) {
+                    mail.removedAt = Date.now()
+                    mailService.save(mail)
+                        .then(trashedMail => {
+                            setMails((prevMails) => prevMails.filter(mail => mail.id !== mailId))
+                            console.log('mail has trashed!', trashedMail)
+                            showSuccessMsg('Mail is moved to trash folder..')
+                        })
+                        .catch(err => {
+                            console.log('err', err)
+                            showErrorMsg('cant trashed mail')
+
+                        })
+                } else {
+                    mailService.remove(mailId)
+                        .then(deletedMail => {
+                            setMails((prevMails) => prevMails.filter(mail => mail.id !== mailId))
+                            console.log('mail has deleted!', deletedMail)
+                            showSuccessMsg('Mail has deleted!')
+                        })
+                        .catch(err => {
+                            console.log('err', err)
+                            showErrorMsg('Cant deleted mail')
+                        })
+                }
+            })
+            .catch(err => {
+                console.log('err', err)
+                showErrorMsg('Cant get mail..')
+            })
+    }
+
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index">
@@ -58,7 +93,7 @@ export function MailIndex() {
                 onSetFilterBy={onSetFilterBy} filterBy={filterBy}
                 toggleModal={toggleModal} isVisable={isVisable} setIsVisable={setIsVisable} />
             <MailHeader onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
-            <MailList mails={mails} onUpdateMailList={updateMailInList} />
+            <MailList mails={mails} onUpdateMailList={updateMailInList} onDeleteMail={onDeleteMail} />
             {/* <h1>Mails:</h1> */}
             {/* <table className="mails-table">
                 <MailList mails={mails} />

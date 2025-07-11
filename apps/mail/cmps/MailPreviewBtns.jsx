@@ -3,7 +3,7 @@ import { showErrorMsg } from "../../../services/event-bus.service.js"
 
 const { useState } = React
 
-export function MailPreviewBtns({ mail, onToggleMailRead }) {
+export function MailPreviewBtns({ mail, onToggleMailRead, onDeleteMail }) {
 
     // const [mailToMark, setMailToMark] = useState(mail)
     function isReadMail() {
@@ -45,7 +45,7 @@ export function MailPreviewBtns({ mail, onToggleMailRead }) {
                     onToggleMailRead({ ...mail, isRead: originalIsRead })
                 })
         } else if (action === 'delete') {
-            console.log('Delete action triggered for mail:', mail.id)
+            onDeleteMail(mail.id)
         }
 
         // if (ev.target.dataset.action === 'mark-read') onMarkRead()

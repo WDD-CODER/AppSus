@@ -4,7 +4,7 @@ import { MailPreviewBtns } from "./MailPreviewBtns.jsx"
 import { showErrorMsg } from "../../../services/event-bus.service.js"
 const { Link } = ReactRouterDOM
 
-export function MailList({ mails, onUpdateMailList }) {
+export function MailList({ mails, onUpdateMailList, onDeleteMail }) {
 
     function handleMailClick(mailToUpdate) {
         const originalIsRead = mailToUpdate.isRead
@@ -32,7 +32,7 @@ export function MailList({ mails, onUpdateMailList }) {
                         state={{ mail: { ...mail, isRead: true } }}
                     >
                         <MailPreview mail={mail} />
-                        <MailPreviewBtns mail={mail} onToggleMailRead={onUpdateMailList} />
+                        <MailPreviewBtns mail={mail} onToggleMailRead={onUpdateMailList} onDeleteMail={onDeleteMail} />
                     </Link>
                 </li>
             ))}
