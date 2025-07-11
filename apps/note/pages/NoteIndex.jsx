@@ -65,7 +65,6 @@ export function NoteIndex() {
         noteService.query()
             .then(notes => {
                 filterPinnedNotes(notes)
-                // setNoteList(notes)
             })
             .catch(() => showErrorMsg('Failed loading notes'))
     }
@@ -77,11 +76,6 @@ export function NoteIndex() {
         const notPinned = notes.filter(note => { if (note.isPinned !== true) return note })
             console.log("🚀 ~ filterPinnedNotes ~ pinned:", notPinned)
         if (notPinned) setNoteList(notPinned)
-
-
-        // ? setPinnedNoteList(pinned) : setPinnedNoteList('')
-        // const notPinned = (notes.map(note => { if (note.isPinned === false) return note })) ? setNoteList(notPinned) : setNoteList('')
-        // setPinnedNoteList(() => (!arePinned.length) ? '' : arePinned)
     }
 
     function onDeleteNote(noteId) {
