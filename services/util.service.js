@@ -102,6 +102,7 @@ export function getTruthyValues(obj) {
 
 
 function formatTimeOrDate(timestamp) {
+    if (!timestamp) return 'Not Sent'
     const now = Date.now()
     const twentyFourHours = 24 * 60 * 60 * 1000 // 24 hours in milliseconds
     const oneYear = 365 * 24 * 60 * 60 * 1000 // Approximately 1 year in milliseconds (ignoring leap years for simplicity)
@@ -140,22 +141,7 @@ function formatTimeOrDate(timestamp) {
 }
 
 function getFullDateAndTime(timestamp) {
-    const date = new Date(timestamp)
-    const monthNames = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ]
-
-    const hours = date.getHours().toString().padStart(2, '0')
-    const minutes = date.getMinutes().toString().padStart(2, '0')
-    const day = date.getDate()
-    const month = monthNames[date.getMonth()]
-    const year = date.getFullYear()
-
-    return `${day} ${month} ${year}, ${hours}:${minutes}`
-}
-
-function getFullDateAndTime(timestamp) {
+    if (!timestamp) return 'Not Sent Yet'
     const date = new Date(timestamp)
     const monthNames = [
         "January", "February", "March", "April", "May", "June",
