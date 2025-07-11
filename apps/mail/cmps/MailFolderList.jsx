@@ -1,7 +1,7 @@
 
 const { useState, useEffect } = React
 
-export function MailFolderList({ filterBy, onSetFilterBy }) {
+export function MailFolderList({ filterBy, onSetFilterBy, toggleModal, isVisable, setIsVisable }) {
 
     const [isActive, setIsActive] = useState()
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
@@ -32,7 +32,7 @@ export function MailFolderList({ filterBy, onSetFilterBy }) {
     return (
         <section className="mail-folder-list">
             <div className="mail-filters-container">
-                <div className="compose-mail-btn flex align-center">
+                <div onClick={(ev) => toggleModal('open')} className="compose-mail-btn flex align-center">
                     <button className="icon-edit icon">edit</button>
                     <span>Compose</span>
                 </div>
