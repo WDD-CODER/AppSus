@@ -21,7 +21,7 @@
     background: inherit;
 }
 
-textarea {
+.note-edit-container textarea {
     padding: .75rem 1rem ;
     width: 90%;
 
@@ -32,7 +32,7 @@ textarea {
     background: inherit;
 }
 
-textarea:focus-visible {
+.note-edit-container textarea:focus-visible {
     outline: none;
 }
 
