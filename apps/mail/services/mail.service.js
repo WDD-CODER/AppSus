@@ -35,7 +35,7 @@ function query(filterBy = {}) {
                 if (filterBy.folder === 'inbox') {
                     mails = mails.filter(mail => mail.to === loggedinUser.email && !mail.removedAt)
                 } else if (filterBy.folder === 'starred') {
-                    mails = mails.filter(mail => mail.starred && !mail.removedAt)
+                    mails = mails.filter(mail => mail.isStarred && !mail.removedAt)
                 } else if (filterBy.folder === 'sent') {
                     mails = mails.filter(mail => mail.from === loggedinUser.email && mail.sentAt && !mail.removedAt)
                 } else if (filterBy.folder === 'draft') {

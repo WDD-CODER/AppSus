@@ -42,6 +42,22 @@ export function MailIndex() {
         )
     }
 
+    function onToggleMailStarred(mailId) {
+        mailService.get(mailId)
+            .then(mailToStarred => {
+                const updatedMail = { ...mailToStarred, isStarred: !mailToStarred.isStarred }
+                return mailService.save(updatedMail)
+            })
+            .then(savedMail => {
+                updateMailInList(savedMail)
+                console.log(savedMail.isStarred ? 'Mail starred!' : 'Mail unstarred!')
+                if (filterBy.folder === 'starred') {
+                    loadMails()
+                }
+            })
+            .catch(err => console.log('err', err))
+    }
+
     function onSetFilterBy(filterByToEdit) {
         setFilterBy(prevFilter => ({ ...prevFilter, ...filterByToEdit }))
     }
@@ -93,7 +109,11 @@ export function MailIndex() {
                 onSetFilterBy={onSetFilterBy} filterBy={filterBy}
                 toggleModal={toggleModal} isVisable={isVisable} setIsVisable={setIsVisable} />
             <MailHeader onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
-            <MailList mails={mails} onUpdateMailList={updateMailInList} onDeleteMail={onDeleteMail} />
+            <MailList
+                mails={mails}
+                onUpdateMailList={updateMailInList}
+                onDeleteMail={onDeleteMail}
+                onToggleMailStarred={onToggleMailStarred} />
             {/* <h1>Mails:</h1> */}
             {/* <table className="mails-table">
                 <MailList mails={mails} />

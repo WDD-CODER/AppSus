@@ -2,9 +2,10 @@ import { mailService } from "../services/mail.service.js"
 import { MailPreview } from "./MailPreview.jsx"
 import { MailPreviewBtns } from "./MailPreviewBtns.jsx"
 import { showErrorMsg } from "../../../services/event-bus.service.js"
+
 const { Link } = ReactRouterDOM
 
-export function MailList({ mails, onUpdateMailList, onDeleteMail }) {
+export function MailList({ mails, onUpdateMailList, onDeleteMail, onToggleMailStarred }) {
 
     function handleMailClick(mailToUpdate) {
         const originalIsRead = mailToUpdate.isRead
@@ -25,13 +26,15 @@ export function MailList({ mails, onUpdateMailList, onDeleteMail }) {
     return (
         <ul className="mail-list">
             {mails.map(mail => (
-                <li className={mail.isRead ? 'read' : 'unread'} key={mail.id}>
+                <li
+                    className={`${mail.isRead ? 'read' : 'unread'} ${mail.isStarred ? 'starred' : ''}`}
+                    key={mail.id}>
                     <Link
                         to={`/mail/${mail.id}`}
                         onClick={(ev) => handleMailClick(mail)}
                         state={{ mail: { ...mail, isRead: true } }}
                     >
-                        <MailPreview mail={mail} />
+                        <MailPreview mail={mail} onToggleMailStarred={onToggleMailStarred} />
                         <MailPreviewBtns mail={mail} onToggleMailRead={onUpdateMailList} onDeleteMail={onDeleteMail} />
                     </Link>
                 </li>

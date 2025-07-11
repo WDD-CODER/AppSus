@@ -39,3 +39,7 @@
     display: none;
 }
 
+.mail-prev .icon-star.starred {
+    color: var(--clr-gmail-starred);
+}
+

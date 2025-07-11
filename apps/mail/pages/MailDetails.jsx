@@ -50,6 +50,19 @@ export function MailDetails() {
             })
     }
 
+    function onToggleStarred() {
+        console.log('Action button clicked for mail:', mail.id)
+        const updatedMail = { ...mail, isStarred: !mail.isStarred }
+        setMail(updatedMail)
+        mailService.save(updatedMail)
+            .then(savedMail => {
+                console.log(savedMail.isStarred ? 'Mail starred!' : 'Mail unstarred!')
+            })
+            .catch(err => {
+                console.log('err', err)
+            })
+    }
+
     function onBack() {
         navigate('/mail')
     }
@@ -57,7 +70,7 @@ export function MailDetails() {
     if (isLoading || !mail) return <div>Loading...</div>
 
     const fullTimeAndDate = utilService.getFullDateAndTime(mail.sentAt)
-    const { subject, body, from } = mail
+    const { subject, body, from, isStarred } = mail
 
     return (
         <section className="mail-details">
@@ -70,7 +83,8 @@ export function MailDetails() {
                 <p className="mail-details-from">{from}</p>
                 <div className="function-btns">
                     <p className="full-time-details">{fullTimeAndDate}</p>
-                    <button className="icon-star icon">star</button>
+                    <button className={`icon-star icon ${isStarred ? 'starred' : ''}`}
+                        data-action="starred" onClick={onToggleStarred}>star</button>
                 </div>
             </div>
             <pre className="mail-details-body">{body}</pre>
