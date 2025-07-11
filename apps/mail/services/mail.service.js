@@ -111,7 +111,31 @@ function _createMails() {
             { id: 'e112', createdAt: 1751710260724, subject: 'Your Subscription Expiring', body: 'Action required: Your subscription is expiring soon.', isRead: false, sentAt: 1751710270724, removedAt: null, from: 'accounts@service.com', to: 'user@appsus.com', isStarred: false },
             { id: 'e113', createdAt: 1679836800000, subject: 'New Feature Alert!', body: 'Discover our exciting new feature today.', isRead: true, sentAt: 1679836895000, removedAt: null, from: 'product@app.com', to: 'user@appsus.com', isStarred: false },
             { id: 'e114', createdAt: 1751810260724, subject: 'Welcome to Our Service', body: 'Thank you for joining! Here\'s how to get started.', isRead: false, sentAt: 1751810263724, removedAt: null, from: 'welcome@onboarding.com', to: 'user@appsus.com', isStarred: false },
-            { id: 'e115', createdAt: 1680009600000, subject: 'Quick Question', body: 'Just a quick question about our last discussion.', isRead: false, sentAt: 1680009700000, removedAt: null, from: 'colleague@work.com', to: 'user@appsus.com', isStarred: false }
+            { id: 'e115', createdAt: 1680009600000, subject: 'Quick Question', body: 'Just a quick question about our last discussion.', isRead: false, sentAt: 1680009700000, removedAt: null, from: 'colleague@work.com', to: 'user@appsus.com', isStarred: false },
+            {
+                id: 'e116',
+                createdAt: 1719590400000, // July 29, 2024 12:00:00 PM (approx)
+                subject: 'A short subject line', // 20 characters
+                body: 'This is a standard body of a mail, nothing too long or too short, just a regular message.',
+                isRead: false,
+                sentAt: 1719590460000, // July 29, 2024 12:01:00 PM (approx)
+                removedAt: null,
+                from: 'support@example.com',
+                to: 'user@appsus.com',
+                isStarred: false,
+            },
+            {
+                id: 'e117',
+                createdAt: 1718102400000, // June 12, 2024 12:00:00 PM (approx)
+                subject: 'Project Proposal Follow-up',
+                body: 'This is an exceptionally long email body designed to test how the UI handles very extensive content. It goes on and on, detailing every single aspect of the project, including background, methodology, expected outcomes, potential risks, mitigation strategies, and a comprehensive timeline stretching into the next fiscal year, ensuring that all possible scenarios are covered and that the reader has a complete understanding of the scope and depth of this particular endeavor, providing more than 100 characters of text to truly see the overflow and ellipsis in action. This content should definitely trigger any overflow handling you have in place for the body.', // Over 100 characters
+                isRead: true,
+                sentAt: 1718102520000, // June 12, 2024 12:02:00 PM (approx)
+                removedAt: null,
+                from: 'manager@appsus.com',
+                to: 'user@appsus.com',
+                isStarred: false,
+            },
         ]
         utilService.saveToStorage(MAIL_KEY, mails)
     }

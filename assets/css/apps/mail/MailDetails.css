@@ -46,6 +46,8 @@
 .mail-details .mail-details-body {
     font: small / 1.5 Arial, Helvetica, sans-serif;
     color: var(--clr-gmail-details-1);
+    padding-inline: 4em;
+    margin-bottom: 3em;
 }
 
 .mail-details-header {

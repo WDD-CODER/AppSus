@@ -12,8 +12,24 @@
 
 .mail-prev.mail-content {
     display: grid;
-    grid-template-columns: minmax(auto, 335px) minmax(auto, 1fr);
+    grid-template-columns: minmax(auto, auto) minmax(auto, 1fr);
     margin-left: 2em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mail-prev.mail-content .mail-subject,
+.mail-prev.mail-content .mail-body {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mail-prev.mail-from p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* .mail-prev.mail-subject {
@@ -42,4 +58,3 @@
 .mail-prev .icon-star.starred {
     color: var(--clr-gmail-starred);
 }
-

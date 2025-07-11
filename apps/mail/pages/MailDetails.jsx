@@ -87,7 +87,7 @@ export function MailDetails() {
                         data-action="starred" onClick={onToggleStarred}>star</button>
                 </div>
             </div>
-            <pre className="mail-details-body">{body}</pre>
+            <p className="mail-details-body">{body}</p>
         </section>
     )
 }

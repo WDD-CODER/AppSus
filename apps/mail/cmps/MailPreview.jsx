@@ -17,6 +17,7 @@ export function MailPreview({ mail, onToggleMailStarred }) {
     }
 
     const { from, subject, body, sentAt, isStarred } = mail
+    // const substringMailBody = mail.body.substring(0, 45) + '...'
     const formatedTime = utilService.formatTimeOrDate(sentAt)
 
     return (
