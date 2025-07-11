@@ -9,7 +9,7 @@ export function MailPreview({ mail }) {
         ev.stopPropagation()
         console.log('Action button clicked for mail:', mail.id)
 
-        if (ev.target.dataset.action === 'check-box') console.log('check-box')
+        // if (ev.target.dataset.action === 'check-box') console.log('check-box')
         if (ev.target.dataset.action === 'starred') console.log('starred')
     }
 
@@ -19,8 +19,8 @@ export function MailPreview({ mail }) {
     return (
         <Fragment>
             <div className="mail-prev mail-from">
-                <button className="icon-check_box_outline_blank icon"
-                    data-action="check-box" onClick={handleActionClick}>check_box_outline_blank</button>
+                {/* <button className="icon-check_box_outline_blank icon"
+                    data-action="check-box" onClick={handleActionClick}>check_box_outline_blank</button> */}
                 <button className="icon-star icon"
                     data-action="starred" onClick={handleActionClick}>star</button>
                 <p>{from}</p>
