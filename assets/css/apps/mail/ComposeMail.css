@@ -1,5 +1,8 @@
 .new-mail-compose {
-    /* display: flex; */
+    display: grid;
+    grid-template-columns: 16px 1fr 16px;
+    grid-template-rows: 1fr 1fr 1fr 6.5fr 1.5fr;
+
     position: fixed;
     bottom: 0;
     right: 10px;
@@ -9,11 +12,24 @@
     height: 80vh;
     width: 500px;
 
+    /* padding-inline: 16px; */
     background-color: #fff;
     box-shadow:
         0 8px 10px 1px rgba(0, 0, 0, .14),
         0 3px 14px 2px rgba(0, 0, 0, .12),
         0 5px 5px -3px rgba(0, 0, 0, .2);
+}
+
+.new-mail-compose>* {
+    grid-column: 2;
+}
+
+.new-mail-compose .mail-compose-header {
+    grid-column: 1/-1;
+}
+
+.mail-compose-header input {
+    width: 100%;
 }
 
 .mail-compose-header input,
@@ -27,6 +43,7 @@ input::placeholder {
     align-items: center;
 
     height: 40px;
+    padding-block: 10px;
     background-color: rgb(242, 246, 252);
 
     >span {
@@ -39,4 +56,39 @@ input::placeholder {
     >.icon-close {
         padding-right: 0.75em;
     }
+}
+
+.new-mail-compose input {
+    box-shadow: inset 0 -1px 0 0 rgba(100, 121, 143, .12)
+}
+
+textarea {
+    resize: none;
+    box-shadow: 0px 1px 0px 0 rgba(0, 0, 0, .14);
+}
+
+textarea:focus-visible{
+    border: 0 none #FFF;
+    overflow: hidden;
+    outline:none;
+}
+
+.new-mail-compose .mail-compose-footer {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 12px 0 16px 0;
+
+    >.send-mail-btn {
+        border-radius: 2em;
+        background-color: rgb(11, 87, 208);
+        padding: 0.7em 1.5em;
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.875em;
+    }
+}
+
+.new-mail-compose .icon {
+    color: black;
 }

@@ -70,7 +70,7 @@ export function ComposeMail() {
                 </textarea>
 
                 <div className="mail-compose-footer">
-                    <button>Send</button>
+                    <button className="send-mail-btn">Send</button>
                     <button className="icon-delete icon" type="button"
                         onClick={closeModal}>delete
                     </button>
