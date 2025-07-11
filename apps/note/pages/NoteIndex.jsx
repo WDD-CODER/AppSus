@@ -68,7 +68,6 @@ export function NoteIndex() {
             })
             .catch(() => showErrorMsg('Failed loading notes'))
     }
-// cccccc
     function filterPinnedNotes(notes) {
         const pinned = notes.filter(note => { if (note.isPinned === true) return note })
             console.log("🚀 ~ filterPinnedNotes ~ pinned:", pinned)

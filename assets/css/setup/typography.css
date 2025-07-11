@@ -4,8 +4,14 @@
 }
 
 @font-face {
-  font-family: "Chewy";
-  src: url("../fonts/fa-brands-400.woff2");
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
+}
+
+
+@font-face {
+  font-family: "Roboto Italic";
+  src: url("../fonts/Roboto-Italic-VariableFont_wdth\,wght.ttf") format("truetype");
 }
 
 @font-face {

@@ -1,6 +1,6 @@
 html {
-    /* font-family: 'Chewy'; */
-    /* font-size: ; */
+
+  font-family: "Roboto", sans-serif;
     color: var(--clr-primary-font);
     background-color: var(--clr-bg-main);
 }

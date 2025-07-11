@@ -123,7 +123,9 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
                             onSave()
                         }} className="close">close</button>
                 </ToolBar>
-                    <button className="pin-note" onClick={() => seIsPinned(note)}>
+                    <button className="pin-note" onClick={ev =>{
+                        ev.preventDefault()
+                        seIsPinned(note)}}>
                         <span className=" icon-keep icon ">keep</span>
                     </button>
 
