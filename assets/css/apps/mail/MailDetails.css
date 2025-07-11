@@ -69,3 +69,7 @@
 .mail-details .icon:hover {
     display: block;
 }
+
+.mail-details .icon-star.starred {
+    color: var(--clr-gmail-starred);
+}
