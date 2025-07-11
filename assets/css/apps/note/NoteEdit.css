@@ -1,33 +1,80 @@
-.note-edit {
+.note-edit-container {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
     max-width: 600px;
+    max-height: 70vh;
+    
     margin: auto;
-    z-index: 100;
+    
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 1;
 }
 
 
 
-.note-edit input {
+.note-edit-container input {
     background: inherit;
 }
+
+textarea {
+    padding: .75rem 1rem ;
+    width: 90%;
+
+    overflow: hidden;
+
+    resize: none;
+
+    background: inherit;
+}
+
+textarea:focus-visible {
+    outline: none;
+}
+
+.text-info-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y:auto;
+    ;
+    /* max-height: 60vh; */
+}
+
+.text-info-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.text-info-container::-webkit-scrollbar-thumb {
+  background:var(--clr-scroll-webkit);
+  /* border-radius: 4px; */
+}
+
+.text-info-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 
 .back-drop {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    /* width: 100vw;
+    height: 100vh; */
 
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 20;
 }
 
-.title {
+.note-edit-container .title {
     grid-area: title;
+    font-size: 1.25rem;
+    text-align: justify;
+    padding: 1rem 1rem 0 ;
 }
+
 
 .transparent-drop {
     position: absolute;
@@ -37,27 +84,30 @@
     height: 100vh;
 
     background-color: rgba(0, 0, 0, 0);
-    z-index: 20;
 }
 
-/* .note-edit-modal {
-    position: fixed;
-    display: grid;
-    grid:
-        "title pinned"
-        "info   info "
-        "label   createdAt "
-        "tool-bar   tool-bar "
-    ;
+.add-note-container {
+    grid-area: "content";
+    position: relative;
+    padding: .5rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.add-note-container input {
+    background-color: inherit;
+}
 
-    max-width: 566px;
-    padding: 1em;
+.add-note-container .icon {
+    color: var(--clr-primary-font);
+}
+
+.pin-note {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
 
 
-    background-color: var(--clr-bg-main);
-    z-index: 100;
-} */
+

@@ -1,12 +1,11 @@
 .note-preview {
-  break-inside: avoid;
-
   display: flex;
   flex-direction: column;
+  text-align: justify;
 
   gap: .5em;
 
-  max-width: 15em;
+  width: 100%;
 
   padding: .5em;
   margin-block-end: .5em;
@@ -14,7 +13,9 @@
   background-position: center;
   background-repeat: no-repeat;
 
+  overflow-wrap: break-word;
 
+   cursor: pointer;
 }
 
 .note-preview .tool-bar {
@@ -28,11 +29,11 @@
   opacity: 1;
 }
 
-.modal-enter {
+/* .modal-enter {
   transform: scale(0.2);
   opacity: 0;
   transform-origin: top center;
-}
+} */
 
 .note-dialog {
   transform: scale(0.9);
@@ -51,4 +52,13 @@
 .note-dialog.exit {
   transform: scale(0.9);
   opacity: 0;
+}
+
+
+.note-preview img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0.25em;
+  /* optional */
 }

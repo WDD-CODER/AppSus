@@ -10,11 +10,12 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
     const [searchParams, setSearchParams] = useSearchParams()
     const [note, setNote] = useState(selectedNote)
     const loadingRef = useRef()
+    const textRef = useRef()
     const navigate = useNavigate()
 
 
     useEffect(() => {
-
+        requestAnimationFrame(() => {if (textRef.current) autoGrow(textRef.current)})
         if (!note) {
             animateCSS(loadingRef.current, 'heartBeat', false)
             const note = noteService.getEmptyNote()
@@ -26,8 +27,6 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
                     showSuccessMsg('saved to storage, ready for edit :)')
                 })
         }
-
-
     }, [searchParams.get('time-createdAt')])
 
 
@@ -49,6 +48,11 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
         onDeleteNote(note.id)
     }
 
+    function autoGrow(el) {
+        el.style.height = "auto";
+        el.style.height = el.scrollHeight + "px";
+    }
+
     function onSave() {
         console.log('onSave')
 
@@ -66,55 +70,62 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
 
     // const coverImg = (!note.style) ? {} : { ...note.style }
     if (!note) return (<div ref={loadingRef} className="loading"> Loading...</div>)
+    const transparentDrop =  (searchParams.get('time-createdAt')) ? false : true  
+        return (
+            <React.Fragment>
+                {transparentDrop && <div className="transparent-drop" onClick={() => onSave()}></div>}
+                <form className="note-edit-container box"
+                    onClick={(ev) => ev.stopPropagation()}
+                    style={{ ...note.style }}
+                    onSubmit={ev => {
+                        ev.preventDefault()
+                        onSave()
+                    }}>
 
-    return (
-        <React.Fragment>
-            <div className="transparent-drop" onClick={() => onSave()}></div>
-            <form className="note-edit box" 
-                onClick={(ev) => ev.stopPropagation()}
-                style={{ ...note.style }}
-                onSubmit={ev => {
-                    ev.preventDefault()
-                    onSave()
-                }}>
-
-                <div className="text-info"
-                >
-                    <h1 className="title">
-
-                        <input onChange={handleChange}
+                    <div className="text-info-container">
+                        {/* <h1 ></h1> */}
+                        <input className="title" onChange={handleChange}
                             value={note.title || ''}
                             name="title" type="text"
-                            placeholder="title..." />
-                    </h1>
+                            placeholder="Title..." />
 
-                    <p className="text-info">
-                        <input onChange={handleChange}
-                            value={note.info.txt}
-                            name="info"
-                            type="text"
-                            placeholder="Take a note..." />
-                    </p>
 
-                </div>
-                {/* <div className="labels-container">{ Note.label && <LabelPicker/>}</div> */}
-                <section className="tool-bar"><ToolBar onSetNote={setNote} />
-                    <button className="pin-note">
-                        <span className=" icon-keep icon ">keep</span>
-                    </button>
-                    <button className="delete btn "
-                        data-type={'Delete'}
-                        onClick={ev => {
-                            ev.preventDefault()
-                            onRemoveNote()
-                        }}>
-                        <span className="icon-delete icon">delete</span>
-                    </button>
-                    <button className="close btn ">
-                        <span className="icon-close icon">close</span>
-                    </button>
-                </section>
-            </form>
-        </React.Fragment>
-    )
-}
+                        <label className="info" htmlFor="info">
+                            <textarea ref={textRef} onChange={ev => {
+                                autoGrow(ev.target)
+                                handleChange(ev)
+                            }}
+                                id="info"
+                                value={note.info.txt}
+                                name="info"
+                                type="text"
+                                placeholder="Take a note..." />
+                        </label>
+
+                    </div>
+                    {/* <div className="labels-container">{ Note.label && <LabelPicker/>}</div> */}
+                    <section className="tool-bar"><ToolBar onSetNote={setNote}>
+                        <button className="delete btn "
+                            data-type={'Delete'}
+                            onClick={ev => {
+                                ev.preventDefault()
+                                onRemoveNote()
+                            }}> <span className="icon-delete icon">delete</span>
+                        </button>
+                        {/* <button className="close btn "> */}
+                        <button
+                            onClick={ev => {
+                                ev.preventDefault()
+                                onSave()
+                            }} className="close">close</button>
+                        {/* </button> */}
+                    </ToolBar>
+                        <button className="pin-note">
+                            <span className=" icon-keep icon ">keep</span>
+                        </button>
+
+                    </section>
+                </form>
+            </React.Fragment>
+        )
+    }

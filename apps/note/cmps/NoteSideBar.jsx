@@ -34,7 +34,7 @@ export function NoteSideBar() {
                 </div>
                 <div className="selection-container flex align-center" onClick={onSetActive}>
                     <button className="icon-archive icon">archive</button>
-                    <span >Edit Labels</span>
+                    <span >archive</span>
                 </div>
                 <div className="selection-container flex align-center " onClick={onSetActive}>
                     <button className="icon-delete icon">delete</button>

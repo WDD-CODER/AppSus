@@ -3,7 +3,7 @@ import { noteService } from '../services/note.service.js'
 import { SetBackground } from './SetBackground.jsx'
 const { useState, useEffect } = React
 const { useSearchParams, useNavigate } = ReactRouterDOM
-export function ToolBar({ onSetNote }) {
+export function ToolBar({children, onSetNote }) {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const [isActive, setIsActive] = useState()
@@ -39,26 +39,24 @@ export function ToolBar({ onSetNote }) {
         }
     }
 
-    function onSetBgColor(clr) {
-        note.style.backgroundColor = clr
-        searchParams.set('background-color', clr)
-        setSearchParams(searchParams)
-        noteService.save(note)
-            .then(setNote)
-    }
+    // function onSetBgColor(clr) {
+    //     note.style.backgroundColor = clr
+    //     searchParams.set('background-color', clr)
+    //     setSearchParams(searchParams)
+    //     noteService.save(note)
+    //         .then(setNote)
+    // }
 
-    function onSetBgImg(imgSrc) {
-        note.style.backgroundImage = imgSrc
-        searchParams.set('background-image', imgSrc)
-        setSearchParams(searchParams)
-        noteService.save(note)
-            .then(setNote)
-    }
+    // function onSetBgImg(imgSrc) {
+    //     note.style.backgroundImage = imgSrc
+    //     searchParams.set('background-image', imgSrc)
+    //     setSearchParams(searchParams)
+    //     noteService.save(note)
+    //         .then(setNote)
+    // }
 
 
     function onSetBackground({ target }) {
-        console.log("🚀 ~ onSetBackground ~ target:", target)
-
         const style = { backgroundColor: '', backgroundImage: '' }
         if (target.style['background-color']) {
             style.backgroundColor = target.style['background-color']
@@ -115,9 +113,11 @@ export function ToolBar({ onSetNote }) {
             <button data-type={'Add-image'} className="image hover-show">
                 <span className="icon-image icon">image</span>
             </button>
-            <button data-type={'More'} className="more hover-show">
+            {children} 
+
+            {/* <button data-type={'More'} className="more hover-show">
                 <span className="icon-more_vert icon">more_vert</span>
-            </button>
+            </button> */}
         </section>
     )
 }

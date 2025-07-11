@@ -12,7 +12,6 @@
 .filters-container {
     position: sticky;
     top: 120px;
-    z-index: 2;
     background: var(--clr-bg-main);
 }
 
@@ -22,7 +21,7 @@
     place-items: center;
 
     left: 50px;
-    width: 0;
+    width: fit-content;
     height: 3em;
     opacity: 0;
 
@@ -36,10 +35,12 @@ button:hover {
     background-color: none;
 }
 
+
 .filters-container div {
     position: relative;
     display: flex;
-    place-content: center;    
+    place-content: baseline;
+
     width: 50px;
     height: 3em;
     transition: .5s;
@@ -55,14 +56,14 @@ button:hover {
         background-color: var(--clr-bg-button-active);
         border-top-right-radius: 2vh;
         border-bottom-right-radius: 2vh;
-
-
     }
 
     &.active.long span {
         display: flex;
         opacity: 1;
         place-items: center;
+        width: 14em;
+
         background-color: var(--clr-bg-button-active);
     }
 
