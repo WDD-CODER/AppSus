@@ -65,3 +65,7 @@
 .mail-details-header .icon:hover {
     display: block;
 }
+
+.mail-details .icon:hover {
+    display: block;
+}

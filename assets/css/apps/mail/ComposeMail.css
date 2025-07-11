@@ -54,7 +54,7 @@ input::placeholder {
     }
 
     >.icon-close {
-        padding-right: 0.75em;
+        margin-right: 0.75em;
     }
 }
 
@@ -91,4 +91,8 @@ input::placeholder {
 
 .new-mail-compose .icon {
     color: black;
+}
+
+.new-mail-compose .icon:hover {
+    display: block;
 }

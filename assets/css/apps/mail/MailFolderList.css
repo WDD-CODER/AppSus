@@ -96,3 +96,7 @@
 .mail-folder-list .mail-filters-container .icon {
     color: var(--clr-gmail-primary-base);
 }
+
+.mail-folder-list .icon:hover {
+    display: block;
+}

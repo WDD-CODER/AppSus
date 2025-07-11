@@ -25,3 +25,7 @@ input::placeholder {
 .mail-filter .icon-search {
     font-size: 2em;
 }
+
+.mail-filter .icon:hover {
+    display: block;
+}
