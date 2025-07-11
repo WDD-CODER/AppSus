@@ -16,6 +16,7 @@ export function NoteIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const [pinnedNoteList, setPinnedNoteList] = useState()
+    console.log("🚀 ~ NoteIndex ~ pinnedNoteList:", pinnedNoteList)
     const [addNote, setAddNote] = useState()
     const [noteList, setNoteList] = useState()
     const [selectedNote, setSelectedNote] = useState(null)
@@ -64,14 +65,23 @@ export function NoteIndex() {
         noteService.query()
             .then(notes => {
                 filterPinnedNotes(notes)
-                setNoteList(notes)
+                // setNoteList(notes)
             })
             .catch(() => showErrorMsg('Failed loading notes'))
     }
 
     function filterPinnedNotes(notes) {
-        const arePinned = notes.filter(note => note.isPinned === true)
-        setPinnedNoteList(() => (!arePinned.length) ? '' : arePinned)
+        const pinned = notes.filter(note => { if (note.isPinned === true) return note })
+            console.log("🚀 ~ filterPinnedNotes ~ pinned:", pinned)
+        if (pinned) setPinnedNoteList(pinned)
+        const notPinned = notes.filter(note => { if (note.isPinned !== true) return note })
+            console.log("🚀 ~ filterPinnedNotes ~ pinned:", notPinned)
+        if (notPinned) setNoteList(notPinned)
+
+
+        // ? setPinnedNoteList(pinned) : setPinnedNoteList('')
+        // const notPinned = (notes.map(note => { if (note.isPinned === false) return note })) ? setNoteList(notPinned) : setNoteList('')
+        // setPinnedNoteList(() => (!arePinned.length) ? '' : arePinned)
     }
 
     function onDeleteNote(noteId) {

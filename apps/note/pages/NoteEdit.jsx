@@ -15,8 +15,8 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
 
 
     useEffect(() => {
-        
-        requestAnimationFrame(() => { if (textRef.current) debounce(autoGrow(textRef.current),5000 )})
+
+        requestAnimationFrame(() => { if (textRef.current) autoGrow(textRef.current), 5000 })
 
         if (!note) {
             animateCSS(loadingRef.current, 'heartBeat', false)
@@ -38,9 +38,8 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
     }, [note])
 
 
-
-    function seIsPinned() {
-
+    function seIsPinned(note) {
+        note.isPinned = (note.isPinned === true) ? note.isPinned = false : note.isPinned = true
     }
 
 
@@ -66,7 +65,6 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
         noteService.save(note)
             .then(note => {
                 onCloseModal(note)
-                // setNote(note)
                 navigate('/note')
             })
             .catch(err => {
@@ -75,7 +73,7 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
             })
     }
 
-    // const coverImg = (!note.style) ? {} : { ...note.style }
+    // const coverImg = (!note.style.backgroundImage) ? {} : { ...note.style }
     if (!note) return (<div ref={loadingRef} className="loading"> Loading...</div>)
     const transparentDrop = (searchParams.get('time-createdAt')) ? false : true
     return (
@@ -125,7 +123,7 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
                             onSave()
                         }} className="close">close</button>
                 </ToolBar>
-                    <button className="pin-note" onClick={() => seIsPinned()}>
+                    <button className="pin-note" onClick={() => seIsPinned(note)}>
                         <span className=" icon-keep icon ">keep</span>
                     </button>
 
