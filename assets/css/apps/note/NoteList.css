@@ -2,18 +2,30 @@
     grid-area: note-list;
 
     display: grid;
-    align-items: center;
+    grid: 
+    ".  h1 ." 20px
+    ". list ." 1fr
+    / minmax(5px,2em) 1fr minmax(5px, 2em);
+    gap: .5em;
+
 }
 
 .note-list {
-    columns: auto 15em;
-    /* column-width: 15em; */
-    column-gap: 10px;
+    grid-area:list;
 
-    transition: 1s ease-out;
+    columns: 15em;
+    break-inside: avoid;
+}
+
+.note-list-container h4{
+    grid-area: h1;
 }
 
 .note-list-container h4 {
     margin: .5em 1em;
     text-align: justify;
+}
+
+.note-list>* {
+    break-inside: avoid;
 }

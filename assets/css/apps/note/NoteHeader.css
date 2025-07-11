@@ -10,6 +10,7 @@
     border-top: 1px var(--clr-border) solid;
     border-bottom: 1px var(--clr-border) solid;
     background-color: var(--clr-bg-main);
+    z-index: 1;
 }
 
 .note-header>* {

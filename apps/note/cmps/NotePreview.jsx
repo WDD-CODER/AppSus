@@ -19,9 +19,9 @@ export function NotePreview({ note }) {
     return (
         <section style={{...note.style}} onClick={() => onSetParams()} className="note-preview box container">
             <h1>{title}</h1>
-            <p>{info.txt}</p>
+            <p>{info.txt}</p> 
             {info.img && <figure>{info.img}</figure>}
-            {labels && <Labels />}
+            {/* {labels && <Labels />} */}
             <ToolBar />
         </section >
     )

@@ -12,7 +12,6 @@
 .filters-container {
     position: sticky;
     top: 120px;
-    z-index: 2;
     background: var(--clr-bg-main);
 }
 

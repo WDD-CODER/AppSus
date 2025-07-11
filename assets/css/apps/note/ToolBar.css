@@ -1,7 +1,11 @@
 .tool-bar {
     grid-area: toolBar;
     width: 100%;
-    justify-content: space-between
+    justify-content: space-between;
+    background-color: var(--clr-bg-main);
+    
+    border-bottom-left-radius: 1vh;
+    border-bottom-right-radius: 1vh;
 }
 
 

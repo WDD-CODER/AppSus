@@ -48,12 +48,17 @@ export function NoteIndex() {
                 .catch(() => showErrorMsg('Problem opening  modal'))
         }
 
-        if (!noteId)   loadNotes()
-  
+        if (!noteId) loadNotes()
+
         if (!noteId && !noteTimeCreated) setAddNote(false)
 
     }, [searchParams.get('noteId'), searchParams.get('time-createdAt')])
 
+    useEffect(() => {
+        if (isModalOpen) document.body.classList.add('no-scroll')
+        else document.body.classList.remove('no-scroll')
+
+    }, [isModalOpen])
 
     function loadNotes() {
         noteService.query()
@@ -98,13 +103,11 @@ export function NoteIndex() {
     return (
 
         <div className="note-index note-layout">
-             <NoteHeader />
+            <NoteHeader />
             <NoteSideBar />
             <section className="lists-container">
-                <div className="on-add-note-container"
-
-                    onClick={() => setAddNote(true)}
-                >
+                <div className="add-note-container"
+                    onClick={() => setAddNote(true)}>
                     {!addNote && <AddNoteBar
                     //  onAddNote={setAddNote} 
                     />}

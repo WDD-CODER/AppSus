@@ -7,7 +7,13 @@ html {
 
 body {
     margin: 0;
+    overflow-x: hidden;
+    &.no-scroll{
+        overflow: hidden;
+    }
 }
+
+
 
 h1,
 h2,
@@ -54,12 +60,13 @@ img {
     font-family: 'Chewy';
     background-color: #474747;
     transition: opacity 0.2s ease-in-out;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 .hover-show:hover::after {
     opacity: 1;
 }
+
 .hover-show.active:hover::after {
     opacity: 0;
 }
