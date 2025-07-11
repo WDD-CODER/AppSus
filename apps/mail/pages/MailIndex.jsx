@@ -14,6 +14,7 @@ export function MailIndex() {
     const [mails, setMails] = useState(null)
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(mailService.getFilterFromSearchParams(searchParams))
+    const [isVisable, setIsVisable] = useState(false)
 
     useEffect(() => {
         loadMails()
@@ -45,17 +46,24 @@ export function MailIndex() {
         setFilterBy(prevFilter => ({ ...prevFilter, ...filterByToEdit }))
     }
 
+    function toggleModal(str) {
+        if (str === 'open') setIsVisable(true)
+        if (str === 'close') setIsVisable(false)
+    }
+
     if (!mails) return <div>Loading...</div>
     return (
         <section className="mail-index">
-            <MailFolderList onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
+            <MailFolderList
+                onSetFilterBy={onSetFilterBy} filterBy={filterBy}
+                toggleModal={toggleModal} isVisable={isVisable} setIsVisable={setIsVisable} />
             <MailHeader onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
             <MailList mails={mails} onUpdateMailList={updateMailInList} />
             {/* <h1>Mails:</h1> */}
             {/* <table className="mails-table">
                 <MailList mails={mails} />
             </table> */}
-            <ComposeMail />
+            {isVisable && <ComposeMail toggleModal={toggleModal} isVisable={isVisable} setIsVisable={setIsVisable} />}
 
         </section>
     )
