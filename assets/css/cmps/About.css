@@ -1,0 +1,43 @@
+.about {
+  display: flex;
+  flex-direction: column;
+
+
+  padding: 1em;
+  gap: 1em;
+}
+
+.about h1 {
+  grid-area: header;
+}
+
+.about p {
+  grid-area: p;
+
+}
+
+.action {
+  grid-area: action;
+
+}
+
+.about-lioz,
+.about-dan {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+}
+
+button.active{
+  background-color: var(--clr-secondary-1);
+}
+
+.read-more {
+  color: blue;
+  cursor: pointer;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}

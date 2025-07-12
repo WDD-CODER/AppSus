@@ -1,0 +1,12 @@
+section.home {
+  grid-area: main-content;
+  
+  gap: 1em;
+  
+  text-align: center;
+
+}
+
+.home img {
+  max-width: 400px;
+}
