@@ -15,6 +15,7 @@ export function MailIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(mailService.getFilterFromSearchParams(searchParams))
     const [isVisable, setIsVisable] = useState(false)
+    const [isSidebarLong, setIsSidebarLong] = useState(false)
 
     useEffect(() => {
         loadMails()
@@ -67,6 +68,10 @@ export function MailIndex() {
         if (str === 'close') setIsVisable(false)
     }
 
+    function toggleSidebar() {
+        setIsSidebarLong(prevIsSidebarLong => !prevIsSidebarLong)
+    }
+
     function onDeleteMail(mailId) {
         mailService.get(mailId)
             .then(mail => {
@@ -104,20 +109,16 @@ export function MailIndex() {
 
     if (!mails) return <div>Loading...</div>
     return (
-        <section className="mail-index">
+        <section className={`mail-index ${isSidebarLong ? 'sidebar-expanded' : 'sidebar-collapsed'}`}>
             <MailFolderList
                 onSetFilterBy={onSetFilterBy} filterBy={filterBy}
-                toggleModal={toggleModal} isVisable={isVisable} setIsVisable={setIsVisable} />
-            <MailHeader onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
+                toggleModal={toggleModal} isVisable={isVisable} setIsVisable={setIsVisable} isSidebarLong={isSidebarLong} />
+            <MailHeader onSetFilterBy={onSetFilterBy} filterBy={filterBy} toggleSidebar={toggleSidebar} />
             <MailList
                 mails={mails}
                 onUpdateMailList={updateMailInList}
                 onDeleteMail={onDeleteMail}
                 onToggleMailStarred={onToggleMailStarred} />
-            {/* <h1>Mails:</h1> */}
-            {/* <table className="mails-table">
-                <MailList mails={mails} />
-            </table> */}
             {isVisable && <ComposeMail toggleModal={toggleModal} isVisable={isVisable} setIsVisable={setIsVisable} />}
 
         </section>

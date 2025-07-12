@@ -4,61 +4,77 @@
     display: grid;
     width: max-content;
     height: 100%;
-    transition: .5s ease-in;
+    transition: width .3s ease-in, opacity .3s ease-in;
     margin-right: 0.5em;
-}
 
-.mail-folder-list .mail-filters-container span {
-    display: none;
-    opacity: 0;
-
-    white-space: nowrap;
-    background-color: transparent;
+    width: 70px;
+    overflow: hidden;
 }
 
 .mail-folder-list .mail-filters-container div {
+    display: flex;
+    align-items: center;
+    padding-block: 0.75em;
+    padding-right: 0.375em;
+    cursor: pointer;
     border-top-right-radius: 2vh;
     border-bottom-right-radius: 2vh;
-
-    &.active .icon {
-        border-radius: 50%;
-        background-color: var(--clr-gmail-active-btn);
-    }
-
-    &.active.long {
-        display: block;
-        width: 16.6em;
-        opacity: 1;
-        background-color: var(--clr-gmail-active-btn);
-    }
-
-    &.active.long span {
-        display: inline;
-        opacity: 1;
-    }
-
-    &:hover {
-        width: 16.6em;
-        opacity: 1;
-        background-color: var(--clr-gmail-active-btn);
-
-    }
-
-    /* &:hover span {} */
-
-    &:hover.active {
-        background-color: var(--clr-gmail-active-btn);
-    }
+    transition: background-color 0.2s, padding 0.3s;
+    justify-content: center;
 }
 
-.mail-folder-list .mail-filters-container:hover span {
-    display: inline;
+.mail-folder-list .mail-filters-container span {
+    opacity: 0;
+    width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in, width 0.3s ease-in, margin-left 0.3s ease-in;
+    margin-left: 0;
+}
+
+.mail-folder-list.long {
+    width: 16.6em;
     opacity: 1;
 }
 
-.mail-folder-list .mail-filters-container:has(div.active.long) span {
-    display: inline;
+.mail-folder-list.long .mail-filters-container span {
     opacity: 1;
+    width: auto;
+    margin-left: 15px;
+}
+
+.mail-folder-list.long .mail-filters-container div {
+    justify-content: flex-start;
+    padding-left: 15px;
+}
+
+.mail-folder-list.long .mail-filters-container div.active span {
+    opacity: 1;
+    width: auto;
+    margin-left: 15px;
+}
+
+.mail-folder-list:not(.long):hover {
+    width: 16.6em;
+}
+
+.mail-folder-list:not(.long):hover .mail-filters-container span {
+    opacity: 1;
+    width: auto;
+    margin-left: 15px;
+}
+
+.mail-folder-list:not(.long):hover .mail-filters-container div {
+    justify-content: flex-start;
+    padding-left: 15px;
+}
+
+.mail-folder-list .mail-filters-container div.active {
+    background-color: var(--clr-gmail-active-btn);
+}
+
+.mail-folder-list .mail-filters-container div:hover {
+    background-color: rgb(233, 234, 234);
 }
 
 .compose-mail-btn {
@@ -77,26 +93,11 @@
     }
 }
 
-.mail-folder-list .mail-filters-container div {
-    padding-block: 0.75em;
-    padding-right: 0.375em;
-    margin-left: 0.5em;
-    cursor: pointer;
-    /* justify-content: center; */
-}
-
-/* .mail-folder-list:hover .mail-filters-container div {
-    justify-content: start;
-} */
-
 .mail-folder-list .mail-filters-container button {
     font-size: 1.25em;
 }
 
 .mail-folder-list .mail-filters-container .icon {
     color: var(--clr-gmail-primary-base);
-}
-
-.mail-folder-list .icon:hover {
-    display: block;
+    flex-shrink: 0;
 }

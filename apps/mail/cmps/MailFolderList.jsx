@@ -1,7 +1,7 @@
 
 const { useState, useEffect } = React
 
-export function MailFolderList({ filterBy, onSetFilterBy, toggleModal, isVisable, setIsVisable }) {
+export function MailFolderList({ filterBy, onSetFilterBy, toggleModal, isSidebarLong }) {
 
     const [isActive, setIsActive] = useState()
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
@@ -18,19 +18,15 @@ export function MailFolderList({ filterBy, onSetFilterBy, toggleModal, isVisable
 
     function onSetActive(ev) {
         if (isActive) {
-            isActive.classList.remove('long')
             isActive.classList.remove('active')
         }
 
-        ev.currentTarget.classList.add('long')
         ev.currentTarget.classList.add('active')
         setIsActive(ev.currentTarget)
     }
 
-    // const currentFolder = filterBy.folder
-
     return (
-        <section className="mail-folder-list">
+        <section className={`mail-folder-list ${isSidebarLong ? 'long' : ''}`}>
             <div className="mail-filters-container">
                 <div onClick={(ev) => toggleModal('open')} className="compose-mail-btn flex align-center">
                     <button className="icon-edit icon">edit</button>
