@@ -15,7 +15,6 @@ export function NoteIndex() {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(noteService.getFilterBySearchParams(searchParams))// to get filter from url...
-    // const onSetFilterBy = useRef(utilService.debounce(setFilterBy, 500)).current
 
     const [pinnedNoteList, setPinnedNoteList] = useState()
     const [addNoteBarOpen, setAddNoteBarOpen] = useState()

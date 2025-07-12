@@ -1,34 +1,15 @@
  /* home */
 
-.home {
-    grid-area: main-content;
-    /* background-color: var(--clr-primary-base); */
-}
+ .home-about-layout {
 
-.home .box-container {
-    padding: 1em 0;
-}
+     gap: 5em;
+     text-align: center;
 
-.home .box1 {
-    background-color: var(--clr-primary-base);
-    /* min-height: 10em; */
-}
 
-.home .box2 {
-    background-color: var(--clr-success-base);
-    /* min-height: 10em; */
-}
+     width: 70%;
 
- @media (min-width: 750px) {
-    .home .box-container {
-        display: flex;
-        flex-direction: row-reverse;
-    }
-    .home .box1 {
-        flex: 1
-    }
-    .home .box2 {
-        width: 30vw;
-    }
-    
-}
+     margin: auto;
+     margin-block: 3em;
+ }
+
+

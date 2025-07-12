@@ -9,6 +9,8 @@ import { MailIndex } from './apps/mail/pages/MailIndex.jsx'
 import { NoteIndex } from './apps/note/pages/NoteIndex.jsx'
 import { NotFound } from './cmps/NotFound.jsx'
 import { MailDetails } from './apps/mail/pages/MailDetails.jsx'
+import { AboutDan } from './cmps/AboutDan.jsx'
+import { AboutLioz } from './cmps/AboutLioz.jsx'
 
 export function RootCmp() {
     return <Router>
@@ -17,7 +19,11 @@ export function RootCmp() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />
-                <Route path="/about" element={<About />} />
+                <Route path="/about" element={<About />}>
+                    <Route path="Dan" element={<AboutDan/>} />
+                    <Route path="Lioz" element={<AboutLioz/>} />
+                </Route>
+
                 <Route path="/mail" element={<MailIndex />} />
                 <Route path="/mail/:mailId" element={<MailDetails />} />
                 <Route path="/note" element={<NoteIndex />} />
