@@ -134,10 +134,7 @@ function formatTimeOrDate(timestamp) {
         const month = (date.getMonth() + 1).toString().padStart(2, '0')
         const day = date.getDate().toString().padStart(2, '0')
         return `${day}-${month}-${year}`
-    }
-
-
-    
+    }    
 }
 
 function getFullDateAndTime(timestamp) {
@@ -172,3 +169,10 @@ export function animateCSS(el, animation = 'bounce', isRemoveClass = true) {
         el.addEventListener('animationend', handleAnimationEnd, { once: true })
     })
 }
+
+    function onAddActiveClass({ currentTarget }) {
+        if (currentTarget.classList.contains(active)) {
+            currentTarget.classList.remove('active')
+        } else currentTarget.classList.add('active')
+    }
+

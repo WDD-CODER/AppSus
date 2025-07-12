@@ -12,10 +12,9 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
     const loadingRef = useRef()
     const textRef = useRef()
     const navigate = useNavigate()
-
-
+    
+    
     useEffect(() => {
-
         requestAnimationFrame(() => { if (textRef.current) autoGrow(textRef.current), 5000 })
 
         if (!note) {
@@ -30,16 +29,33 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
                 })
         }
 
+        
     }, [searchParams.get('time-createdAt')])
 
 
     useEffect(() => {
         if (note) noteService.save(note)
+            .then(note => console.log('saved updated note', note))
     }, [note])
 
 
-    function seIsPinned(note) {
-        note.isPinned = (note.isPinned === true) ? note.isPinned = false : note.isPinned = true
+    function handleUpdateNote(changes, successMsg) {
+        const updatedNote = { ...note, ...changes }
+        setNote(updatedNote)
+        noteService.save(updatedNote)
+            .then(savedNote => {
+                setNote(savedNote)
+                if (successMsg) showSuccessMsg(successMsg)
+            })
+            .catch(() => showErrorMsg('Update failed'))
+    }
+
+    function seIsPinned() {
+        if (note.archive) return showErrorMsg('note is archived, cannot be pinned')
+        const pinnedStatus = !note.isPinned
+        setNote(prevNote => ({ ...prevNote, isPinned: pinnedStatus }))
+        noteService.save(note)
+            .then(() => showSuccessMsg(pinnedStatus ? 'Note pinned with success.' : 'Removed the pinned from note.'))
     }
 
 
@@ -109,7 +125,7 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
 
                 </div>
                 {/* <div className="labels-container">{ Note.label && <LabelPicker/>}</div> */}
-                <section className="tool-bar"><ToolBar onSetNote={setNote}>
+                <section className="tool-bar"><ToolBar onUpdateNote={handleUpdateNote} selectedNote={note} onSetSelectedNote={setNote}>
                     <button className="delete btn "
                         data-type={'Delete'}
                         onClick={ev => {
@@ -123,10 +139,11 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
                             onSave()
                         }} className="close">close</button>
                 </ToolBar>
-                    <button className="pin-note" onClick={ev =>{
+                    <button className="pin-note" onClick={ev => {
                         ev.preventDefault()
-                        seIsPinned(note)}}>
-                        <span className=" icon-keep icon ">keep</span>
+                        seIsPinned(note)
+                    }}>
+                        <span className=" icon-keep icon">keep</span>
                     </button>
 
                 </section>

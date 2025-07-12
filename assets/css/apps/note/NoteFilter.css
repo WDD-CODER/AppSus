@@ -1,0 +1,19 @@
+.note-filter {
+    display: grid;
+
+    gap: 1em;
+
+    text-align: center;
+    background-color: var(--clr-accent--1);
+}
+
+
+.note-filter input {
+    text-align: center;
+
+    max-width: 180px;
+}
+
+.note-filter span {
+    margin-inline-end: 10px;
+}

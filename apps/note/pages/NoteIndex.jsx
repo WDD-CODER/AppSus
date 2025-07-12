@@ -14,19 +14,25 @@ const { useSearchParams, useParams } = ReactRouterDOM
 export function NoteIndex() {
 
     const [searchParams, setSearchParams] = useSearchParams()
+    const [filterBy, setFilterBy] = useState(noteService.getFilterBySearchParams(searchParams))// to get filter from url...
+    // const onSetFilterBy = useRef(utilService.debounce(setFilterBy, 500)).current
 
     const [pinnedNoteList, setPinnedNoteList] = useState()
-    console.log("🚀 ~ NoteIndex ~ pinnedNoteList:", pinnedNoteList)
-    const [addNote, setAddNote] = useState()
+    const [addNoteBarOpen, setAddNoteBarOpen] = useState()
     const [noteList, setNoteList] = useState()
     const [selectedNote, setSelectedNote] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState()
     const loadingRef = useRef()
 
     useEffect(() => {
-
         const noteId = searchParams.get('noteId')
         const noteTimeCreated = searchParams.get('time-createdAt')
+
+
+        if (!noteId && !noteTimeCreated) {
+            setSelectedNote(null)
+            setAddNoteBarOpen(false)
+        }
 
         if (!noteList) {
             animateCSS(loadingRef.current, 'heartBeat', false)
@@ -36,24 +42,39 @@ export function NoteIndex() {
             noteService.get(noteId)
                 .then(note => {
                     if (noteTimeCreated) {
-                        console.log('variable')
+                        console.log('from list, opening modal ')
                         setIsModalOpen(true)
                         setSelectedNote(note)
                     }
                     else {
+                        console.log('create new, opening NoteBar ')
                         setIsModalOpen(false)
                         setSelectedNote(note)
-                        setAddNote(true)
+                        setAddNoteBarOpen(true)
                     }
                 })
                 .catch(() => showErrorMsg('Problem opening  modal'))
         }
 
-        if (!noteId) loadNotes()
+        if (!noteId) {
+            setSearchParams(utilService.getTruthyValues(filterBy))// for setting url ...
+            loadNotes()
+        }
 
-        if (!noteId && !noteTimeCreated) setAddNote(false)
+        if (!noteId && !noteTimeCreated) setAddNoteBarOpen(false)
 
-    }, [searchParams.get('noteId'), searchParams.get('time-createdAt')])
+    }, [searchParams.get('noteId'), searchParams.get('time-createdAt'),])
+
+
+
+    useEffect(() => {
+        setFilterBy(noteService.getFilterBySearchParams(searchParams))
+    }, [searchParams.get('filterBy')])
+    
+    useEffect(() => {
+        loadNotes()
+    }, [filterBy])
+
 
     useEffect(() => {
         if (isModalOpen) document.body.classList.add('no-scroll')
@@ -62,18 +83,17 @@ export function NoteIndex() {
     }, [isModalOpen])
 
     function loadNotes() {
-        noteService.query()
+        noteService.query(filterBy)
             .then(notes => {
                 filterPinnedNotes(notes)
             })
             .catch(() => showErrorMsg('Failed loading notes'))
     }
+
     function filterPinnedNotes(notes) {
         const pinned = notes.filter(note => { if (note.isPinned === true) return note })
-            console.log("🚀 ~ filterPinnedNotes ~ pinned:", pinned)
         if (pinned) setPinnedNoteList(pinned)
         const notPinned = notes.filter(note => { if (note.isPinned !== true) return note })
-            console.log("🚀 ~ filterPinnedNotes ~ pinned:", notPinned)
         if (notPinned) setNoteList(notPinned)
     }
 
@@ -102,19 +122,20 @@ export function NoteIndex() {
     }
 
     if (!noteList) return (<div ref={loadingRef} className="loading"> Loading...</div>)
-
+const shoePinnedList = (pinnedNoteList)
     return (
 
         <div className="note-index note-layout">
             <NoteHeader />
-            <NoteSideBar />
+            <NoteSideBar defaultFilter={filterBy} onSetFilterBy={setFilterBy} />
             <section className="lists-container">
                 <div className="add-note-container"
-                    onClick={() => setAddNote(true)}>
-                    {!addNote && <AddNoteBar
-                    //  onAddNote={setAddNote} 
+                    onClick={() => {
+                        setAddNoteBarOpen(true)
+                    }}>
+                    {!addNoteBarOpen && <AddNoteBar
                     />}
-                    {addNote && <NoteEdit
+                    {addNoteBarOpen && <NoteEdit
                         onCloseModal={onCloseModal}
                         selectedNote={selectedNote}
                         onDeleteNote={onDeleteNote}
@@ -127,9 +148,8 @@ export function NoteIndex() {
                         onDeleteNote={onDeleteNote}
                     />
                 </Modal>}
-                {pinnedNoteList && <NoteList key={'pinned-notes'} type={'pinned'} notes={pinnedNoteList} />}
+                {pinnedNoteList.length > 0 && <NoteList key={'pinned-notes'} type={'pinned'} notes={pinnedNoteList} />}
                 {!isModalOpen && noteList && <NoteList key={'other-notes'} type={'other'} notes={noteList} />}
-                {/* <button onClick={() => onDeleteNote()}data-type={'Delete'} className="delete">Delete</button> */}
             </section>
         </div>
     )

@@ -3,16 +3,12 @@ import { noteService } from '../services/note.service.js'
 import { SetBackground } from './SetBackground.jsx'
 const { useState, useEffect } = React
 const { useSearchParams, useNavigate } = ReactRouterDOM
-export function ToolBar({children, onSetNote }) {
+export function ToolBar({ children, onSetSelectedNote, selectedNote, onUpdateNote }) {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const [isActive, setIsActive] = useState()
-    const [note, setNote] = useState()
+    const [curNote, setCurNote] = useState(selectedNote)
     const navigate = useNavigate()
-    useEffect(() => {
-        if (searchParams.get('noteId')) getCurNote()
-
-    }, [searchParams.get('noteId')])
 
 
     function onSetActive({ currentTarget }) {
@@ -26,36 +22,6 @@ export function ToolBar({children, onSetNote }) {
         }
     }
 
-    function getCurNote() {
-        if (searchParams.get('noteId')) {
-            noteService.get(searchParams.get('noteId'))
-                .then(note => setNote(note))
-                .catch(() => showErrorMsg(" Couldn't get Note from storage."))
-        }
-        else if (searchParams.get('EditNoteId')) {
-            noteService.get(searchParams.get('EditNoteId'))
-                .then(setNote)
-                .catch(() => showErrorMsg(" Couldn't get EditNote from storage."))
-        }
-    }
-
-    // function onSetBgColor(clr) {
-    //     note.style.backgroundColor = clr
-    //     searchParams.set('background-color', clr)
-    //     setSearchParams(searchParams)
-    //     noteService.save(note)
-    //         .then(setNote)
-    // }
-
-    // function onSetBgImg(imgSrc) {
-    //     note.style.backgroundImage = imgSrc
-    //     searchParams.set('background-image', imgSrc)
-    //     setSearchParams(searchParams)
-    //     noteService.save(note)
-    //         .then(setNote)
-    // }
-
-
     function onSetBackground({ target }) {
         const style = { backgroundColor: '', backgroundImage: '' }
         if (target.style['background-color']) {
@@ -65,19 +31,19 @@ export function ToolBar({children, onSetNote }) {
             style.backgroundImage = target.style['background-image']
         }
 
-        note.style = { ...style }
-        noteService.save(note)
-            .then(note => {
-                onSetNote(note)
-                showSuccessMsg(' Color changed ')
-            })
-            .catch(err => {
-                console.log('err', err)
-                showErrorMsg(' Color was not updated correct ')
-            })
+        onUpdateNote({ style:{...curNote.style,...style }  }, 'changed background')
+        // setCurNote(prevSelectedNote => ({...prevSelectedNote, style: ({...prevSelectedNote.style, ...style})}))
     }
 
 
+    function onSetToArchive() {
+        if (curNote.archive) {
+            showErrorMsg('note is already archived ')
+            return
+        }
+        onUpdateNote({archive:true}, 'Note archived')
+        setCurNote(prevCurNote => ({...prevCurNote,  archive:true, isPinned:false  }))
+    }
 
     const tool = (!isActive) ? '' : isActive.classList
 
@@ -89,7 +55,10 @@ export function ToolBar({children, onSetNote }) {
             </button>
 
             <button data-type={'Archive'} className="archive hover-show">
-                <span className='icon-archive icon '>archive</span>
+                <span onClick={ev => {
+                    ev.preventDefault()
+                    onSetToArchive()
+                }} className='icon-archive icon '>archive</span>
             </button>
 
             <button data-type={'Background'} className="hover-show palette"
@@ -113,11 +82,7 @@ export function ToolBar({children, onSetNote }) {
             <button data-type={'Add-image'} className="image hover-show">
                 <span className="icon-image icon">image</span>
             </button>
-            {children} 
-
-            {/* <button data-type={'More'} className="more hover-show">
-                <span className="icon-more_vert icon">more_vert</span>
-            </button> */}
+            {children}
         </section>
     )
 }

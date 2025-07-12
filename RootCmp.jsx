@@ -7,16 +7,11 @@ import { About } from './pages/About.jsx'
 import { Home } from './pages/Home.jsx'
 import { MailIndex } from './apps/mail/pages/MailIndex.jsx'
 import { NoteIndex } from './apps/note/pages/NoteIndex.jsx'
-import { SideBar } from './cmps/SideBar.jsx'
 import { NotFound } from './cmps/NotFound.jsx'
-import { AddNote } from './apps/note/pages/AddNote.jsx'
 import { MailDetails } from './apps/mail/pages/MailDetails.jsx'
-import { NoteEdit } from './apps/note/pages/NoteEdit.jsx'
-import { Modal } from './cmps/Modal.jsx'
 
 export function RootCmp() {
     return <Router>
-        {/* <main className="root-cmp main-layout "> */}
         <main className="root-cmp">
             <AppHeader />
             <Routes>

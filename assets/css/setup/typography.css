@@ -13,6 +13,10 @@
   font-family: "Roboto Italic";
   src: url("../fonts/Roboto-Italic-VariableFont_wdth\,wght.ttf") format("truetype");
 }
+@font-face {
+  font-family: "Chewy";
+  src: url("../fonts/Chewy-Regular.ttf") format("truetype");
+}
 
 @font-face {
   font-family: "fa-regular";

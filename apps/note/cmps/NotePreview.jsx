@@ -22,7 +22,7 @@ export function NotePreview({ note }) {
             <p>{info.txt}</p> 
             {info.img && <figure>{info.img}</figure>}
             {/* {labels && <Labels />} */}
-            <ToolBar />
+            <ToolBar selectedNote={note}/>
         </section >
     )
 }
