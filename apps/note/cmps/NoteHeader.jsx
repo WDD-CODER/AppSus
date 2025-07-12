@@ -7,7 +7,7 @@ export function NoteHeader() {
         <header className="note-header">
             <section className="filter-selection">
                 <button ><span className="icon-menu icon">menu</span></button>
-                <img className="keep-logo" src="../../../assets/images/keep_2020q4_48dp.png" alt="keep-img" />
+                <img className="keep-logo" src="assets/images/keep_2020q4_48dp.png" alt="keep-img" />
                 <span className="cur-filter-at flex">Keep</span>
             </section>
             <section className="app-actions">
