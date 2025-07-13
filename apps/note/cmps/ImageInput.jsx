@@ -5,7 +5,7 @@ export function ImageInput({ onSelect ,curNoteBackGround }) {
 
 
     const images = [
-        { imageUrl: 'url("../assets/images/coverImg1.png")', imageName: 'cover1' },
+        { imageUrl: 'url("/assets/images/back1.png")', imageName: 'cover1' },
         { imageUrl: 'url("../assets/images/coverImg2.png")', imageName: 'cover2' },
         { imageUrl: 'url("../assets/images/coverImg3.png")', imageName: 'cover3' },
         { imageUrl: 'url("../assets/images/coverImg4.png")', imageName: 'cover4' },
