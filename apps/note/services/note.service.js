@@ -12,38 +12,24 @@ export const noteService = {
     getEmptyNote,
     getDefaultFilter,
     getFilterFromSearchParams,
-    onSetNoteParams,
-    getFilterBySearchParams
+    onSetNoteParams
 }
+'use strict';
 
 
 // LIST
 function query(filterBy = {}) {
-    
     return storageService.query(NOTE_KEY)
         .then(notes => {
             if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i')
-                notes = notes.filter(note => regExp.test(note.title))
+                notes = notes.filter(note => regExp.test(note.vendor))
             }
-
-            if (filterBy.archive) {
-                notes = notes.filter(note => note.archive === true)
-            }
-            else notes = notes.filter(note => note.archive !== true)
-
+            // console.log(' notes:', notes)
             return notes
         })
-          .catch(() => showErrorMsg('Failed loading notes'))
-    }
-
-function getFilterBySearchParams(searchParams) {
-    const filterType = searchParams.get('filterBy') || ''
-    const filterBy = {}
-
-    if (filterType === 'archive') filterBy.archive = true
-    return filterBy
 }
+
 
 // CREATE
 
@@ -54,7 +40,13 @@ function _createNotes() {
             _createDemoNote('NoteTxt'),
             _createDemoNote('NoteTxt'),
             _createDemoNote('NoteTxt'),
-            _createDemoNote('NoteTxt')
+            _createDemoNote('NoteTxt'),
+            _createDemoNote('NoteTxt'),
+            _createDemoNote('NoteTxt'),
+            _createDemoNote('NoteTxt'),
+            _createDemoNote('NoteTxt'),
+            _createDemoNote('NoteTxt'),
+            _createDemoNote('NoteTxt'),
         ]
         utilService.saveToStorage(NOTE_KEY, notes)
     }
@@ -148,4 +140,3 @@ function remove(noteId) {
     // return Promise.reject('Oh No!')
     return storageService.remove(NOTE_KEY, noteId)
 }
-
