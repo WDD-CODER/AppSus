@@ -1,14 +1,10 @@
 import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
-import { noteService } from '../services/note.service.js'
 import { SetBackground } from './SetBackground.jsx'
 const { useState, useEffect } = React
-const { useSearchParams, useNavigate } = ReactRouterDOM
 export function ToolBar({ children, onSetSelectedNote, selectedNote, onUpdateNote }) {
 
-    const [searchParams, setSearchParams] = useSearchParams()
     const [isActive, setIsActive] = useState()
     const [curNote, setCurNote] = useState(selectedNote)
-    const navigate = useNavigate()
 
 
     function onSetActive({ currentTarget }) {
