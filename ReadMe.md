@@ -7,7 +7,13 @@ Take notes, organize your thoughts, and stay productive with a beautiful, intera
 
 ## 🚀 Live Demo
 
-👉 [View the working app here!](https://your-deployment-url.com)
+👉 [View the working app here!](https://wdd-coder.github.io/AppSus/)
+
+---
+
+## 🌐 Repository
+
+🔗 [GitHub Repository](https://github.com/WDD-CODER/AppSus)
 
 ---
 
@@ -75,7 +81,7 @@ services/           # Shared services (event bus, utilities)
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/WDD-CODER/AppSus
    cd AppSus
    ```
 
@@ -102,7 +108,8 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 
 ## 👤 Authors
 
-- [Your Name]
+- **Dan Weibren**  
+- **Lioz Fried**  
 - Coding Academy Sprint 3 Team
 
 ---
