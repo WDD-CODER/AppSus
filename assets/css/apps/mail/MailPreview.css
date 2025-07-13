@@ -32,16 +32,6 @@
     text-overflow: ellipsis;
 }
 
-/* .mail-prev.mail-subject {
-    width: fit-content;
-}
-
-.mail-prev.mail-body {
-    width: 1fr;
-    color: var(--clr-gmail-primary--1);
-
-} */
-
 .mail-prev.mail-date {
     width: max-content;
     padding: 0 16px 0 30px;

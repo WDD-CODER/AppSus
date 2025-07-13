@@ -1,11 +1,8 @@
 import { mailService } from "../services/mail.service.js";
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js";
 
-// const { useState, useEffect } = React
-
 export function MailDetailsHeader({ onBack, mail, onToggleMailRead }) {
 
-    // const [mailToMark, setMailToMark] = useState(mail)
     function isReadMail() {
         const readMail = {
             iconClassName: '',
@@ -60,10 +57,6 @@ export function MailDetailsHeader({ onBack, mail, onToggleMailRead }) {
 
     function onMarkRead(ev) {
         ev.preventDefault()
-        // mail.isRead = !mail.isRead
-        // setMailToMark(mail)
-        // mailService.save(mailToMark)
-        //     .then(mail => console.log(mail))
         onToggleMailRead(mail)
     }
 

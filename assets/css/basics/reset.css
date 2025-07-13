@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 @media (prefers-reduced-motion: no-preference) {
     html {
         scroll-behavior: smooth;
@@ -53,7 +52,6 @@ a {
     text-decoration-skip-ink: none;
 }
 
-
 input,
 select,
 textarea,
@@ -68,7 +66,6 @@ input:focus {
     outline: none;
 }
 
-/* Takes off the scroll bar in number inputs */
 input[type="number"],
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {

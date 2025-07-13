@@ -90,14 +90,3 @@ button:hover {
     }
 
 }
-
-/* 
-.selection-container:hover span {
-    display: flex;
-    position: fixed;
-    left: 50px;
-    opacity: 1;
-    background-color: var(--clr-bg-button);
-    transition: 1s;
-
-} */

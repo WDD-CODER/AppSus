@@ -1,25 +1,3 @@
-
-
-/* השארתי פה את הקוד הקודם. שניקח החלטה משותפת. */
-
-/* main-layout {
-    position: relative;
-
-    display: grid;
-    grid:
-        "header header" 10vh "side-bar main-content" 90vh /minmax(50px, 150px) minmax(150px, 1fr);
-} */
-
-/* .main-layout {
-    position: relative;
-
-    display: grid;
-    grid:
-        "header header" 60px 
-        "side-bar main-content" 1fr
-         /minmax(50px, auto) minmax(auto, 1fr);
-} */
-
 .main-layout {
     position: relative;
 

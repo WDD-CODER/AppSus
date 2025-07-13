@@ -40,12 +40,5 @@ export function MailList({ mails, onUpdateMailList, onDeleteMail, onToggleMailSt
                 </li>
             ))}
         </ul>
-        // <tbody className="mail-list">
-        //     {mails.map(mail => (
-        //         <tr key={mail.id}>
-        //             <MailPreview mail={mail} />
-        //         </tr>
-        //     ))}
-        // </tbody>
     )
 }

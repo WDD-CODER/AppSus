@@ -1,5 +1,4 @@
 .mail-details {
-    /* display: flex; */
     margin: 1em;
     border: 0.5px solid var(--clr-gmail-shadow-line);
     border-radius: 20px;

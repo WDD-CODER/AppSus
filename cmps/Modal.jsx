@@ -17,7 +17,6 @@ export function Modal({ children, isOpen, onCloseModal }) {
 
   return (
     <React.Fragment>
-      {/* <section className='modal-content  '> */}
       <section className="modal">
         <div onClick={() => closeModal()} className='modal-backdrop'></div>
        <div className="edit-modal-container">

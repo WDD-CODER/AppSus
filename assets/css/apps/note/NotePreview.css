@@ -7,7 +7,6 @@
 
   width: 100%;
 
-  /* padding: .5em; */
   margin-block-end: .5em;
   background-size: cover;
   background-position: center;
@@ -34,18 +33,12 @@
 .note-preview p,h1{
   margin: .5em .5em 0 .5em;
 }
-/* .modal-enter {
-  transform: scale(0.2);
-  opacity: 0;
-  transform-origin: top center;
-} */
 
 .note-dialog {
   transform: scale(0.9);
   opacity: 0;
   transition: transform 300ms ease, opacity 300ms ease;
   pointer-events: none;
-  /* to avoid flickers */
 }
 
 .note-dialog.active {
@@ -65,5 +58,4 @@
   height: auto;
   object-fit: cover;
   border-radius: 0.25em;
-  /* optional */
 }

@@ -5,7 +5,6 @@ const { useState } = React
 
 export function MailPreviewBtns({ mail, onToggleMailRead, onDeleteMail }) {
 
-    // const [mailToMark, setMailToMark] = useState(mail)
     function isReadMail() {
         const readMail = {
             iconClassName: '',
@@ -27,9 +26,8 @@ export function MailPreviewBtns({ mail, onToggleMailRead, onDeleteMail }) {
     const handleActionClick = (ev) => {
         ev.preventDefault()
         ev.stopPropagation()
-        // console.log('Action button clicked for mail:', mail.id)
-
         const action = ev.currentTarget.dataset.action
+
         if (action === 'mark-read') {
             const originalIsRead = mail.isRead
             const updatedMail = { ...mail, isRead: !mail.isRead }
@@ -47,18 +45,7 @@ export function MailPreviewBtns({ mail, onToggleMailRead, onDeleteMail }) {
         } else if (action === 'delete') {
             onDeleteMail(mail.id)
         }
-
-        // if (ev.target.dataset.action === 'mark-read') onMarkRead()
-        // if (ev.target.dataset.action === 'delete') console.log('delete')
     }
-
-    // function onMarkRead(ev) {
-    //     // ev.preventDefault()
-    //     mail.isRead = !mail.isRead
-    //     setMailToMark(mail)
-    //     mailService.save(mailToMark)
-    //         .then(mail => console.log(mail))
-    // }
 
     return (
         <div className="mail-prev mail-act-btns">

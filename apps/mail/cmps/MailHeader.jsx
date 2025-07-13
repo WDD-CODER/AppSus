@@ -2,7 +2,6 @@ import { MailFilter } from "./MailFilter.jsx"
 
 export function MailHeader({ filterBy, onSetFilterBy, toggleSidebar }) {
 
-
     return (
         <header className="mail-header">
             <div className="mail-folder-list-hamburger icon-menu icon"
