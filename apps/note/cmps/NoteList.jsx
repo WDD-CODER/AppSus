@@ -1,6 +1,8 @@
 import { NotePreview } from "./NotePreview.jsx"
 
 export function NoteList({ notes, type }) {
+
+   if (!notes.length) return <div className="no-notes-container  ">No Notes To Show </div>
     return (
         <div className="note-list-container ">
             <h4>{type}</h4>

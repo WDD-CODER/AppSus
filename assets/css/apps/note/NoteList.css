@@ -29,3 +29,23 @@
 .note-list>* {
     break-inside: avoid;
 }
+
+.no-notes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem;
+  margin: 2rem auto;
+  /* max-width: 600px; */
+  /* border: 2px dashed var(--clr-border-light, #ccc); */
+  height: 40vh;
+  border-radius: 1rem;
+
+  text-align: center;
+  color: var(--clr-font-muted, #666);
+  background-color: var(--clr-bg-muted, #f9f9f9);
+  font-size: 1.2rem;
+  font-style: italic;
+}

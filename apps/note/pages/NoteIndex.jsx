@@ -70,7 +70,7 @@ export function NoteIndex() {
     useEffect(() => {
         setFilterBy(noteService.getFilterBySearchParams(searchParams))
     }, [searchParams.get('filterBy')])
-    
+
     useEffect(() => {
         loadNotes()
     }, [filterBy])
@@ -100,7 +100,7 @@ export function NoteIndex() {
 
     function toggleSidebar() {
         console.log('variable')
-        
+
         setIsSidebarLong(prevIsSidebarLong => !prevIsSidebarLong)
     }
 
@@ -129,7 +129,7 @@ export function NoteIndex() {
     }
 
     if (!noteList) return (<div ref={loadingRef} className="loading"> Loading...</div>)
-const shoePinnedList = (pinnedNoteList)
+    const shoePinnedList = (pinnedNoteList)
     return (
 
         <div className="note-index note-layout">
@@ -140,7 +140,7 @@ const shoePinnedList = (pinnedNoteList)
                     onClick={() => {
                         setAddNoteBarOpen(true)
                     }}>
-                    {!addNoteBarOpen && <AddNoteBar
+                    {!addNoteBarOpen && noteList.length > 0 && <AddNoteBar
                     />}
                     {addNoteBarOpen && <NoteEdit
                         onCloseModal={onCloseModal}
