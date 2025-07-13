@@ -7,7 +7,7 @@
     background-color: var(--clr-bg-main);
 }
 
-.color-choose {
+.background-select-option {
     padding-inline: .2em;
     gap: .5em;
 }

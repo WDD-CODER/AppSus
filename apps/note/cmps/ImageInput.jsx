@@ -12,7 +12,7 @@ export function ImageInput({ onSelect ,curNoteBackGround }) {
     ]
 
     return (
-        <div className="color-choose flex ">
+        <div className="background-select-option flex ">
             {images.map(Image => {
                 return <div key={Image.imageUrl} onClick={onSelect} style={{ backgroundImage:Image.imageUrl }} data-type={Image.imageName} className="img-pick box hover-show"></div>
             })}

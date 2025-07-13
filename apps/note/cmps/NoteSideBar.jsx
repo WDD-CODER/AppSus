@@ -42,7 +42,7 @@ export function NoteSideBar({ defaultFilter, onSetFilterBy }) {
             <div className="filters-container">
                 <div className="selection-container flex align-center" onClick={onSetActiveFilterBtn}>
                     <button className="icon-lightbulb icon">lightbulb</button>
-                    <span >Notes</span>
+                    <Link to="/note"><span >Notes</span></Link>
                 </div>
                 <div className="selection-container flex align-center" onClick={onSetActiveFilterBtn}>
                     <button className="icon-notifications icon">notifications</button>

@@ -2,10 +2,6 @@
 
 }
 
-@media (min-width: 620px) {
-
-} */
-
 
 /* @media (min-width: 750px) {
 
@@ -20,3 +16,19 @@
   .search-for-input { 
       display: none; }
 } */
+
+
+@media (max-width: 640px) {
+
+.note-side-bar{
+      display: none;
+
+      &.open{
+              display: flex;
+    
+      }
+}
+
+
+} 
+

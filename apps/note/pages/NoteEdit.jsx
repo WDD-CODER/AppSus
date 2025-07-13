@@ -89,7 +89,6 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
             })
     }
 
-    // const coverImg = (!note.style.backgroundImage) ? {} : { ...note.style }
     if (!note) return (<div ref={loadingRef} className="loading"> Loading...</div>)
     const transparentDrop = (searchParams.get('time-createdAt')) ? false : true
     return (
@@ -104,7 +103,6 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
                 }}>
 
                 <div className="text-info-container">
-                    {/* <h1 ></h1> */}
                     <input className="title" onChange={handleChange}
                         value={note.title || ''}
                         name="title" type="text"
@@ -124,7 +122,6 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
                     </label>
 
                 </div>
-                {/* <div className="labels-container">{ Note.label && <LabelPicker/>}</div> */}
                 <section className="tool-bar"><ToolBar onUpdateNote={handleUpdateNote} selectedNote={note} onSetSelectedNote={setNote}>
                     <button className="delete btn "
                         data-type={'Delete'}

@@ -11,13 +11,8 @@ export function ColorInput({ onSelect, curNoteBackGround }) {
         { mark: '#101010', colorName: 'black' }
     ]
 
-    function onSetColor(color) {
-        const newStyle = { backgroundColor: color }
-        onSelect(newStyle)
-    }
-
     return (
-        <div className="color-choose flex ">
+        <div className="background-select-option flex ">
             {colors.map(color => {
                 return <div key={color.mark} onClick={onSelect} style={{ backgroundColor: color.mark }} data-type={color.colorName} className="color-pick box hover-show"></div>
             })}
