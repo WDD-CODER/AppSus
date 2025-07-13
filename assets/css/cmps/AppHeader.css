@@ -24,11 +24,11 @@
     justify-self: center;
     opacity: 0;
 }
-.header-nav-bar a:hover .hide-txt {
+/* .header-nav-bar a:hover .hide-txt {
     opacity: 1;
-}
+} */
 .header-nav-bar a.active {
-    color: var(--clr-primary-base);
+    color: var(--clr-bg-main);
     font-weight: bold;
 }
 .app-header img{
