@@ -46,4 +46,6 @@ button.active {
 .about img {
   border: 6px var(--clr-secondary--1) double;
   border-radius: 2vh;
+  width: 50%;
+  align-self: center;
 }
