@@ -5,12 +5,10 @@ const { useRef, useEffect } = React
 export function Home() {
     const ref = useRef()
     const imgRef = useRef()
-    const pRef = useRef()
 
     useEffect(() => {
         animateCSS(ref.current, 'jackInTheBox', false)
             .then(() => {
-                animateCSS(pRef.current, 'slideIn', false)
                 animateCSS(imgRef.current, 'flash', false)
             })
     }, [])
@@ -28,9 +26,8 @@ export function Home() {
     return (
         <section className="home-about-layout home container">
             <h1 ref={ref} >Welcome to AppSuse the KeepItAllTogether app </h1>
-            <p ref={pRef}><LongTxt txt={aboutTxt} />
-            </p>
-            <img ref={imgRef} src="./assets/utilImages/homePage.png" alt="welcome image" />
+          <LongTxt  txt={aboutTxt}/>
+            {/* <img ref={imgRef} src="./assets/utilImages/homePage.png" alt="welcome image" /> */}
         </section>
     )
 }

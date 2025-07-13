@@ -11,5 +11,7 @@
      margin: auto;
      margin-block: 3em;
  }
-
+.home p{
+    line-height: 2em;
+}
 
