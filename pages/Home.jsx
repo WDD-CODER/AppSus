@@ -27,7 +27,7 @@ export function Home() {
         <section className="home-about-layout home container">
             <h1 ref={ref} >Welcome to AppSuse the KeepItAllTogether app </h1>
           <LongTxt  txt={aboutTxt}/>
-            {/* <img ref={imgRef} src="./assets/utilImages/homePage.png" alt="welcome image" /> */}
+            <img ref={imgRef} src="assets/images/homePage.png" alt="welcome image" />
         </section>
     )
 }

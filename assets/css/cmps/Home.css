@@ -1,8 +1,6 @@
- /* home */
-
  .home-about-layout {
 
-     gap: 5em;
+     gap: 2em;
      text-align: center;
 
 
@@ -10,8 +8,17 @@
 
      margin: auto;
      margin-block: 3em;
- }
-.home p{
-    line-height: 2em;
-}
 
+     
+ }
+
+ .home p {
+     line-height: 2em;
+ }
+
+ .home img {
+     width: 400px;
+     border: 6px var(--clr-secondary--1) double;
+     border-radius: 2vh;
+     place-self: anchor-center;
+ }

@@ -13,6 +13,7 @@
 
 .about p {
   grid-area: p;
+  line-height: 2em;
 
 }
 
@@ -29,7 +30,7 @@
   padding: 1em;
 }
 
-button.active{
+button.active {
   background-color: var(--clr-secondary-1);
 }
 
@@ -40,4 +41,9 @@ button.active{
 
 .read-more:hover {
   text-decoration: underline;
+}
+
+.about img {
+  border: 6px var(--clr-secondary--1) double;
+  border-radius: 2vh;
 }

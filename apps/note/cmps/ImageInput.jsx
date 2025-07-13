@@ -2,8 +2,6 @@
 
 export function ImageInput({ onSelect ,curNoteBackGround }) {
 
-
-
     const images = [
         { imageUrl: 'url("assets/images/back1.jpeg")', imageName: 'cover1' },
         { imageUrl: 'url("assets/images/back2.jpeg")', imageName: 'cover2' },
@@ -12,7 +10,6 @@ export function ImageInput({ onSelect ,curNoteBackGround }) {
         { imageUrl: 'url("assets/images/back5.jpeg")', imageName: 'cover5' },
         { imageUrl: 'url("assets/images/back6.jpeg")', imageName: 'cover6' },
     ]
-
 
     return (
         <div className="color-choose flex ">

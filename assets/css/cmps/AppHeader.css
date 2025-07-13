@@ -1,14 +1,15 @@
 .app-header {
     grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    
     position: sticky;
     top: 0;
     left: 0;
      
     height: 60px;
 
-    display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 1em;
     font-family: 'Bitcount';
     background-color: var(--clr-primary-base);
@@ -24,9 +25,7 @@
     justify-self: center;
     opacity: 0;
 }
-/* .header-nav-bar a:hover .hide-txt {
-    opacity: 1;
-} */
+
 .header-nav-bar a.active {
     color: var(--clr-bg-main);
     font-weight: bold;

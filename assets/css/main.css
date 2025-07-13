@@ -38,7 +38,7 @@
 @import './apps/mail/MailDetails.css';
 
 /* Pages */
-@import '../css/cmps/about.css';
+@import '../css/cmps/About.css';
 @import '../css/cmps/Home.css';
 @import './apps/note/NoteIndex.css';
 @import './apps/mail/MailIndex.css';
