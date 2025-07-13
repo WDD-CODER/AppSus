@@ -22,14 +22,14 @@
 
 .note-header :first-child {
     margin-inline-end: auto;
-    cursor: pointer;
+    /* cursor: pointer; */
 
 }
 
-.note-header .icon, button, span ,::after {
+/* .note-header .icon, button, span ,::after {
             cursor: default;
 
-}
+} */
 
 .user-circle {
     display: flex;

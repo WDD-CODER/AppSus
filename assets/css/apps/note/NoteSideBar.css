@@ -41,6 +41,7 @@ button:hover {
     display: flex;
     place-content: baseline;
 
+    cursor: pointer;
     width: 50px;
     height: 3em;
     transition: .5s;

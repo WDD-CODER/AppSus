@@ -54,7 +54,7 @@ useEffect(() => {
                     <button className="icon-lightbulb icon">lightbulb</button>
                     <span >Notes</span>
                 </div>
-                <div className="selection-container flex align-center Untouchable" id="reminders"
+                {/* <div className="selection-container flex align-center Untouchable" id="reminders"
                 // onClick={onSetActiveFilterBtn}
                 >
                     <button className="icon-notifications icon Untouchable">notifications</button>
@@ -65,17 +65,17 @@ useEffect(() => {
                 >
                     <button className="icon-edit icon Untouchable">edit</button>
                     <span >Labels</span>
-                </div>
+                </div> */}
                 <div data-filter="archive" className="selection-container flex align-center " id="archive" onClick={onSetActiveFilterBtn}>
                     <button className="icon-archive icon">archive</button>
                     <span>archive</span>
                 </div>
-                <div className="selection-container flex align-center Untouchable" id="trashed"
+                {/* <div className="selection-container flex align-center Untouchable" id="trashed"
                 //  onClick={onSetActiveFilterBtn}
                 >
                     <button className="icon-delete icon Untouchable">delete</button>
                     <span >Trashed</span>
-                </div>
+                </div> */}
             </div>
         </section>
     )
