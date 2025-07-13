@@ -7,7 +7,7 @@
 
   width: 100%;
 
-  padding: .5em;
+  /* padding: .5em; */
   margin-block-end: .5em;
   background-size: cover;
   background-position: center;
@@ -23,12 +23,17 @@
   margin-inline: auto;
   font-size: .5em;
   transition: opacity .5s;
+  width: 100% !important;
 }
 
 .note-preview .tool-bar:hover {
   opacity: 1;
 }
 
+
+.note-preview p,h1{
+  margin: .5em .5em 0 .5em;
+}
 /* .modal-enter {
   transform: scale(0.2);
   opacity: 0;
