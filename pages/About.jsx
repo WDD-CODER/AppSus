@@ -11,7 +11,24 @@ export function About() {
         animateCSS(refH1.current, 'bounceInDown')
     }, [])
 
-    const aboutTxt = "Miss Books is your smart companion for exploring and managing your reading journey. Easily track your favorite books, discover new titles, write reviews, and get personalized suggestions. Whether you're an avid reader or just getting started, Miss Books keeps everything organized and within reach — making it easier than ever to enjoy the stories you love."
+    const aboutTxt = `
+Welcome to AppSus — your all-in-one space for notes and emails.
+Whether you’re jotting down ideas, making lists, or editing that draft
+you meant to send last week, AppSus keeps it all in one place.
+
+Inspired by Google Keep and Gmail, we’ve combined note-taking and
+email editing into a simple, clean app that actually helps you stay organized.
+Pin important items, archive what’s done, and find everything easily
+when you need it.
+
+Why the horse logo? “Sus” means horse in Hebrew — and we liked the sound of it.
+
+AppSus is a student-built project, designed with care (and a few late-night coding sessions).
+We’re still adding features, but the goal is simple: help you manage
+the little things before they pile up.
+
+Start typing. We’ll handle the chaos.
+`;
 
     const [active, setActive] = useState()
     return (
