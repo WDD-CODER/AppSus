@@ -22,6 +22,13 @@
 
 .note-header :first-child {
     margin-inline-end: auto;
+    cursor: pointer;
+
+}
+
+.note-header .icon, button, span ,::after {
+            cursor: default;
+
 }
 
 .user-circle {
@@ -51,6 +58,7 @@
 .cur-filter-at {
     font-size: 1.35em;
 }
+
 .cur-filter-at:hover {
-text-decoration: underline;
+    text-decoration: underline;
 }

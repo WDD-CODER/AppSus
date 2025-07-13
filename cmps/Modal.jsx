@@ -1,4 +1,4 @@
-import { noteService } from "./apps/note/services/note.service.js"
+import { noteService } from "../apps/note/services/note.service.js"
 import { showErrorMsg } from "../services/event-bus.service.js"
 
 const { useSearchParams } = ReactRouterDOM

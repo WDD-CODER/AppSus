@@ -1,18 +1,17 @@
 
 
-export function NoteHeader() {
-
+export function NoteHeader({ onToggleSidebar }) {
 
     return (
         <header className="note-header">
             <section className="filter-selection">
-                <button ><span className="icon-menu icon">menu</span></button>
+                <button><span onClick={onToggleSidebar} className="icon-menu icon">menu</span></button>
                 <img className="keep-logo" src="assets/images/keep_2020q4_48dp.png" alt="keep-img" />
                 <span className="cur-filter-at flex">Keep</span>
             </section>
             <section className="app-actions">
                 <label htmlFor="search-for" className="search-for">
-                    <input id="search-for" type="text" hidden/>
+                    <input id="search-for" type="text" hidden />
 
                 </label>
                 <button data-type={'Search'} className=" hover-show"><span className="icon-search icon">search</span></button>

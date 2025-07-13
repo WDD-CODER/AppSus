@@ -1,6 +1,6 @@
 
 
-export function ImageInput({ onSelect ,curNoteBackGround }) {
+export function ImageInput({ onSelect }) {
 
     const images = [
         { imageUrl: 'url("assets/images/back1.jpeg")', imageName: 'cover1' },

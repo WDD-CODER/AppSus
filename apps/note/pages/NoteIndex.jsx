@@ -15,6 +15,7 @@ export function NoteIndex() {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(noteService.getFilterBySearchParams(searchParams))// to get filter from url...
+    const [isSidebarLong, setIsSidebarLong] = useState(false)
 
     const [pinnedNoteList, setPinnedNoteList] = useState()
     const [addNoteBarOpen, setAddNoteBarOpen] = useState()
@@ -82,6 +83,7 @@ export function NoteIndex() {
     }, [isModalOpen])
 
     function loadNotes() {
+        console.log("🚀 ~ loadNotes ~ filterBy:", filterBy)
         noteService.query(filterBy)
             .then(notes => {
                 filterPinnedNotes(notes)
@@ -94,6 +96,12 @@ export function NoteIndex() {
         if (pinned) setPinnedNoteList(pinned)
         const notPinned = notes.filter(note => { if (note.isPinned !== true) return note })
         if (notPinned) setNoteList(notPinned)
+    }
+
+    function toggleSidebar() {
+        console.log('variable')
+        
+        setIsSidebarLong(prevIsSidebarLong => !prevIsSidebarLong)
     }
 
     function onDeleteNote(noteId) {
@@ -125,8 +133,8 @@ const shoePinnedList = (pinnedNoteList)
     return (
 
         <div className="note-index note-layout">
-            <NoteHeader />
-            <NoteSideBar defaultFilter={filterBy} onSetFilterBy={setFilterBy} />
+            <NoteHeader onToggleSidebar={toggleSidebar} />
+            <NoteSideBar onToggleSidebar={toggleSidebar} isSideBarLong={isSidebarLong} defaultFilter={filterBy} onSetFilterBy={setFilterBy} />
             <section className="lists-container">
                 <div className="add-note-container"
                     onClick={() => {

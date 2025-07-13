@@ -32,7 +32,7 @@ export function ToolBar({ children, onSetSelectedNote, selectedNote, onUpdateNot
         }
 
         onUpdateNote({ style:{...curNote.style,...style }  }, 'changed background')
-        // setCurNote(prevSelectedNote => ({...prevSelectedNote, style: ({...prevSelectedNote.style, ...style})}))
+        setCurNote(prevSelectedNote => ({...prevSelectedNote, style: ({...prevSelectedNote.style, ...style})}))
     }
 
 

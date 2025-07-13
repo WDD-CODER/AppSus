@@ -14,14 +14,12 @@ export function NotePreview({ note }) {
         noteService.onSetNoteParams(note, searchParams, setSearchParams)
     }
 
-// const img = (!note.style.backgroundImage)? '' : note.style.backgroundImage
 
     return (
         <section style={{...note.style}} onClick={() => onSetParams()} className="note-preview box container">
             <h1>{title}</h1>
             <p>{info.txt}</p> 
             {info.img && <figure>{info.img}</figure>}
-            {/* {labels && <Labels />} */}
             <ToolBar selectedNote={note}/>
         </section >
     )

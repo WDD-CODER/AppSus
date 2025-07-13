@@ -72,6 +72,11 @@ button:hover {
         background-color: var(--clr-bg-button);
 
     }
+    &:hover.active {
+        opacity: 1;
+        background-color: var(--clr-bg-button-active);
+
+    }
 
     &:hover span {
         display: flex;

@@ -1,6 +1,6 @@
 
 
-export function ColorInput({ onSelect, curNoteBackGround }) {
+export function ColorInput({ onSelect }) {
 
     const colors = [
         { mark: '#F44236', colorName: 'red' },
