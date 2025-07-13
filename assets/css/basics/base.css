@@ -1,5 +1,4 @@
 html {
-
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 16px;
@@ -15,8 +14,6 @@ body {
         overflow: hidden;
     }
 }
-
-
 
 h1,
 h2,
@@ -63,7 +60,6 @@ img {
     font-family: 'Chewy';
     background-color: #474747;
     transition: opacity 0.2s ease-in-out;
-    /* z-index: 1; */
 }
 
 .hover-show:hover::after {

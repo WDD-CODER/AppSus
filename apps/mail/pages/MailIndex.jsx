@@ -108,6 +108,7 @@ export function MailIndex() {
     }
 
     if (!mails) return <div>Loading...</div>
+
     return (
         <section className={`mail-index ${isSidebarLong ? 'sidebar-expanded' : 'sidebar-collapsed'}`}>
             <MailFolderList
@@ -120,7 +121,6 @@ export function MailIndex() {
                 onDeleteMail={onDeleteMail}
                 onToggleMailStarred={onToggleMailStarred} />
             {isVisable && <ComposeMail toggleModal={toggleModal} isVisable={isVisable} setIsVisable={setIsVisable} />}
-
         </section>
     )
 }

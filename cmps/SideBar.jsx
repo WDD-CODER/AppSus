@@ -14,9 +14,3 @@ export function SideBar() {
         </section>
     </div>
 }
-// Notes
-// Reminders
-// Labels
-// Privet
-// Archive
-// Trashed

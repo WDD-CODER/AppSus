@@ -5,17 +5,10 @@ const { useState, useEffect, useRef } = React
 export function MailFilter({ filterBy, onSetFilterBy }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
-    // const onSetFilterByDebounce = useRef(utilService.debounce(onSetFilterBy, 500)).current
 
     useEffect(() => {
         setFilterByToEdit(filterBy)
     }, [filterBy])
-
-    // useEffect(() => {
-    //     if (JSON.stringify(filterByToEdit) !== JSON.stringify(filterBy)) {
-    //         onSetFilterByDebounce(filterByToEdit)
-    //     }
-    // }, [filterByToEdit])
 
     function handleChange({ target }) {
         const field = target.name

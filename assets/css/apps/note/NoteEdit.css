@@ -12,7 +12,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    /* z-index: 1; */
 }
 
 
@@ -40,8 +39,6 @@
     display: flex;
     flex-direction: column;
     overflow-y:auto;
-    ;
-    /* max-height: 60vh; */
 }
 
 .text-info-container::-webkit-scrollbar {
@@ -50,7 +47,6 @@
 
 .text-info-container::-webkit-scrollbar-thumb {
   background:var(--clr-scroll-webkit);
-  /* border-radius: 4px; */
 }
 
 .text-info-container::-webkit-scrollbar-track {
@@ -62,8 +58,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    /* width: 100vw;
-    height: 100vh; */
 
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -110,9 +104,3 @@
 
     font-size: 24px;
 }
-
-.pin-note.active  .icon-keep{
-    
-}
-
-

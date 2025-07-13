@@ -114,11 +114,11 @@ function _createMails() {
             { id: 'e115', createdAt: 1680009600000, subject: 'Quick Question', body: 'Just a quick question about our last discussion.', isRead: false, sentAt: 1680009700000, removedAt: null, from: 'colleague@work.com', to: 'user@appsus.com', isStarred: false },
             {
                 id: 'e116',
-                createdAt: 1719590400000, // July 29, 2024 12:00:00 PM (approx)
-                subject: 'A short subject line', // 20 characters
+                createdAt: 1719590400000,
+                subject: 'A short subject line',
                 body: 'This is a standard body of a mail, nothing too long or too short, just a regular message.',
                 isRead: false,
-                sentAt: 1719590460000, // July 29, 2024 12:01:00 PM (approx)
+                sentAt: 1719590460000,
                 removedAt: null,
                 from: 'support@example.com',
                 to: 'user@appsus.com',
@@ -126,11 +126,11 @@ function _createMails() {
             },
             {
                 id: 'e117',
-                createdAt: 1718102400000, // June 12, 2024 12:00:00 PM (approx)
+                createdAt: 1718102400000,
                 subject: 'Project Proposal Follow-up',
-                body: 'This is an exceptionally long email body designed to test how the UI handles very extensive content. It goes on and on, detailing every single aspect of the project, including background, methodology, expected outcomes, potential risks, mitigation strategies, and a comprehensive timeline stretching into the next fiscal year, ensuring that all possible scenarios are covered and that the reader has a complete understanding of the scope and depth of this particular endeavor, providing more than 100 characters of text to truly see the overflow and ellipsis in action. This content should definitely trigger any overflow handling you have in place for the body.', // Over 100 characters
+                body: 'This is an exceptionally long email body designed to test how the UI handles very extensive content. It goes on and on, detailing every single aspect of the project, including background, methodology, expected outcomes, potential risks, mitigation strategies, and a comprehensive timeline stretching into the next fiscal year, ensuring that all possible scenarios are covered and that the reader has a complete understanding of the scope and depth of this particular endeavor, providing more than 100 characters of text to truly see the overflow and ellipsis in action. This content should definitely trigger any overflow handling you have in place for the body.',
                 isRead: true,
-                sentAt: 1718102520000, // June 12, 2024 12:02:00 PM (approx)
+                sentAt: 1718102520000,
                 removedAt: null,
                 from: 'manager@appsus.com',
                 to: 'user@appsus.com',
