@@ -12,7 +12,7 @@ export const noteService = {
     getEmptyNote,
     getDefaultFilter,
     getFilterFromSearchParams,
-    onSetNoteParams,
+    onGetNoteParams,
     getFilterBySearchParams
 }
 
@@ -136,7 +136,7 @@ function _setNextPrevNoteId(note) {
     })
 }
 
-function onSetNoteParams(note, data, func ) {
+function onGetNoteParams(note, data, func ) {
     if (!note.id) return showErrorMsg('seems like there is no not...')
     // data.set('txt', (note.info && note.info.txt) || '')
     // data.set('type', note.type || '')
@@ -145,8 +145,9 @@ function onSetNoteParams(note, data, func ) {
     // data.set('background-image', note.style.backgroundImage || '')
     data.set('date-createdAt', (note.createdAt && note.createdAt.date) || '')
     data.set('time-createdAt', (note.createdAt && note.createdAt.time) || '')
-    // return Promise.resolve(func(data))
     func(data)
+    return Promise.resolve(data)
+   
 }
 
 

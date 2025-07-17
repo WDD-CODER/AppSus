@@ -4,7 +4,7 @@ import { noteService, } from "../services/note.service.js"
 import { ToolBar } from "../cmps/Toolbar.jsx"
 
 const { useState, useEffect, useRef } = React
-const { useNavigate, useSearchParams } = ReactRouterDOM
+const { useNavigate, useSearchParams, useParams } = ReactRouterDOM
 export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
 
     const [searchParams, setSearchParams] = useSearchParams()
@@ -12,31 +12,52 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
     const loadingRef = useRef()
     const textRef = useRef()
     const navigate = useNavigate()
-    
-    
+    const { noteId } = useParams()
+
+
     useEffect(() => {
         requestAnimationFrame(() => { if (textRef.current) autoGrow(textRef.current), 5000 })
 
-        if (!note) {
-            animateCSS(loadingRef.current, 'heartBeat', false)
+        if (note) {
+            return console.log('note from selected', note)
+        }
+
+        if (!noteId) {
             const note = noteService.getEmptyNote()
+            setNote(note)
             noteService.save(note)
                 .then(note => {
                     setNote(note)
-                    searchParams.set('noteId', note.id)
+                    console.log('variable')
+                    searchParams.set('add', 'noteInTheMaking')
                     setSearchParams(searchParams)
+                    // console.log('variable')
                     showSuccessMsg('saved to storage, ready for edit :)')
+                    // navigate(`/note/edit/${note.id}`)
+                })
+                .catch(err => {
+                    console.log('err', err)
+                    showErrorMsg('failed to save note')
                 })
         }
 
-        
-    }, [searchParams.get('time-createdAt')])
+        if (noteId) noteService.get(noteId)
+            .then(note => {
+                setNote(note)
+                showSuccessMsg('got note from url opening modal')
+            })
+            .catch(err => {
+                console.log('err', err)
+                showErrorMsg('failed to get note')
+            })
+
+    }, [noteId])
 
 
-    useEffect(() => {
-        if (note) noteService.save(note)
-            .then(note => console.log('saved updated note', note))
-    }, [note])
+    // useEffect(() => {
+    //     if (searchParams.get('time-createdAt')) setIsModa
+
+    // }, [searchParams.get('time-createdAt')])
 
 
     function handleUpdateNote(changes, successMsg) {
@@ -80,7 +101,9 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
 
         noteService.save(note)
             .then(note => {
-                onCloseModal(note)
+                // if (note === )
+                // onCloseModal(note)
+                
                 navigate('/note')
             })
             .catch(err => {
@@ -89,14 +112,13 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
             })
     }
 
-    if (!note) return (<div ref={loadingRef} className="loading"> Loading...</div>)
-    const transparentDrop = (searchParams.get('time-createdAt')) ? false : true
+    const transparentDrop = (!noteId) ? true : false
     return (
         <React.Fragment>
             {transparentDrop && <div className="transparent-drop" onClick={() => onSave()}></div>}
             <form className="note-edit-container box"
-                onClick={(ev) => ev.stopPropagation()}
-                style={{ ...note.style }}
+                // onClick={(ev) => ev.stopPropagation()}
+                style={note && { ...note.style }}
                 onSubmit={ev => {
                     ev.preventDefault()
                     onSave()
@@ -104,7 +126,7 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
 
                 <div className="text-info-container">
                     <input className="title" onChange={handleChange}
-                        value={note.title || ''}
+                        value={note && note.title || ''}
                         name="title" type="text"
                         placeholder="Title..." />
 
@@ -115,7 +137,7 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
                             handleChange(ev)
                         }}
                             id="info"
-                            value={note.info.txt}
+                            value={note && note.info.txt || ''}
                             name="info"
                             type="text"
                             placeholder="Take a note..." />
