@@ -5,8 +5,8 @@ import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 const { useEffect, useState } = React
 const { useSearchParams, useParams } = ReactRouterDOM
 export function Modal({ children, onCloseModal}) {
-  const { props } = children
-  console.log("🚀 ~ Modal ~ props:", props)
+  // const { props } = children
+  // console.log("🚀 ~ Modal ~ props:", props)
 
   const [searchParams, setSearchParams] = useSearchParams()
   const [curNote, setCurNote] = useState()
@@ -14,9 +14,10 @@ export function Modal({ children, onCloseModal}) {
   const { noteId } = useParams()
   // const { isModalOpen, note, onCloseModal, onDeleteNote } = props
   useEffect(() => {
-    console.log('modal has opend!')
-    
-    document.body.classList.add('no-scroll')
+    if (noteId) {
+      console.log('modal has opend!')
+      document.body.classList.add('no-scroll')
+    }
     // noteService.get(noteId)
     //   .then(note => {
     //     setNote(note)
@@ -41,9 +42,9 @@ export function Modal({ children, onCloseModal}) {
     //   .then(note => onCloseModal(note))
     //   .catch(() => showErrorMsg(' Problem closing model '))
   }
-  console.log("🚀 ~ Modal ~ children.props.note:", children.props.selectedNote)
+  // console.log("🚀 ~ Modal ~ children.props.note:", children.props.selectedNote)
 
-  if (!children.props.selectedNote) return null
+  if (!noteId) return <div>Loading...</div>
 
   return (
     <React.Fragment>
