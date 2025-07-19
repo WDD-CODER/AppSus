@@ -2,7 +2,7 @@
 const { useState, useEffect, useRef } = React
 const { useSearchParams, useNavigate } = ReactRouterDOM
 
-export function NoteSideBar({ defaultFilter, onSetFilterBy, isSideBarLong, onToggleSidebar }) {
+export function NoteSideBar({ defaultFilter, onSetFilterBy, isSideBarLong }) {
 
     const [isActive, setIsActive] = useState()
     const [searchParams, setSearchParams] = useSearchParams()
@@ -12,7 +12,6 @@ export function NoteSideBar({ defaultFilter, onSetFilterBy, isSideBarLong, onTog
 
 useEffect(() => {
     if (!isSideBarLong) {
-        onToggleSidebar()
         removeLong()}
 }, [isSideBarLong])
 
@@ -22,7 +21,6 @@ useEffect(() => {
             currentTarget.classList.remove('long', 'active')
             setSearchParams({})
             setIsActive(null)
-            onToggleSidebar()
         } else {
             if (isActive) {
                 isActive.classList.remove('long', 'active')

@@ -8,8 +8,8 @@ import { NoteList } from "../cmps/NoteList.jsx"
 import { NoteSideBar } from "../cmps/NoteSideBar.jsx";
 import { noteService } from "../services/note.service.js"
 
-const { useState, useEffect, useRef, } = React
-const { useSearchParams, useParams, Link, Outlet } = ReactRouterDOM
+const { useState, useEffect, useRef,, } = React
+const { useSearchParams, useParams, Link, Outlet, Link, Outlet } = ReactRouterDOM
 
 export function NoteIndex() {
 
@@ -40,10 +40,10 @@ export function NoteIndex() {
             .catch(() => showErrorMsg('Problem getting note from url '))
     }, [noteId])
 
-    useEffect(() => {
-        console.log('change to note')
-        loadNotes()
-    }, [!note])
+useEffect(() => {
+  console.log('change to note')
+  loadNotes()
+}, [!note])
 
 
     function loadNotes() {

@@ -4,40 +4,48 @@ import { noteService, } from "../services/note.service.js"
 import { ToolBar } from "../cmps/Toolbar.jsx"
 
 const { useState, useEffect, useRef } = React
-const { useNavigate, useSearchParams } = ReactRouterDOM
-export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
+const { useNavigate, useSearchParams, useParams, useOutletContext } = ReactRouterDOM
+export function NoteEdit(props) {
+
+    const context = useOutletContext() || {}
+    const setNewNoteClose = props.setNewNoteClose || context.setNewNoteClose;
+    const setNote = props.setNote || context.setNote;
+    const note = props.note || context.note;
+    const onDeleteNote = props.onDeleteNote || context.onDeleteNote;
+
 
     const [searchParams, setSearchParams] = useSearchParams()
-    const [note, setNote] = useState(selectedNote)
     const loadingRef = useRef()
     const textRef = useRef()
     const navigate = useNavigate()
-    
-    
+    const { noteId } = useParams()
+
+
     useEffect(() => {
         requestAnimationFrame(() => { if (textRef.current) autoGrow(textRef.current), 5000 })
 
-        if (!note) {
-            animateCSS(loadingRef.current, 'heartBeat', false)
-            const note = noteService.getEmptyNote()
-            noteService.save(note)
-                .then(note => {
-                    setNote(note)
-                    searchParams.set('noteId', note.id)
-                    setSearchParams(searchParams)
-                    showSuccessMsg('saved to storage, ready for edit :)')
-                })
+        if (note) {
+            return console.log('note from selected', note)
         }
 
-        
-    }, [searchParams.get('time-createdAt')])
+        if (!noteId) {
+            const note = noteService.getEmptyNote()
+            setNote(note)
+        }
 
+        if (noteId) noteService.get(noteId)
+            .then(note => {
+                setNote(note)
+                showSuccessMsg('got note from url opening modal')
+            })
+            .catch(err => {
+                console.log('err', err)
+                showErrorMsg('failed to get note')
+            })
 
-    useEffect(() => {
-        if (note) noteService.save(note)
-            .then(note => console.log('saved updated note', note))
-    }, [note])
+        return () => setNewNoteClose(false)
 
+    }, [noteId])
 
     function handleUpdateNote(changes, successMsg) {
         const updatedNote = { ...note, ...changes }
@@ -76,27 +84,33 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
     }
 
     function onSave() {
-        console.log('onSave')
+        if (!note.title && !note.info.txt) {
+            showErrorMsg(' Note has no content. It was not saved')
+            setNote(false)
 
+            return navigate('/note')
+        }
         noteService.save(note)
-            .then(note => {
-                onCloseModal(note)
+            .then(() => {
+                showSuccessMsg('note saved!')
+                setNote(false)
                 navigate('/note')
             })
             .catch(err => {
                 console.log('err', err)
                 showErrorMsg('problem saving note')
+                navigate('/note')
             })
     }
 
-    if (!note) return (<div ref={loadingRef} className="loading"> Loading...</div>)
-    const transparentDrop = (searchParams.get('time-createdAt')) ? false : true
+    const transparentDrop = (!noteId) ? true : false
+    const style = (note) ? (typeof note.style === 'object' ? note.style : {}) : {}
+
     return (
         <React.Fragment>
             {transparentDrop && <div className="transparent-drop" onClick={() => onSave()}></div>}
             <form className="note-edit-container box"
-                onClick={(ev) => ev.stopPropagation()}
-                style={{ ...note.style }}
+                style={style}
                 onSubmit={ev => {
                     ev.preventDefault()
                     onSave()
@@ -104,7 +118,7 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
 
                 <div className="text-info-container">
                     <input className="title" onChange={handleChange}
-                        value={note.title || ''}
+                        value={note && note.title || ''}
                         name="title" type="text"
                         placeholder="Title..." />
 
@@ -115,27 +129,28 @@ export function NoteEdit({ onCloseModal, selectedNote, onDeleteNote }) {
                             handleChange(ev)
                         }}
                             id="info"
-                            value={note.info.txt}
+                            value={note && note.info.txt || ''}
                             name="info"
                             type="text"
                             placeholder="Take a note..." />
                     </label>
 
                 </div>
-                <section className="tool-bar"><ToolBar onUpdateNote={handleUpdateNote} selectedNote={note} onSetSelectedNote={setNote}>
-                    <button className="delete btn "
-                        data-type={'Delete'}
-                        onClick={ev => {
-                            ev.preventDefault()
-                            onRemoveNote()
-                        }}> <span className="icon-delete icon">delete</span>
-                    </button>
-                    <button
-                        onClick={ev => {
-                            ev.preventDefault()
-                            onSave()
-                        }} className="close">close</button>
-                </ToolBar>
+                <section className="tool-bar">
+                    <ToolBar onUpdateNote={handleUpdateNote} selectedNote={note} onSetSelectedNote={setNote}>
+                        <button className="delete btn "
+                            data-type={'Delete'}
+                            onClick={ev => {
+                                ev.preventDefault()
+                                onRemoveNote()
+                            }}> <span className="icon-delete icon">delete</span>
+                        </button>
+                        <button
+                            onClick={ev => {
+                                ev.preventDefault()
+                                onSave()
+                            }} className="close">close</button>
+                    </ToolBar>
                     <button className="pin-note" onClick={ev => {
                         ev.preventDefault()
                         seIsPinned(note)

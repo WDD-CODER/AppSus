@@ -1,4 +1,4 @@
-const {Link} = ReactRouterDOM
+
 export function AddNoteBar() {
     return (
             <div  className="add-note-bar box container">
