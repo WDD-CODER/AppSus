@@ -13,19 +13,6 @@ export function NotePreview({ note }) {
 
     function onSetParams() {
         console.log('variable')
-        
-        // // searchParams.set('noteId', note.id)
-        // noteService.onGetNoteParams(note, searchParams, setSearchParams)
-        //     .then(res => {
-        //         console.log("🚀 ~ onSetParams ~ res:", res)
-        //         showSuccessMsg('navigating to open modal!')
-        //         navigate(`/note/edit/${note.id}`)
-        //     })
-        //     .catch(err => {
-        //         console.log('err', err);
-        //         showErrorMsg('')
-        //     })
-
 
     }
 

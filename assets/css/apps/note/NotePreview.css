@@ -25,7 +25,7 @@
   width: 100% !important;
 }
 
-.note-preview .tool-bar:hover {
+.note-preview:hover .tool-bar {
   opacity: 1;
 }
 

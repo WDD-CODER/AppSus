@@ -15,15 +15,12 @@ export function NoteIndex() {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(noteService.getFilterBySearchParams(searchParams))// to get filter from url...
-    // const [isSidebarLong, setIsSidebarLong] = useState(false)
-
     const [pinnedNoteList, setPinnedNoteList] = useState()
-    // const [addNoteBarOpen, setAddNoteBarOpen] = useState()
-
-
     const [noteList, setNoteList] = useState()
     const [note, setNote] = useState()
-    const [isModalOpen, setIsModalOpen] = useState()
+
+
+    const [newNoteClose, setNewNoteClose] = useState()
     const loadingRef = useRef()
     const { noteId } = useParams()
 
@@ -32,54 +29,21 @@ export function NoteIndex() {
         loadNotes()
         if (!noteId) {
             setNote(null)
-            // setAddNoteBarOpen(false)
             return
         }
 
-        // only fetch and show AddNoteBar once note is ready
         noteService.get(noteId)
             .then(note => {
                 setNote(note)
-                setIsModalOpen(true)
-                // setAddNoteBarOpen(true)
                 showSuccessMsg('got note! ready for edit')
             })
             .catch(() => showErrorMsg('Problem getting note from url '))
     }, [noteId])
 
-
-
-
-    useEffect(() => {
-        
-        if (noteId && searchParams.get('time-createdAt')) {
-            console.log('noteId && searchParams.get(time-createdAt)')
-            
-            noteService.get(noteId)
-                .then(note => {
-                    // setNote(note)
-                    // setAddNoteBarOpen(true)
-                    setIsModalOpen(true)
-                    showSuccessMsg('')
-                })
-                .catch(err => {
-                    console.log('err', err);
-                    showErrorMsg('')
-                })
-
-        }
-
-        return () => setIsModalOpen(false)
-    }, [searchParams.get('time-createdAt')])
-
-    // useEffect(() => {
-    //     setFilterBy(noteService.getFilterBySearchParams(searchParams))
-    // }, [searchParams.get('filterBy')])
-
-    // useEffect(() => {
-    //     loadNotes()
-    // }, [filterBy])
-
+useEffect(() => {
+  console.log('change to note')
+  loadNotes()
+}, [!note])
 
 
     function loadNotes() {
@@ -101,9 +65,6 @@ export function NoteIndex() {
         }
     }
 
-    // function toggleSidebar() {
-    //     setIsSidebarLong(prevIsSidebarLong => !prevIsSidebarLong)
-    // }
 
     function onDeleteNote(noteId) {
         const curNoteId = (noteId) ? noteId : searchParams.get('noteId')
@@ -111,7 +72,6 @@ export function NoteIndex() {
         else {
             noteService.remove(curNoteId)
                 .then(() => {
-                    // setIsModalOpen(false)
                     setNote(null)
                     setSearchParams({})
                     showSuccessMsg('Note removed with Success')
@@ -119,44 +79,31 @@ export function NoteIndex() {
         }
     }
 
-    function onCloseModal(note) {
-        noteService.save(note)
-            .then(() => {
-                // setIsModalOpen(false)
-                setNote(null)
-                setSearchParams({})
-                showSuccessMsg(' Close model and saved note')
-            })
-    }
     if (!noteList) return (<div ref={loadingRef} className="loading"> Loading...</div>)
-      const isNoteInTheMaking =  (searchParams.get('add')) ? true : false
-    // const isEdit = (searchParams.get('time-createdAt')) ? true : false
-                    console.log("🚀 ~ NoteIndex ~ searchParams.get('add'):", !searchParams.get('add'))
     return (
-
         <div className="note-index note-layout">
             <NoteHeader />
             <NoteSideBar defaultFilter={filterBy} onSetFilterBy={setFilterBy} />
             <section className="lists-container">
                 <div className="add-note-container">
-                    {!isNoteInTheMaking && <Link to="/note/edit"> <AddNoteBar /> </Link>}
-
-                    {isNoteInTheMaking && <Outlet
-                        isModalOpen={isModalOpen}
-                        onCloseModal={onCloseModal}
-                        selectedNote={note}
-                        onDeleteNote={onDeleteNote}
-                    />}
-                    {/* } */}
+                    {!newNoteClose && <Link to="/note/edit" onClick={() => setNewNoteClose(true)}> <AddNoteBar /> </Link>}
+                    {newNoteClose &&
+                        <Outlet context={{ setNewNoteClose, setNote, note, onDeleteNote }}
+                            onSetNewNoteClose={setNewNoteClose}
+                            onSetSelectedNote={setNote}
+                            selectedNote={note}
+                            onDeleteNote={onDeleteNote}
+                        />}
                 </div>
-                {noteId && note && <Modal onCloseModal={onCloseModal} >
-                    <NoteEdit
-                        isModalOpen={isModalOpen}
-                        onCloseModal={onCloseModal}
-                        selectedNote={note}
-                        onDeleteNote={onDeleteNote}
-                    />
-                </Modal>}
+                {noteId && note &&
+                    <Modal >
+                        <NoteEdit
+                            setNewNoteClose={setNewNoteClose}
+                            setNote={setNote}
+                            note={note}
+                            onDeleteNote={onDeleteNote}
+                        />
+                    </Modal>}
                 {pinnedNoteList && <NoteList key={'pinned-notes'} type={'pinned'} notes={pinnedNoteList} />}
                 {noteList && <NoteList key={'other-notes'} type={'other'} notes={noteList} />}
             </section>
