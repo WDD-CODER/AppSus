@@ -8,8 +8,8 @@ import { NoteList } from "../cmps/NoteList.jsx"
 import { NoteSideBar } from "../cmps/NoteSideBar.jsx";
 import { noteService } from "../services/note.service.js"
 
-const { useState, useEffect, useRef,, } = React
-const { useSearchParams, useParams, Link, Outlet, Link, Outlet } = ReactRouterDOM
+const { useState, useEffect, useRef, } = React
+const { useSearchParams, useParams, Link, Outlet } = ReactRouterDOM
 
 export function NoteIndex() {
 
