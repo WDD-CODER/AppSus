@@ -13,37 +13,41 @@ export const noteService = {
     getDefaultFilter,
     getFilterFromSearchParams,
     onGetNoteParams,
-    getFilterBySearchParams
+    // getFilterBySearchParams
 }
 
 
 // LIST
 function query(filterBy = {}) {
-    
     return storageService.query(NOTE_KEY)
         .then(notes => {
+            
             if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i')
                 notes = notes.filter(note => regExp.test(note.title))
             }
-
-            if (filterBy.archive) {
-                notes = notes.filter(note => note.archive === true)
+            
+            const key = filterBy.filterBy
+            
+            if (key) {
+                console.log('variable')
+                
+                notes = notes.filter(note => note[key] === true)
             }
+            
             else notes = notes.filter(note => note.archive !== true)
 
             return notes
         })
-          .catch(() => showErrorMsg('Failed loading notes'))
-    }
-
-function getFilterBySearchParams(searchParams) {
-    const filterType = searchParams.get('filterBy') || ''
-    const filterBy = {}
-
-    if (filterType === 'archive') filterBy.archive = true
-    return filterBy
+        .catch(() => showErrorMsg('Failed loading notes'))
 }
+
+// function getFilterBySearchParams(searchParams) {
+//     const filterType = searchParams.get('filterBy') || ''
+//     const filterBy = {}
+//     return filterBy
+// }
+
 
 // CREATE
 
@@ -95,8 +99,8 @@ function get(noteId) {
 
 function getEmptyNote(type = 'NoteTxt', createdAt) {
     const color = getComputedStyle(document.documentElement)
-                  .getPropertyValue('--clr-bg-main')
-                  .trim();
+        .getPropertyValue('--clr-bg-main')
+        .trim();
     const now = new Date()
     return {
         createdAt: { time: now.toLocaleTimeString(), date: now.toLocaleDateString() },
@@ -108,19 +112,16 @@ function getEmptyNote(type = 'NoteTxt', createdAt) {
 }
 
 function getDefaultFilter() {
-    return { type: '', isPinned: '' }
+    return { type: '', isPinned: '', noteId: '', filterBy: '' }
 }
 
 function getFilterFromSearchParams(searchParams) {
-    const txt = searchParams.get('txt') || ''
-    const isPinned = searchParams.get('isPinned') || ''
-    const noteId = searchParams.get('noteId') || ''
-
-    return {
-        txt,
-        isPinned,
-        noteId
+    const defaultFilter = getDefaultFilter()
+    const filterBy = {}
+    for (const field in defaultFilter) {
+        filterBy[field] = searchParams.get(field) || defaultFilter[field]
     }
+    return filterBy
 }
 
 
@@ -136,7 +137,7 @@ function _setNextPrevNoteId(note) {
     })
 }
 
-function onGetNoteParams(note, data, func ) {
+function onGetNoteParams(note, data, func) {
     if (!note.id) return showErrorMsg('seems like there is no not...')
     // data.set('txt', (note.info && note.info.txt) || '')
     // data.set('type', note.type || '')
@@ -147,7 +148,7 @@ function onGetNoteParams(note, data, func ) {
     data.set('time-createdAt', (note.createdAt && note.createdAt.time) || '')
     func(data)
     return Promise.resolve(data)
-   
+
 }
 
 

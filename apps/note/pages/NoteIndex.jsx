@@ -14,13 +14,13 @@ const { useSearchParams, useParams, Link, Outlet } = ReactRouterDOM
 export function NoteIndex() {
 
     const [searchParams, setSearchParams] = useSearchParams()
-    const [filterBy, setFilterBy] = useState(noteService.getFilterBySearchParams(searchParams))// to get filter from url...
+    const [filterBy, setFilterBy] = useState(noteService.getFilterFromSearchParams(searchParams))// to get filter from url...
     const [pinnedNoteList, setPinnedNoteList] = useState()
-    const [noteList, setNoteList] = useState()
+    const [notes, setNotes] = useState()
     const [note, setNote] = useState()
 
 
-    const [newNoteClose, setNewNoteClose] = useState()
+    const [addNoteOpen, setAddNoteOpen] = useState()
     const loadingRef = useRef()
     const { noteId } = useParams()
 
@@ -40,10 +40,24 @@ export function NoteIndex() {
             .catch(() => showErrorMsg('Problem getting note from url '))
     }, [noteId])
 
-useEffect(() => {
-  console.log('change to note')
-  loadNotes()
-}, [!note])
+    // useEffect(() => {
+    //     loadNotes()
+    // }, [!note])
+
+    useEffect(() => {
+        loadNotes()
+    }, [filterBy])
+
+    useEffect(() => {
+        setFilterBy(noteService.getFilterFromSearchParams(searchParams))
+        // loadNotes()
+
+    }, [searchParams])
+
+    // useEffect(() => {
+    //     if (note.style) setNote(note)
+    // }, [note.style])
+
 
 
     function loadNotes() {
@@ -54,6 +68,7 @@ useEffect(() => {
             .catch(() => showErrorMsg('Failed loading notes'))
     }
 
+
     function filterPinnedNotes(notes) {
         const pinned = notes.filter(note => { if (note.isPinned === true) return note })
         if (pinned) {
@@ -61,10 +76,9 @@ useEffect(() => {
         }
         const notPinned = notes.filter(note => { if (note.isPinned !== true) return note })
         if (notPinned) {
-            setNoteList(notPinned)
+            setNotes(notPinned)
         }
     }
-
 
     function onDeleteNote(noteId) {
         const curNoteId = (noteId) ? noteId : searchParams.get('noteId')
@@ -79,33 +93,35 @@ useEffect(() => {
         }
     }
 
-    if (!noteList) return (<div ref={loadingRef} className="loading"> Loading...</div>)
+    if (!notes) return (<div ref={loadingRef} className="loading"> Loading...</div>)
     return (
         <div className="note-index note-layout">
             <NoteHeader />
             <NoteSideBar defaultFilter={filterBy} onSetFilterBy={setFilterBy} />
             <section className="lists-container">
                 <div className="add-note-container">
-                    {!newNoteClose && <Link to="/note/edit" onClick={() => setNewNoteClose(true)}> <AddNoteBar /> </Link>}
-                    {newNoteClose &&
-                        <Outlet context={{ setNewNoteClose, setNote, note, onDeleteNote }}
-                            onSetNewNoteClose={setNewNoteClose}
-                            onSetSelectedNote={setNote}
-                            selectedNote={note}
-                            onDeleteNote={onDeleteNote}
+                    {!addNoteOpen && <Link to="/note/edit" onClick={() => setAddNoteOpen(true)}> <AddNoteBar />  </Link>
+                    }
+                    {addNoteOpen &&
+                        <Outlet context={{ setAddNoteOpen, setNote, note, onDeleteNote ,setNotes}}
+                        // setAddNoteOpen={setAddNoteOpen}
+                        // onSetSelectedNote={setNote}
+                        // selectedNote={note}
+                        // onDeleteNote={onDeleteNote}
                         />}
                 </div>
                 {noteId && note &&
                     <Modal >
                         <NoteEdit
-                            setNewNoteClose={setNewNoteClose}
+                            setNotes={setNotes}
+                            setAddNoteOpen={setAddNoteOpen}
                             setNote={setNote}
                             note={note}
                             onDeleteNote={onDeleteNote}
                         />
                     </Modal>}
-                {pinnedNoteList && <NoteList key={'pinned-notes'} type={'pinned'} notes={pinnedNoteList} />}
-                {noteList && <NoteList key={'other-notes'} type={'other'} notes={noteList} />}
+                {pinnedNoteList && <NoteList key={'pinned-notes'} type={'pinned'} notes={pinnedNoteList} setNotes={setNotes} setNote={setNote} filterBy={filterBy} />}
+                {notes && <NoteList key={'other-notes'} type={'other'} notes={notes} setNotes={setNotes} setNote={setNote} filterBy={filterBy} />}
             </section>
         </div>
     )

@@ -8,8 +8,9 @@ const { useNavigate, useSearchParams, useParams, useOutletContext } = ReactRoute
 export function NoteEdit(props) {
 
     const context = useOutletContext() || {}
-    const setNewNoteClose = props.setNewNoteClose || context.setNewNoteClose;
+    const setAddNoteOpen = props.setAddNoteOpen || context.setAddNoteOpen;
     const setNote = props.setNote || context.setNote;
+    const setNotes = props.setNotes || context.setNotes;
     const note = props.note || context.note;
     const onDeleteNote = props.onDeleteNote || context.onDeleteNote;
 
@@ -43,7 +44,7 @@ export function NoteEdit(props) {
                 showErrorMsg('failed to get note')
             })
 
-        return () => setNewNoteClose(false)
+        return () => setAddNoteOpen (false)
 
     }, [noteId])
 
@@ -84,7 +85,7 @@ export function NoteEdit(props) {
     }
 
     function onSave() {
-        if (!note.title && !note.info.txt) {
+        if (!note.title && !note.info.txt && !note.style ) {
             showErrorMsg(' Note has no content. It was not saved')
             setNote(false)
 
@@ -137,7 +138,7 @@ export function NoteEdit(props) {
 
                 </div>
                 <section className="tool-bar">
-                    <ToolBar onUpdateNote={handleUpdateNote} selectedNote={note} onSetSelectedNote={setNote}>
+                    <ToolBar handleUpdateNote={handleUpdateNote} note={note} setNotes={setNotes} setNote={setNote}>
                         <button className="delete btn "
                             data-type={'Delete'}
                             onClick={ev => {
