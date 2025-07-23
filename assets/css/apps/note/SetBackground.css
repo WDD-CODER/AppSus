@@ -5,6 +5,7 @@
     transform: translateX(-50%);
     padding: .5em;
     background-color: var(--clr-bg-main);
+    z-index: 1;
 }
 
 .background-select-option {

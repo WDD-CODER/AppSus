@@ -24,10 +24,10 @@ export function Modal({ children, onCloseModal }) {
     noteService.save(props.note)
       .then(() => {
         navigate(-1)
-        showSuccessMsg('note saved!')})
+        showSuccessMsg('note saved in modal!')})
       .catch(err => {
         console.log('err', err)
-        showErrorMsg('note saved!')
+        showErrorMsg('note saved  in modal!')
         navigate(-1)
       })
   }
