@@ -40,23 +40,14 @@ export function NoteIndex() {
             .catch(() => showErrorMsg('Problem getting note from url '))
     }, [noteId])
 
-    // useEffect(() => {
-    //     loadNotes()
-    // }, [!note])
-
     useEffect(() => {
         loadNotes()
     }, [filterBy])
 
     useEffect(() => {
         setFilterBy(noteService.getFilterFromSearchParams(searchParams))
-        // loadNotes()
 
     }, [searchParams])
-
-    // useEffect(() => {
-    //     if (note.style) setNote(note)
-    // }, [note.style])
 
 
 
@@ -104,10 +95,6 @@ export function NoteIndex() {
                     }
                     {addNoteOpen &&
                         <Outlet context={{ setAddNoteOpen, setNote, note, onDeleteNote ,setNotes}}
-                        // setAddNoteOpen={setAddNoteOpen}
-                        // onSetSelectedNote={setNote}
-                        // selectedNote={note}
-                        // onDeleteNote={onDeleteNote}
                         />}
                 </div>
                 {noteId && note &&

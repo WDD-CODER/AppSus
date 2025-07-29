@@ -3,7 +3,6 @@ import { ToolBar } from "./Toolbar.jsx";
 const { useSearchParams, Link } = ReactRouterDOM
 
 export function NotePreview({ note, onSaveNote ,onDeleteNote}) {
-    // const { title, info, createdAt, id, isPinned, style, type } = note
     const [searchParams, setSearchParams] = useSearchParams()
 
 

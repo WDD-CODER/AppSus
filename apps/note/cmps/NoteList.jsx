@@ -1,5 +1,4 @@
 import { NotePreview } from "./NotePreview.jsx"
-const {useState,useEffect} = React
 
 export function NoteList({ notes, type, onDeleteNote , onSaveNote}) {
 
