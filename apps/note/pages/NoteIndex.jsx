@@ -100,7 +100,7 @@ export function NoteIndex() {
                 {noteId && note &&
                     <Modal >
                         <NoteEdit
-                            setNotes={setNotes}
+                            // setNotes={setNotes}
                             setAddNoteOpen={setAddNoteOpen}
                             setNote={setNote}
                             note={note}
