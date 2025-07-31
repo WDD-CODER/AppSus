@@ -2,7 +2,7 @@ import { ToolBar } from "./Toolbar.jsx";
 
 const { useSearchParams, Link } = ReactRouterDOM
 
-export function NotePreview({ note, onSaveNote ,onDeleteNote}) {
+export function NotePreview({ note,  onDeleteNote ,onUpdateNote}) {
     const [searchParams, setSearchParams] = useSearchParams()
 
 
@@ -12,7 +12,7 @@ export function NotePreview({ note, onSaveNote ,onDeleteNote}) {
                 <h1>{note.title}</h1>
                 <p>{note.info.txt}</p>
                 {note.info.img && <figure>{info.img}</figure>}
-                <ToolBar onDeleteNote={onDeleteNote} onSaveNote={onSaveNote} note={note} />
+                <ToolBar onDeleteNote={onDeleteNote} onUpdateNote={onUpdateNote} note={note} />
             </section >
         </Link>
     )

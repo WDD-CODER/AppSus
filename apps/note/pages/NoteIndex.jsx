@@ -49,7 +49,21 @@ export function NoteIndex() {
 
     }, [searchParams])
 
-
+    function onUpdateNote(note) {
+        if (noteId) {
+            setNote(prevNote => ({ ...prevNote, ...note }))
+            return }
+        setNote(prevNote => ({ ...prevNote, ...note }))
+        noteService.save(note)
+            .then(note => {
+                setNote(null)
+                loadNotes()
+            })
+            .catch(err => {
+                console.log('err', err);
+                showErrorMsg('problem updating note')
+            })
+    }
 
     function loadNotes() {
         noteService.query(filterBy)
@@ -79,6 +93,7 @@ export function NoteIndex() {
                 .then(() => {
                     setNote(null)
                     setSearchParams({})
+                    loadNotes()
                     showSuccessMsg('Note removed with Success')
                 })
         }
@@ -94,7 +109,7 @@ export function NoteIndex() {
                     {!addNoteOpen && <Link to="/note/edit" onClick={() => setAddNoteOpen(true)}> <AddNoteBar />  </Link>
                     }
                     {addNoteOpen &&
-                        <Outlet context={{ setAddNoteOpen, setNote, note, onDeleteNote ,setNotes}}
+                        <Outlet context={{ setAddNoteOpen, onUpdateNote, note, onDeleteNote }}
                         />}
                 </div>
                 {noteId && note &&
@@ -102,13 +117,13 @@ export function NoteIndex() {
                         <NoteEdit
                             // setNotes={setNotes}
                             setAddNoteOpen={setAddNoteOpen}
-                            setNote={setNote}
+                            onUpdateNote={onUpdateNote}
                             note={note}
                             onDeleteNote={onDeleteNote}
                         />
                     </Modal>}
-                {pinnedNoteList && <NoteList key={'pinned-notes'} type={'pinned'} notes={pinnedNoteList} setNotes={setNotes} setNote={setNote} filterBy={filterBy} />}
-                {notes && <NoteList key={'other-notes'} type={'other'} notes={notes} setNotes={setNotes} setNote={setNote} filterBy={filterBy} />}
+                {pinnedNoteList && <NoteList key={'pinned-notes'} type={'pinned'} notes={pinnedNoteList} onUpdateNote={onUpdateNote} filterBy={filterBy} />}
+                {notes && <NoteList key={'other-notes'} type={'other'} notes={notes} onUpdateNote={onUpdateNote} filterBy={filterBy} />}
             </section>
         </div>
     )

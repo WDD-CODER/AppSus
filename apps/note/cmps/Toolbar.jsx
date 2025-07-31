@@ -5,8 +5,7 @@ import { SetBackground } from './SetBackground.jsx'
 const { useNavigate } = ReactRouterDOM
 
 const { useState, useEffect } = React
-export function ToolBar({ children, setNote, note, setNotes }) {
-    console.log("🚀 ~ ToolBar ~ setNotes:", setNotes)
+export function ToolBar({ children, onUpdateNote, note }) {
     const [isActive, setIsActive] = useState()
     const navigate = useNavigate()
 
@@ -51,7 +50,7 @@ export function ToolBar({ children, setNote, note, setNotes }) {
         const updatedNote = { ...note, style: { ...note.style, ...style } }
 
         // handleUpdateNote({ style: { ...note.style, ...style } }, 'changed background')
-        setNote(prevSelectedNote => ({ ...prevSelectedNote, style: ({ ...prevSelectedNote.style, ...style }) }))
+        onUpdateNote(updatedNote)
     }
 
 

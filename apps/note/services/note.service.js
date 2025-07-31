@@ -83,6 +83,7 @@ function _createDemoNote(type) {
 
 //  SAVE 
 function save(note) {
+    console.log("🚀 ~ save ~ note:", note)
     if (note.id) {
         return storageService.put(NOTE_KEY, note)
     } else {

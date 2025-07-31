@@ -9,9 +9,7 @@ export function NoteEdit(props) {
 
     const context = useOutletContext() || {}
     const setAddNoteOpen = props.setAddNoteOpen || context.setAddNoteOpen;
-    const setNote = props.setNote || context.setNote;
-    const setNotes = props.setNotes || context.setNotes;
-    const note = props.note || context.note;
+    const onUpdateNote = props.onUpdateNote || context.onUpdateNote;
     const onDeleteNote = props.onDeleteNote || context.onDeleteNote;
 
 
@@ -20,7 +18,7 @@ export function NoteEdit(props) {
     const textRef = useRef()
     const navigate = useNavigate()
     const { noteId } = useParams()
-
+    const [note, setNote] = useState(props.note || context.note)
 
     useEffect(() => {
         requestAnimationFrame(() => { if (textRef.current) autoGrow(textRef.current), 5000 })
@@ -44,20 +42,20 @@ export function NoteEdit(props) {
                 showErrorMsg('failed to get note')
             })
 
-        return () => setAddNoteOpen (false)
+        return () => setAddNoteOpen(false)
 
     }, [noteId])
 
-    function handleUpdateNote(changes, successMsg) {
-        const updatedNote = { ...note, ...changes }
-        setNote(updatedNote)
-        noteService.save(updatedNote)
-            .then(savedNote => {
-                setNote(savedNote)
-                if (successMsg) showSuccessMsg(successMsg)
-            })
-            .catch(() => showErrorMsg('Update failed'))
-    }
+    // function handleUpdateNote(changes, successMsg) {
+    //     const updatedNote = { ...note, ...changes }
+    //     onUpdateNote(updatedNote)
+    //     // noteService.save(updatedNote)
+    //     //     .then(savedNote => {
+    //     //         setNote(savedNote)
+    //     //         if (successMsg) showSuccessMsg(successMsg)
+    //     //     })
+    //     //     .catch(() => showErrorMsg('Update failed'))
+    // }
 
     function seIsPinned() {
         if (note.archive) return showErrorMsg('note is archived, cannot be pinned')
@@ -85,7 +83,7 @@ export function NoteEdit(props) {
     }
 
     function onSave() {
-        if (!note.title && !note.info.txt && !note.style ) {
+        if (!note.title && !note.info.txt && !note.style) {
             showErrorMsg(' Note has no content. It was not saved')
             setNote(false)
 
@@ -138,7 +136,7 @@ export function NoteEdit(props) {
 
                 </div>
                 <section className="tool-bar">
-                    <ToolBar handleUpdateNote={handleUpdateNote} note={note} setNotes={setNotes} setNote={setNote}>
+                    <ToolBar note={note} onUpdateNote={onUpdateNote}>
                         <button className="delete btn "
                             data-type={'Delete'}
                             onClick={ev => {
